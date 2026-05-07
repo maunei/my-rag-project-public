@@ -1,0 +1,39 @@
+# API keys - NEVER commit this
+.env
+.env.example
+
+# ChromaDB index (large, rebuild from PDFs)
+chroma_db/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit cache
+.streamlit/cache/
+
+# other directories and files
+00_papers-rag_app_info.txt
+Papers_RAG_installation_guide_v2.2_gcloud_snapshot_private.txt
+selected_pdfs/
+stored0/
+stored1/
+stored2/
+stored3/

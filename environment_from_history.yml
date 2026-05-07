@@ -1,0 +1,8 @@
+name: papers_rag
+channels:
+  - conda-forge
+  - defaults
+  - bioconda
+dependencies:
+  - pip
+  - python=3.11
