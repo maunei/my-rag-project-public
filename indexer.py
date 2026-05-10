@@ -15,14 +15,18 @@ import chromadb
 from fastembed import TextEmbedding
 from tqdm import tqdm
 
+from papers_paths import PAPERS_DIR, get_all_pdfs
+
 # ── Configuration ────────────────────────────────────────────────────────────
 
-PAPERS_DIR = "/home/mneira/MAURICIO/papers"
 APP_DIR = Path(__file__).parent
 DB_PATH = str(APP_DIR / "chroma_db")
 
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"   # ~130 MB, ONNX-based, fast on CPU
 COLLECTION_NAME = "papers"
+
+# Chroma/SQLite may reject one-shot gets over ~999 ids; page metadata reads.
+_METADATA_BATCH_SIZE = 400
 
 CHUNK_SIZE = 1000       # characters per chunk
 CHUNK_OVERLAP = 200     # overlap between consecutive chunks
@@ -67,10 +71,6 @@ def _extract_pages(filepath: str) -> list[dict]:
 
 
 # ── Core indexing ─────────────────────────────────────────────────────────────
-
-def get_all_pdfs(papers_dir: str = PAPERS_DIR) -> list[str]:
-    """Recursively collect all PDF paths, sorted alphabetically."""
-    return sorted(str(p) for p in Path(papers_dir).rglob("*.pdf"))
 
 
 def index_papers(
@@ -313,24 +313,351 @@ def hybrid_search(
     return sem_hits
 
 
+# ── Boolean multi-clause retrieval (paper-level AND / OR / NOT) ────────────────
+
+MAX_BOOLEAN_CLAUSES = 8
+
+
+def clause_search(
+    query: str,
+    mode: str,
+    embedding_model: TextEmbedding,
+    db_path: str = DB_PATH,
+    n_results: int = 500,
+) -> list[dict]:
+    """
+    Single-clause retrieval: ``semantic`` → embedding only; ``keyword`` → substring only.
+    """
+    q = (query or "").strip()
+    if not q:
+        return []
+    if mode == "keyword":
+        return keyword_search(q, embedding_model, db_path, limit=n_results)
+    hits = semantic_search(q, embedding_model, db_path, n_results)
+    for h in hits:
+        h.setdefault("match_type", "semantic")
+    return hits
+
+
+def papers_from_hits(hits: list[dict]) -> set[str]:
+    """Unique ``file_path`` values appearing in chunk hits."""
+    return {h["metadata"]["file_path"] for h in hits}
+
+
+def merge_chunks_for_papers(
+    per_clause_hits: list[list[dict]],
+    final_fps: set[str],
+) -> list[dict]:
+    """Union chunks from all clauses, restricted to ``final_fps``, deduped by paper+chunk_idx."""
+    seen: set[tuple[str, int]] = set()
+    out: list[dict] = []
+    for hits in per_clause_hits:
+        for h in hits:
+            fp = h["metadata"]["file_path"]
+            if fp not in final_fps:
+                continue
+            cid = (fp, int(h["metadata"]["chunk_idx"]))
+            if cid not in seen:
+                seen.add(cid)
+                out.append(h)
+    return out
+
+
+def _boolean_clause_slot_labels(n: int) -> list[str]:
+    """Display names for boolean rows: ``Clause 1`` … ``Clause n``."""
+    return [f"Clause {i + 1}" for i in range(n)]
+
+
+def _fold_clause_labels(label_bits: list[str], operators: list[str]) -> str:
+    """Concatenate clause labels with AND/OR/NOT (same spelling as retrieval)."""
+    if not label_bits:
+        return ""
+    if len(label_bits) == 1:
+        return label_bits[0]
+    label = label_bits[0]
+    for i, op in enumerate(operators):
+        op_u = (op or "AND").upper()
+        label += f" {op_u} {label_bits[i + 1]}"
+    return label
+
+
+def _fold_paper_sets(
+    paper_sets: list[set[str]],
+    operators: list[str],
+    label_bits: list[str],
+) -> tuple[set[str], str]:
+    """Left fold over consecutive clause paper sets (within one segment)."""
+    if not paper_sets:
+        return set(), ""
+    if len(paper_sets) == 1:
+        return set(paper_sets[0]), label_bits[0]
+
+    acc = set(paper_sets[0])
+    for i, op in enumerate(operators):
+        nxt = paper_sets[i + 1]
+        op_u = (op or "AND").upper()
+        if op_u == "AND":
+            acc = acc & nxt
+        elif op_u == "OR":
+            acc = acc | nxt
+        elif op_u == "NOT":
+            acc = acc - nxt
+        else:
+            acc = acc & nxt
+    label = _fold_clause_labels(label_bits, operators)
+    return acc, label
+
+
+def _markdown_bool_op(op: str) -> str:
+    """Streamlit markdown colored span for paper-level boolean operators."""
+    op_u = (op or "AND").upper()
+    if op_u == "AND":
+        return ":green[**AND**]"
+    if op_u == "OR":
+        return ":orange[**OR**]"
+    if op_u == "NOT":
+        return ":red[**NOT**]"
+    return f":violet[**{op_u}**]"
+
+
+def _join_detailed_atoms_markdown(atoms: list[str], ops: list[str]) -> str:
+    """Join ``(semantic) …`` atoms with colored AND/OR/NOT."""
+    if not atoms:
+        return ""
+    if len(atoms) == 1:
+        return atoms[0]
+    parts: list[str] = [atoms[0]]
+    for i, op in enumerate(ops):
+        parts.append(" ")
+        parts.append(_markdown_bool_op(op))
+        parts.append(" ")
+        parts.append(atoms[i + 1])
+    return "".join(parts)
+
+
+def format_boolean_expression_translation_md(
+    clauses: list[dict],
+    split_after: list[int],
+    edge_ops: list[str],
+) -> str:
+    """
+    Markdown suitable for ``st.markdown``: detailed ``(semantic)`` / ``(keyword)`` atoms
+    plus **colored** AND / OR / NOT **within** each group and **between** groups
+    (truncated text matches retrieval labeling).
+    """
+    if not clauses:
+        return ""
+    n = len(clauses)
+    if len(edge_ops) != max(0, n - 1):
+        return ""
+
+    splits_sorted = sorted({s for s in split_after if 0 <= s <= n - 2})
+    detailed_bits: list[str] = []
+    for c in clauses:
+        text = (c.get("text") or "").strip()
+        mode = c.get("mode", "semantic")
+        if mode not in ("semantic", "keyword"):
+            mode = "semantic"
+        short = text[:48] + ("…" if len(text) > 48 else "")
+        detailed_bits.append(f"({'keyword' if mode == 'keyword' else 'semantic'}) {short}")
+
+    ranges: list[tuple[int, int]] = []
+    start = 0
+    for s in splits_sorted:
+        ranges.append((start, s))
+        start = s + 1
+    ranges.append((start, n - 1))
+
+    segments: list[str] = []
+    for lo, hi in ranges:
+        atoms = detailed_bits[lo : hi + 1]
+        ops_inside = [edge_ops[j] for j in range(lo, hi)]
+        segments.append(_join_detailed_atoms_markdown(atoms, ops_inside))
+
+    out = segments[0]
+    for gi in range(1, len(segments)):
+        op_between = _markdown_bool_op(edge_ops[splits_sorted[gi - 1]])
+        out += "\n\n" + op_between + "\n\n" + segments[gi]
+    return out
+
+
+def format_boolean_expression_preview(
+    clauses: list[dict],
+    split_after: list[int],
+    edge_ops: list[str],
+) -> str:
+    """
+    Pretty-print the boolean query (groups + operators) **without** hitting the index.
+    Uses numbered clauses like ``(Clause 1) OR (Clause 2 AND Clause 3)``, matching
+    the label returned by ``boolean_retrieval_segmented``.
+    """
+    if not clauses:
+        return ""
+    n = len(clauses)
+    if len(edge_ops) != max(0, n - 1):
+        return ""
+
+    splits_sorted = sorted({s for s in split_after if 0 <= s <= n - 2})
+    label_bits = _boolean_clause_slot_labels(n)
+
+    ranges: list[tuple[int, int]] = []
+    start = 0
+    for s in splits_sorted:
+        ranges.append((start, s))
+        start = s + 1
+    ranges.append((start, n - 1))
+
+    seg_labels: list[str] = []
+    for lo, hi in ranges:
+        lbs = label_bits[lo : hi + 1]
+        ops_inside = [edge_ops[j] for j in range(lo, hi)]
+        lbl_s = _fold_clause_labels(lbs, ops_inside)
+        seg_labels.append(f"({lbl_s})")
+
+    label = seg_labels[0]
+    for gi in range(1, len(seg_labels)):
+        op_u = (edge_ops[splits_sorted[gi - 1]] or "AND").upper()
+        label += f" {op_u} {seg_labels[gi]}"
+    return label
+
+
+def boolean_retrieval_segmented(
+    clauses: list[dict],
+    split_after: list[int],
+    edge_ops: list[str],
+    embedding_model: TextEmbedding,
+    db_path: str = DB_PATH,
+    n_results: int = 500,
+) -> tuple[list[dict], set[str], str]:
+    """
+    Paper-level boolean search with optional **groups** (parentheses).
+
+    Clauses are partitioned into contiguous segments. Within each segment,
+    ``edge_ops[j]`` for internal edges ``j`` combines consecutive clauses (AND/OR/NOT).
+    At a segment boundary after clause index ``s`` (``s`` in ``split_after``),
+    ``edge_ops[s]`` combines the segment to the left with the segment to the right.
+
+    Args:
+        clauses: Non-empty clause dicts (text + mode).
+        split_after: Clause indices ``s`` with ``0 <= s <= n-2``; boundary **after**
+            clause ``s`` starts a new group (sorted internally).
+        edge_ops: Length ``n - 1``; operator between clause ``j`` and ``j+1``
+            (within-group, or between-groups when ``j`` is in ``split_after``).
+
+    Returns:
+        (merged_hits, final_paper_paths, human_readable_label) — label uses
+        ``Clause 1`` … ``Clause n`` with parentheses per group, e.g.
+        ``(Clause 1) OR (Clause 2 AND Clause 3)``.
+    """
+    if not clauses:
+        return [], set(), ""
+
+    n = len(clauses)
+    if len(edge_ops) != max(0, n - 1):
+        raise ValueError("edge_ops must have length len(clauses) - 1")
+
+    splits_sorted = sorted({s for s in split_after if 0 <= s <= n - 2})
+    per_clause_hits: list[list[dict]] = []
+    paper_sets: list[set[str]] = []
+    label_bits = _boolean_clause_slot_labels(n)
+
+    for c in clauses:
+        text = (c.get("text") or "").strip()
+        mode = c.get("mode", "semantic")
+        if mode not in ("semantic", "keyword"):
+            mode = "semantic"
+        hits = clause_search(text, mode, embedding_model, db_path, n_results)
+        per_clause_hits.append(hits)
+        paper_sets.append(papers_from_hits(hits))
+
+    ranges: list[tuple[int, int]] = []
+    start = 0
+    for s in splits_sorted:
+        ranges.append((start, s))
+        start = s + 1
+    ranges.append((start, n - 1))
+
+    seg_sets: list[set[str]] = []
+    seg_labels: list[str] = []
+    for lo, hi in ranges:
+        ps = paper_sets[lo : hi + 1]
+        lbs = label_bits[lo : hi + 1]
+        ops_inside = [edge_ops[j] for j in range(lo, hi)]
+        acc_s, lbl_s = _fold_paper_sets(ps, ops_inside, lbs)
+        seg_sets.append(acc_s)
+        seg_labels.append(f"({lbl_s})")
+
+    acc = set(seg_sets[0])
+    label = seg_labels[0]
+    for gi in range(1, len(seg_sets)):
+        op_u = (edge_ops[splits_sorted[gi - 1]] or "AND").upper()
+        nxt = seg_sets[gi]
+        if op_u == "AND":
+            acc = acc & nxt
+        elif op_u == "OR":
+            acc = acc | nxt
+        elif op_u == "NOT":
+            acc = acc - nxt
+        else:
+            acc = acc & nxt
+        label += f" {op_u} {seg_labels[gi]}"
+
+    merged = merge_chunks_for_papers(per_clause_hits, acc)
+    return merged, acc, label
+
+
+def boolean_retrieval(
+    clauses: list[dict],
+    operators: list[str],
+    embedding_model: TextEmbedding,
+    db_path: str = DB_PATH,
+    n_results: int = 500,
+) -> tuple[list[dict], set[str], str]:
+    """
+    Paper-level left fold with a single segment (no group splits): delegates to
+    ``boolean_retrieval_segmented`` with ``split_after=[]``.
+    """
+    return boolean_retrieval_segmented(
+        clauses, [], operators, embedding_model, db_path, n_results
+    )
+
+
 def get_indexed_papers(db_path: str = DB_PATH) -> list[dict]:
     """Return list of all unique indexed papers as {file_path, file_name, paper_title}."""
+    seen: dict[str, dict] = {}
     try:
         client = chromadb.PersistentClient(path=db_path)
         collection = client.get_collection(COLLECTION_NAME)
-        all_meta = collection.get(include=["metadatas"])["metadatas"]
-        seen: dict[str, dict] = {}
-        for m in all_meta:
-            fp = m["file_path"]
-            if fp not in seen:
-                seen[fp] = {
-                    "file_path": fp,
-                    "file_name": m["file_name"],
-                    "paper_title": m["paper_title"],
-                    "rel_path": m["rel_path"],
-                }
+        offset = 0
+        while True:
+            batch = collection.get(
+                include=["metadatas"],
+                limit=_METADATA_BATCH_SIZE,
+                offset=offset,
+            )
+            ids = batch.get("ids") or []
+            metas = batch.get("metadatas") or []
+            if not ids:
+                break
+            for m in metas:
+                if not m or not isinstance(m, dict):
+                    continue
+                fp = m.get("file_path")
+                if not fp:
+                    continue
+                if fp not in seen:
+                    seen[fp] = {
+                        "file_path": fp,
+                        "file_name": m.get("file_name"),
+                        "paper_title": m.get("paper_title"),
+                        "rel_path": m.get("rel_path"),
+                    }
+            offset += len(ids)
+            if len(ids) < _METADATA_BATCH_SIZE:
+                break
         return sorted(seen.values(), key=lambda x: x["paper_title"])
-    except Exception:
+    except Exception as exc:
+        print(f"[WARN] get_indexed_papers failed: {exc}", flush=True)
         return []
 
 

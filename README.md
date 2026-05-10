@@ -11,7 +11,7 @@ Private research assistant: **semantic + keyword hybrid search** over your PDFs 
 
 Step-by-step setup, Google Cloud concepts, troubleshooting, and a **captured `gcloud` snapshot** are in:
 
-**[`Papers_RAG_installation_guide_v2.2_gcloud_snapshot.txt`](./Papers_RAG_installation_guide_v2.2_gcloud_snapshot.txt)**
+**[`Papers_RAG_installation_guide_v2.3_gcloud_snapshot.txt`](./Papers_RAG_installation_guide_v2.3_gcloud_snapshot.txt)**
 
 After cloning, point **`PAPERS_DIR`** in `indexer.py` at your PDF folder and set **`GCP_PROJECT`**, **`GCS_BUCKET`**, and region in `rag_engine.py` to match your GCP project. Use **Application Default Credentials** (`gcloud auth application-default login`) — not AI Studio API keys — for Vertex + GCS as described in the guide.
 

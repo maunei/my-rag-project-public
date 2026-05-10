@@ -11,6 +11,8 @@ Authentication: uses Application Default Credentials (ADC) via Vertex AI.
   - Billing drawn from Google Cloud credits.
 """
 
+from pathlib import Path
+
 from google import genai
 from google.genai import types
 from fastembed import TextEmbedding
@@ -28,8 +30,10 @@ SYSTEM_INSTRUCTION = """You are a scientific literature assistant helping a rese
 analyze papers in genomics, neuroscience, single-cell biology, and related fields.
 
 Your role:
-- Answer questions based on the provided paper excerpts
-- Always cite sources using [Source N: Paper Title, p.X] notation
+- Answer questions based on the provided paper excerpts (and any per-paper abstracts given).
+- Some papers may appear only as **abstract-only** (metadata JSON): treat abstract text as the sole passage unless excerpts exist — cite with filename.
+- Every citation MUST include the PDF filename exactly as shown in the source label
+  (format: [Source N: file `filename.pdf` · Paper Title, p.X], or [Abstract · `filename.pdf`]). Refer to papers by that filename.
 - Be precise and use appropriate scientific terminology
 - If excerpts don't fully answer the question, say so clearly
 - When synthesizing across multiple papers, explicitly compare and contrast
@@ -52,25 +56,115 @@ def get_gemini_client() -> genai.Client:
 
 # ── Prompt building ───────────────────────────────────────────────────────────
 
-def _build_context_block(chunks: list[dict]) -> str:
-    """Format retrieved chunks into a numbered source block."""
-    parts = []
-    for i, chunk in enumerate(chunks, start=1):
-        m = chunk["metadata"]
-        parts.append(
-            f"[Source {i}: {m['paper_title']}, p.{m['page_num']}]\n{chunk['text']}"
+def _file_label(metadata: dict) -> str:
+    fp = metadata.get("file_path", "")
+    return metadata.get("file_name") or (Path(fp).name if fp else "unknown.pdf")
+
+
+def build_external_llm_context_text(
+    chunks: list[dict],
+    abstracts_by_fp: dict[str, dict],
+    ordered_checked_fps: list[str],
+) -> str:
+    """
+    Plain-text bundle for manual export (no user question).
+
+    ``ordered_checked_fps`` controls abstract section order and inclusion for papers
+    with abstract-only (no chunks required).
+    """
+    sections: list[str] = []
+    sections.append(
+        "=== Papers RAG — exported context (abstracts + matching excerpts) ===\n"
+        "Paste into any LLM together with your own question.\n"
+    )
+
+    abs_parts: list[str] = []
+    for fp in ordered_checked_fps:
+        rec = abstracts_by_fp.get(fp)
+        fn = Path(fp).name
+        if rec:
+            fn = rec.get("file_name") or fn
+            abs_parts.append(
+                f"---\nFile: `{fn}`\n"
+                f"abstract_status: {rec.get('status')}\n"
+                f"abstract_source: {rec.get('source')}\n\n"
+                f"{rec.get('abstract_text', '')}"
+            )
+        else:
+            abs_parts.append(
+                f"---\nFile: `{fn}`\n"
+                f"(No abstract JSON found — run python extract_abstracts.py)\n"
+            )
+    sections.append("## Per-paper abstracts\n\n" + "\n\n".join(abs_parts))
+
+    if chunks:
+        exc_parts: list[str] = []
+        for i, chunk in enumerate(chunks, start=1):
+            m = chunk["metadata"]
+            fn = _file_label(m)
+            exc_parts.append(
+                f"---\n[Excerpt {i}: file `{fn}` · {m['paper_title']}, p.{m['page_num']}]\n"
+                f"{chunk['text']}"
+            )
+        sections.append(
+            "\n\n## Matching excerpts (semantic / keyword search)\n\n" + "\n\n".join(exc_parts)
         )
-    return "\n\n---\n\n".join(parts)
+    else:
+        sections.append(
+            "\n\n## Matching excerpts\n\n_(No search excerpts — abstract-only selection.)_"
+        )
+
+    return "\n\n".join(sections)
 
 
-def _build_rag_message(query: str, chunks: list[dict]) -> str:
+def _build_context_block(
+    chunks: list[dict],
+    abstracts_by_fp: dict[str, dict] | None = None,
+) -> str:
+    """Format abstracts (optional) + retrieved chunks into a numbered source block."""
+    blocks: list[str] = []
+
+    if abstracts_by_fp:
+        aparts = []
+        for fp in sorted(abstracts_by_fp.keys()):
+            rec = abstracts_by_fp[fp]
+            fn = rec.get("file_name") or Path(fp).name
+            aparts.append(
+                f"[Abstract · `{fn}` · status={rec.get('status')}]\n"
+                f"{rec.get('abstract_text', '')}"
+            )
+        blocks.append("## Per-paper abstracts\n\n" + "\n\n---\n\n".join(aparts))
+
+    if chunks:
+        parts = []
+        for i, chunk in enumerate(chunks, start=1):
+            m = chunk["metadata"]
+            fn = _file_label(m)
+            parts.append(
+                f"[Source {i}: file `{fn}` · {m['paper_title']}, p.{m['page_num']}]\n"
+                f"{chunk['text']}"
+            )
+        blocks.append("## Paper excerpts\n\n" + "\n\n---\n\n".join(parts))
+    else:
+        blocks.append(
+            "## Paper excerpts\n\n_(No matching excerpts for this selection — use abstracts above.)_"
+        )
+
+    return "\n\n".join(blocks)
+
+
+def _build_rag_message(
+    query: str,
+    chunks: list[dict],
+    abstracts_by_fp: dict[str, dict] | None = None,
+) -> str:
     """Combine retrieved context with the user query into a single message."""
-    context = _build_context_block(chunks)
+    context = _build_context_block(chunks, abstracts_by_fp)
     return (
-        f"Here are relevant excerpts from the paper collection:\n\n"
+        f"Here is context from the paper collection (abstracts where provided, then excerpts):\n\n"
         f"{context}\n\n"
         f"---\n\n"
-        f"Based on the excerpts above, please answer:\n{query}"
+        f"Based on the context above, please answer:\n{query}"
     )
 
 
@@ -85,6 +179,7 @@ def stream_rag_response(
     n_chunks: int = MAX_CONTEXT_CHUNKS,
     db_path: str = DB_PATH,
     preloaded_chunks: list[dict] | None = None,
+    abstracts_by_file_path: dict[str, dict] | None = None,
 ):
     """
     Generator yielding (text_chunk, sources) tuples.
@@ -94,9 +189,10 @@ def stream_rag_response(
     (text: str, None).
 
     If `preloaded_chunks` is provided the internal semantic search is skipped
-    and those chunks are used directly as context.  This is used by Quick Chat
-    so that all papers found in the search are always represented, regardless
-    of the MAX_CONTEXT_CHUNKS limit.
+    and those chunks are used directly as context (Quick Chat).
+
+    `abstracts_by_file_path`: optional map file_path → abstract JSON record;
+    prepended to the RAG prompt when provided.
     """
     if preloaded_chunks is not None:
         chunks = preloaded_chunks
@@ -109,14 +205,13 @@ def stream_rag_response(
             file_paths=selected_file_paths,
         )
 
-    if not chunks:
+    has_abstracts = bool(abstracts_by_file_path)
+    if not chunks and not has_abstracts:
         yield "", []
         return
 
-    # Emit sources immediately so UI can render them
     yield None, chunks
 
-    # Build conversation history for multi-turn chat
     history = []
     for msg in chat_history:
         role = msg["role"]  # "user" or "model"
@@ -128,7 +223,7 @@ def stream_rag_response(
         history=history,
     )
 
-    rag_message = _build_rag_message(query, chunks)
+    rag_message = _build_rag_message(query, chunks, abstracts_by_fp=abstracts_by_file_path)
 
     for piece in chat_session.send_message_stream(rag_message):
         if piece.text:
@@ -158,7 +253,7 @@ def get_direct_answer(
     if not chunks:
         return "No relevant content found for this query.", []
 
-    rag_message = _build_rag_message(query, chunks)
+    rag_message = _build_rag_message(query, chunks, abstracts_by_fp=None)
     response = gemini_client.models.generate_content(
         model=GEMINI_MODEL,
         contents=rag_message,
@@ -174,6 +269,7 @@ to the full content of one or more research papers provided as PDFs.
 
 Your role:
 - Answer questions based on the complete paper content you have been given
+- Always name which PDF you mean using its filename (e.g. `paper_name.pdf`) in citations or discussion
 - Cite specific sections, figures, or page numbers when relevant
 - Be precise and use appropriate scientific terminology
 - Compare and contrast across papers when multiple are provided

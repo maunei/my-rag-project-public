@@ -31,6 +31,14 @@ Thumbs.db
 
 # other directories and files
 00_papers-rag_app_info.txt
-Papers_RAG_installation_guide_v2.2_gcloud_snapshot_private.txt
+*_v2.2_*
+*private*
+*notes*
 selected_pdfs/
-notes/
+abstract_meta/
+private_notes/
+exported_prompts/
+stored0/
+stored1/
+stored2/
+stored3/
