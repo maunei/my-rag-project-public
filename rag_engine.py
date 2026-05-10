@@ -11,19 +11,35 @@ Authentication: uses Application Default Credentials (ADC) via Vertex AI.
   - Billing drawn from Google Cloud credits.
 """
 
+import os
 from pathlib import Path
 
+from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from fastembed import TextEmbedding
 from indexer import semantic_search, DB_PATH
 
-# ── Configuration ─────────────────────────────────────────────────────────────
+_APP_DIR = Path(__file__).resolve().parent
+load_dotenv(_APP_DIR / ".env")
 
-GCP_PROJECT        = "project-0afc802d-9b70-430c-9cc"
-GCP_LOCATION       = "us-central1"
-GCS_BUCKET         = "papers-rag-pdfs"
-GEMINI_MODEL       = "gemini-2.5-flash"
+
+def _require_env(name: str) -> str:
+    value = os.getenv(name, "").strip()
+    if not value:
+        raise RuntimeError(
+            f"{name} is not set. Add it to {_APP_DIR / '.env'} (see .env.example)."
+        )
+    return value
+
+
+# ── Configuration ─────────────────────────────────────────────────────────────
+# GCP_PROJECT and GCS_BUCKET must be set in .env (not committed). Optional overrides below.
+
+GCP_PROJECT = _require_env("GCP_PROJECT")
+GCP_LOCATION = os.getenv("GCP_LOCATION", "us-central1").strip() or "us-central1"
+GCS_BUCKET = _require_env("GCS_BUCKET")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash").strip() or "gemini-2.5-flash"
 MAX_CONTEXT_CHUNKS = 8
 
 SYSTEM_INSTRUCTION = """You are a scientific literature assistant helping a researcher 
@@ -45,7 +61,7 @@ Your role:
 def get_gemini_client() -> genai.Client:
     """
     Initialize and return a Gemini client using Vertex AI + Application Default Credentials.
-    PDFs are stored in GCS (gs://papers-rag-pdfs) for size-unlimited access.
+    PDFs are read from your configured GCS bucket (`GCS_BUCKET` in `.env`) via gs:// URIs.
     """
     return genai.Client(
         vertexai=True,
@@ -282,7 +298,7 @@ def upload_pdfs_to_gcs(
     progress_callback=None,
 ) -> dict[str, str | None]:
     """
-    Upload PDFs to Google Cloud Storage (gs://papers-rag-pdfs/).
+    Upload PDFs to Google Cloud Storage (bucket from ``GCS_BUCKET`` in ``.env``).
 
     Uses Application Default Credentials — no API key needed.
     Files persist until deleted (no 48 h expiry). Vertex AI reads gs:// URIs directly.
