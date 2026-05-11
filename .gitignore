@@ -1,6 +1,5 @@
 # API keys - NEVER commit this
 .env
-.env.example
 
 # ChromaDB index (large, rebuild from PDFs)
 chroma_db/
@@ -32,8 +31,9 @@ Thumbs.db
 # other directories and files
 00_papers-rag_app_info.txt
 *_v2.2_*
+*_v2.3_*
 *private*
-*notes*
+extract_abstracts_run.log
 selected_pdfs/
 abstract_meta/
 private_notes/

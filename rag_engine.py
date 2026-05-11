@@ -77,6 +77,21 @@ def _file_label(metadata: dict) -> str:
     return metadata.get("file_name") or (Path(fp).name if fp else "unknown.pdf")
 
 
+def _pdf_and_pubmed_abstract_blocks(rec: dict | None) -> str:
+    """Both abstract slots: PDF (``abstract_text``) and PubMed (``abstract_pubmed``)."""
+    if not rec:
+        return ""
+    pdf_t = rec.get("abstract_text") or ""
+    pub_t = (rec.get("abstract_pubmed") or "").strip()
+    parts = ["### Abstract (PDF extraction)\n\n" + str(pdf_t)]
+    parts.append(
+        "### Abstract (PubMed / NCBI)\n\n" + pub_t
+        if pub_t
+        else "### Abstract (PubMed / NCBI)\n\n_(empty — no `--pubmed-meta` run, no PMID, or PubMed has no abstract text.)_"
+    )
+    return "\n\n".join(parts)
+
+
 def build_external_llm_context_text(
     chunks: list[dict],
     abstracts_by_fp: dict[str, dict],
@@ -104,7 +119,7 @@ def build_external_llm_context_text(
                 f"---\nFile: `{fn}`\n"
                 f"abstract_status: {rec.get('status')}\n"
                 f"abstract_source: {rec.get('source')}\n\n"
-                f"{rec.get('abstract_text', '')}"
+                f"{_pdf_and_pubmed_abstract_blocks(rec)}"
             )
         else:
             abs_parts.append(
@@ -147,7 +162,7 @@ def _build_context_block(
             fn = rec.get("file_name") or Path(fp).name
             aparts.append(
                 f"[Abstract · `{fn}` · status={rec.get('status')}]\n"
-                f"{rec.get('abstract_text', '')}"
+                f"{_pdf_and_pubmed_abstract_blocks(rec)}"
             )
         blocks.append("## Per-paper abstracts\n\n" + "\n\n---\n\n".join(aparts))
 

@@ -60,7 +60,7 @@ def _streamlit_supports_fragment() -> bool:
 # ── Page config ───────────────────────────────────────────────────────────────
 
 st.set_page_config(
-    page_title="Papers RAG V2.3",
+    page_title="Papers RAG V2.4",
     page_icon="📚",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -350,7 +350,10 @@ def _render_paper_selection_widgets(
                         f"status: **{ap['status']}** · source: `{ap['source']}` · "
                         f"{ap.get('char_count', '—')} chars · {ap.get('word_count', '—')} words"
                     )
+                    st.markdown("###### Abstract (PDF extraction)")
                     st.write(ap.get("abstract_text", ""))
+                    st.markdown("###### Abstract (PubMed / NCBI)")
+                    st.write(((ap.get("abstract_pubmed") or "").strip()) or "_(empty)_")
                 st.checkbox(f"Select `{name}`", key=f"sel_{fp}")
 
     if has_hits:
@@ -525,7 +528,7 @@ def _render_paper_selection_widgets(
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 
 with st.sidebar:
-    st.title("📚 Papers RAG V2.3")
+    st.title("📚 Papers RAG V2.4")
     st.caption("Semantic Search & Deep Chat over your PDF library")
     st.divider()
 
@@ -584,7 +587,7 @@ with st.sidebar:
 # ── Main area ─────────────────────────────────────────────────────────────────
 
 if not is_indexed():
-    st.title("📚 Papers RAG V2.3")
+    st.title("📚 Papers RAG V2.4")
     st.info(
         "👈 Click **Build Index** in the sidebar to get started.\n\n"
         "This scans all PDFs, extracts text, generates embeddings, and stores "
@@ -980,7 +983,10 @@ with tab_search:
                         )
                         if abs_rec.get("warnings"):
                             st.caption("⚠️ " + "; ".join(abs_rec["warnings"]))
+                        st.markdown("###### Abstract (PDF extraction)")
                         st.write(abs_rec["abstract_text"])
+                        st.markdown("###### Abstract (PubMed / NCBI)")
+                        st.write(((abs_rec.get("abstract_pubmed") or "").strip()) or "_(empty)_")
                     else:
                         st.warning(
                             "No abstract JSON for this paper. From the app folder run:\n\n"
