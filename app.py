@@ -70,6 +70,7 @@ st.set_page_config(
 
 @st.cache_resource
 def _start_file_server():
+    """Start ``pdf_server`` once per Streamlit process (cached) for ``localhost`` PDF links."""
     start_pdf_server(papers_dir=PAPERS_DIR, port=PDF_SERVER_PORT)
     return True
 
@@ -79,11 +80,13 @@ _start_file_server()
 
 @st.cache_resource(show_spinner="Loading embedding model…")
 def load_embedding_model() -> TextEmbedding:
+    """Return the cached fastembed ``TextEmbedding`` instance (``EMBEDDING_MODEL``)."""
     return TextEmbedding(EMBEDDING_MODEL)
 
 
 @st.cache_resource(show_spinner="Connecting to Gemini…")
 def load_gemini_client():
+    """Return a cached Vertex ``genai.Client``; ``st.stop()`` if connection or env setup fails."""
     try:
         return get_gemini_client()
     except Exception as e:
@@ -94,6 +97,7 @@ def load_gemini_client():
 # ── Session state ─────────────────────────────────────────────────────────────
 
 def _init_state():
+    """Initialize missing ``st.session_state`` keys for search, boolean clauses, chats, and index cache."""
     defaults = {
         "search_results": [],       # all retrieved hits (unfiltered)
         "last_search_query": "",
@@ -194,6 +198,7 @@ def _cached_index_stats(cache_generation: int) -> dict:
 
 
 def _clear_manual_add_callback() -> None:
+    """Clear pasted manual-add list and deselect manual-only papers (hits keep selection)."""
     prev = list(st.session_state.get("manual_extra_fps") or [])
     st.session_state["manual_extra_fps"] = []
     if "paste_basenames" in st.session_state:
@@ -218,6 +223,7 @@ def _clear_manual_add_callback() -> None:
 
 
 def _clear_tab1_all_callback() -> None:
+    """Reset Tab 1 search results, manual adds, quick chat, boolean splits, and all ``sel_*`` checkboxes."""
     _clear_manual_add_callback()
     st.session_state["search_results"] = []
     st.session_state["last_search_query"] = ""
@@ -230,7 +236,10 @@ def _clear_tab1_all_callback() -> None:
 
 
 def _make_bulk_selection_callback(hit_fps: tuple[str, ...], manual_fps: tuple[str, ...], value: bool):
+    """Build an ``on_click`` handler that sets ``sel_{fp}`` for all hit and manual paths to ``value``."""
+
     def _cb() -> None:
+        """Set ``sel_{fp}`` session keys to ``value`` for every hit and manual path."""
         for fp in hit_fps:
             st.session_state[f"sel_{fp}"] = value
         for fp in manual_fps:
@@ -240,6 +249,7 @@ def _make_bulk_selection_callback(hit_fps: tuple[str, ...], manual_fps: tuple[st
 
 
 def _score_color(score: float) -> str:
+    """Traffic-light color name for similarity scores in the hit list (green / orange / red)."""
     pct = int(score * 100)
     if pct >= 75:
         return "green"
@@ -259,6 +269,7 @@ def _basename_resolve_map() -> dict[str, list[str]]:
 
 
 def _abstract_payload(fp: str) -> dict:
+    """Load ``abstract_meta`` JSON for ``fp`` or return a small placeholder dict when missing."""
     rec = load_abstract_record(fp, PAPERS_DIR)
     if rec:
         return rec
@@ -551,6 +562,7 @@ with st.sidebar:
         status_text = st.empty()
 
         def _progress(frac, msg):
+            """Forward ``index_papers`` progress into the sidebar progress bar + caption."""
             progress_bar.progress(frac)
             status_text.caption(msg)
 
@@ -717,6 +729,7 @@ with tab_search:
             st.success("\n\n".join(lines_out))
 
     def _boolean_search_panel_fragment() -> None:
+        """Clause rows, group splits, operators, cutoff, Search — optionally under ``st.fragment``."""
         st.divider()
         st.markdown("### Boolean search (**Clause** rows · groups · AND / OR / NOT)")
         st.caption(
@@ -728,10 +741,12 @@ with tab_search:
         )
 
         def _incr_bc() -> None:
+            """Increment boolean clause count up to ``MAX_BOOLEAN_CLAUSES``."""
             if st.session_state["bool_clause_count"] < MAX_BOOLEAN_CLAUSES:
                 st.session_state["bool_clause_count"] += 1
 
         def _decr_bc() -> None:
+            """Drop the last clause and prune invalid group-split indices."""
             if st.session_state["bool_clause_count"] > 1:
                 st.session_state["bool_clause_count"] -= 1
                 n = int(st.session_state["bool_clause_count"])
@@ -1098,6 +1113,7 @@ with tab_chat:
                 upload_results: dict = {}
 
                 def _on_progress(current, total, name, success, error):
+                    """GCS upload progress line for Deep Chat (fraction + per-file status)."""
                     frac = current / total
                     progress_bar.progress(frac)
                     icon = "✅" if success else "❌"

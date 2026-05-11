@@ -25,6 +25,7 @@ load_dotenv(_APP_DIR / ".env")
 
 
 def _require_env(name: str) -> str:
+    """Return non-empty ``os.environ[name]`` or raise with a pointer to ``.env``."""
     value = os.getenv(name, "").strip()
     if not value:
         raise RuntimeError(
@@ -73,6 +74,7 @@ def get_gemini_client() -> genai.Client:
 # ── Prompt building ───────────────────────────────────────────────────────────
 
 def _file_label(metadata: dict) -> str:
+    """Display filename for a chunk: ``file_name`` metadata or basename of ``file_path``."""
     fp = metadata.get("file_path", "")
     return metadata.get("file_name") or (Path(fp).name if fp else "unknown.pdf")
 

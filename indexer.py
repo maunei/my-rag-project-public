@@ -691,6 +691,7 @@ if __name__ == "__main__":
     print(f"Found {len(pdfs)} PDFs")
 
     def cli_progress(frac, msg):
+        """ASCII progress bar for ``python indexer.py`` one-shot indexing."""
         bar = "█" * int(frac * 30) + "░" * (30 - int(frac * 30))
         print(f"\r[{bar}] {frac*100:5.1f}%  {msg[:60]:<60}", end="", flush=True)
 

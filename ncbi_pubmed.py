@@ -25,6 +25,7 @@ REQUEST_TIMEOUT = 45
 
 
 def _now_iso() -> str:
+    """UTC ``isoformat`` timestamp for ``pubmed_enrichment.queried_at``."""
     return datetime.now(timezone.utc).isoformat()
 
 
@@ -34,6 +35,7 @@ def _sleep_for_rate_limit(has_api_key: bool) -> None:
 
 
 def _common_params(email: str | None, api_key: str | None) -> dict[str, str]:
+    """Query parameters shared by ``esearch`` / ``esummary`` JSON calls (tool, retmode, optional email/key)."""
     p: dict[str, str] = {"tool": "papers_rag_extract_abstracts", "retmode": "json"}
     if email:
         p["email"] = email
@@ -108,6 +110,7 @@ def fetch_abstract_via_efetch(
 
 
 def _sanitize_title_for_term(title: str) -> str:
+    """Normalize free-form title text for Entrez ``[Title]`` queries (quotes/brackets → space, cap length)."""
     t = title.strip().replace('"', " ").replace("\n", " ").replace("[", " ").replace("]", " ")
     while "  " in t:
         t = t.replace("  ", " ")
@@ -137,6 +140,7 @@ def sanitize_doi_for_pubmed(raw: str) -> str:
 
 
 def _fresh_enrichment(status: str) -> dict:
+    """New ``pubmed_enrichment`` dict with schema version, timestamps, and given terminal ``status``."""
     return {
         "schema_version": PUBMED_ENRICHMENT_SCHEMA,
         "queried_at": _now_iso(),

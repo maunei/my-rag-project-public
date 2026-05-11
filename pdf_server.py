@@ -25,6 +25,7 @@ def _make_handler(directory: str):
             super().__init__(*args, directory=directory, **kwargs)
 
         def log_message(self, format, *args):
+            """Silence default ``GET …`` access lines on stderr."""
             pass  # suppress access logs in terminal
 
     return _Handler

@@ -33,11 +33,13 @@ EXPORTED_PROMPTS_DIR = APP_DIR / "exported_prompts"
 
 
 def abstract_json_path(pdf_path: str, papers_dir: str) -> Path:
+    """Mirrored sidescar path: ``abstract_meta/<rel_dir>/<stem>.json`` under ``ABSTRACT_META_ROOT``."""
     rel = Path(pdf_path).relative_to(Path(papers_dir))
     return ABSTRACT_META_ROOT / rel.parent / f"{rel.stem}.json"
 
 
 def ensure_export_dir() -> Path:
+    """Create ``exported_prompts/`` if missing (used for manual LLM export bundles)."""
     EXPORTED_PROMPTS_DIR.mkdir(parents=True, exist_ok=True)
     return EXPORTED_PROMPTS_DIR
 
@@ -138,6 +140,7 @@ def _metadata_canonical_doi(md: dict) -> tuple[str | None, str]:
     prio = {"subject": 0, "keywords": 1, "title": 2}
 
     def sort_key(kv: tuple[str, str]):
+        """Order metadata keys for DOI scanning (subject before keywords before title)."""
         return (prio.get(kv[0], 5), kv[0])
 
     for key, blob in sorted(items, key=sort_key):
@@ -155,6 +158,7 @@ def _metadata_canonical_doi(md: dict) -> tuple[str | None, str]:
 
 
 def _link_dois_from_doc(doc: fitz.Document, max_pages: int = 6) -> list[tuple[str, str]]:
+    """Collect DOIs from ``doi.org`` hyperlink URIs on the first ``max_pages`` (deduplicated, with page tags)."""
     out: list[tuple[str, str]] = []
     seen: set[str] = set()
     n = min(len(doc), max_pages)
@@ -203,6 +207,7 @@ def extract_dois_for_pdf_path(pdf_path: str, title_pdf: str) -> dict:
     seen: set[str] = set()
 
     def push(d_raw: str, source: str) -> None:
+        """Normalize ``d_raw``, append to ``detail``, and extend ``ordered`` once per unique DOI."""
         d = normalize_doi(d_raw)
         if not d:
             return
@@ -299,6 +304,7 @@ def extract_dois_for_pdf_path(pdf_path: str, title_pdf: str) -> dict:
 # ── Title helper (match indexer) ─────────────────────────────────────────────
 
 def readable_title(filepath: str) -> str:
+    """Human-ish title from path stem (strip leading numeric prefix from indexer naming; title-case words)."""
     stem = Path(filepath).stem
     parts = stem.split("_", 1)
     if parts[0].isdigit() and len(parts) > 1:
@@ -319,6 +325,7 @@ _COPYRIGHTISH = re.compile(
 
 
 def _early_text(pdf_path: str, max_pages: int = 4) -> tuple[str, list[int]]:
+    """Concatenate raw text from the first ``max_pages`` for heading / heuristic abstract extraction."""
     warnings: list[str] = []
     pages_used: list[int] = []
     chunks: list[str] = []
@@ -576,6 +583,7 @@ def extract_record_for_pdf(pdf_path: str, papers_dir: str) -> dict:
 
 
 def save_abstract_record(record: dict, pdf_path: str, papers_dir: str) -> Path:
+    """Write ``record`` pretty-printed to the sidescar JSON path for ``pdf_path``; create parent dirs."""
     path = abstract_json_path(pdf_path, papers_dir)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
@@ -584,6 +592,7 @@ def save_abstract_record(record: dict, pdf_path: str, papers_dir: str) -> Path:
 
 
 def load_abstract_record(pdf_path: str, papers_dir: str) -> dict | None:
+    """Load sidescar JSON if it exists and parses; return ``None`` on missing file or decode error."""
     path = abstract_json_path(pdf_path, papers_dir)
     if not path.is_file():
         return None
@@ -595,6 +604,7 @@ def load_abstract_record(pdf_path: str, papers_dir: str) -> dict | None:
 
 
 def extract_and_save_pdf(pdf_path: str, papers_dir: str) -> dict:
+    """Convenience: extract one PDF to a record and persist; returns the in-memory dict."""
     rec = extract_record_for_pdf(pdf_path, papers_dir)
     save_abstract_record(rec, pdf_path, papers_dir)
     return rec

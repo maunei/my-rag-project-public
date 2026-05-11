@@ -86,6 +86,10 @@ def should_skip_abstract_json(
 
 
 def main() -> int:
+    """
+    CLI entry: parse arguments, iterate PDFs, optionally attach PubMed enrichment,
+    and write ``abstract_meta`` JSON. See module docstring for flags and ``.env`` keys.
+    """
     ap = argparse.ArgumentParser(description="Extract abstracts → abstract_meta/*.json")
     ap.add_argument("--papers-dir", default=PAPERS_DIR, help="Root folder of PDFs")
     ap.add_argument("--limit", type=int, default=0, help="Process at most N PDFs (0=all)")
