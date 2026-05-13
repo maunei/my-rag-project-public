@@ -1,8 +1,16 @@
 ![Papers RAG — NotebookLM infographic overview](notebooklm_infographic.png)
 
+### 5 minutes NotebookLM Audio Explaining Papers RAG
+
+<a href="https://drive.google.com/file/d/1dN4kUKkY3wGlL1KVHW9-9HSszCJEKyhW/view?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>Listen</strong></a>
+
+## Interface preview
+
+<a href="./papers_rag_screenshot.png" target="_blank" rel="noopener noreferrer"><strong>Open Streamlit UI screenshot (PNG)</strong></a> — Tab 1 shows the clause rows, operators, grouping, paste area, selection, **Quick Chat**, and export; Tab 2 is Deep Chat. The screenshot may lag the live app; run **`streamlit run app.py`** for the current UI.
+
 ---
 
-# papers-rag_app
+# Papers RAG App
 
 **Papers RAG (v2.5)** is a **Streamlit** app for **retrieval-augmented** work over a **local PDF library** you point to with **`.env`**. It builds and stores a **ChromaDB** vector index (**`fastembed`** embeddings, **`indexer.py`**), indexes PDFs from the sidebar, and serves a **semantic search** and **hybrid keyword** workbench on **Tab 1**, plus **Deep Chat** on **Tab 2** using **Google Vertex AI** (**Gemini**) and **Google Cloud Storage** when you send selected papers for full-document chat.
 
@@ -20,15 +28,10 @@
 
 **Local PDF links.** **`pdf_server.py`** serves files at **`http://localhost:<port>/...`** (default **8502** while Streamlit is typically **8501**) so titles and filenames open in the browser.
 
-## Interface preview
-
-**[Open Streamlit UI screenshot (PNG)](./papers_rag_screenshot.png)** — Tab 1 shows the clause rows, operators, grouping, paste area, selection, **Quick Chat**, and export; Tab 2 is Deep Chat. The screenshot may lag the live app; run **`streamlit run app.py`** for the current UI.
-
 ## How this repository was created
 
 - The application was designed and built using **[Cursor](https://cursor.com)** (AI-assisted coding, refactors, and debugging).
 - The **GitHub repository** uses the **GitHub MCP** inside Cursor when helpful (creating or updating content on GitHub programmatically).
-- Releases, documentation, the **v2.5** installation guide ([`Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md`](./Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md)), the NotebookLM infographic at the top of this README, and merges are reviewed and refined **manually** before pushes.
 
 ## Installation and operations
 
@@ -47,7 +50,9 @@ Copy [`.env.example`](./.env.example) to **`.env`** and set **all** placeholders
 | | `SELECTED_PDFS_DIR` | Base folder for Deep Chat staging — each run uses a **`YYYYMMDD_HHMMSS`** subfolder. |
 | **PubMed (optional)** | `NCBI_EMAIL`, `NCBI_API_KEY` | Only if you use PubMed enrichment (sidebar **📄 Extract / refresh abstract_meta** with PubMed, or **`extract_abstracts.py --pubmed-meta`**). |
 
-Step-by-step setup, a **captured `gcloud` snapshot**, troubleshooting, and the same **`.env`** story in prose are in [`Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md`](./Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md) (**Section 3 — Configuration**).
+### Detailed Installation guide
+
+<a href="./Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md" target="_blank" rel="noopener noreferrer"><strong>Papers-rag V2.5 Installation</strong></a>
 
 **Refresh `abstract_meta/`** (mirrored JSON per PDF): you can do this **from inside the app** with the sidebar **📄 Extract / refresh abstract_meta**—same backfill logic as the CLI (scope: only missing vs full refresh, optional PubMed), so you often **do not need a terminal**. You can also run **`extract_abstracts.py` manually** (batch jobs, scripting, or extra flags). From `papers-rag_app` after `conda activate papers_rag`, examples:
 
@@ -90,12 +95,12 @@ streamlit run app.py
 | `Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md` | Setup / ops guide (GitHub-rendered Markdown; paths in `.env`, sidebar `abstract_meta`, Deep Chat timestamps) |
 | `notebooklm_infographic.png` | NotebookLM infographic (README hero) |
 | `papers_rag_screenshot.png` | UI screenshot for this README |
-| `rag-papers_technical_description.md` | Technical exposition (architecture, retrieval, metadata, modules, Streamlit workflows, interoperability, optional cloud) — [**Papers-rag Technical Description**](#papers-rag-technical-description) |
+| `rag-papers_technical_description.md` | Technical exposition (architecture, retrieval, metadata, modules, Streamlit workflows, interoperability, optional cloud) — [**Papers RAG Technical Description**](#papers-rag-technical-description) |
 | `README.md` | Project overview and quick start |
 | `.gitignore` | Excludes `.env`, `chroma_db/`, `selected_pdfs/`, `abstract_meta/`, older install-guide snapshot patterns (`*_v2.3_*`, `*_v2.4_*`, …), `*private*`, extraction logs, vector caches, etc. |
 
 PDFs, extracted abstract metadata folders, and the ChromaDB index are **not** committed (rebuild locally).
 
-## Papers-rag Technical Description
+## Papers RAG Technical Description
 
 The technical architecture and modular design are described in [**`rag-papers_technical_description.md`**](rag-papers_technical_description.md): vector search, hybrid retrieval, metadata pipeline, script roles, Streamlit workflows, export/interoperability, local PDF serving, and optional cloud integration.
