@@ -1,38 +1,64 @@
+![Papers RAG — NotebookLM infographic overview](notebooklm_infographic.png)
+
+---
+
 # papers-rag_app
 
-**Papers RAG** is a **browser-based** (**Streamlit**) **retrieval-augmented generation** app over your **personal PDF library**: it builds a **local vector index** (**ChromaDB** with **fastembed**) for **semantic and keyword retrieval**, evaluates **multi-clause boolean-style queries**, and **selects** papers with **passage-level excerpts from the chunks that matched the search** (the retrieval evidence behind each hit). Alongside search, each paper can have a companion **`abstract_meta` JSON file** produced offline by **`extract_abstracts.py`**—combining **PDF-derived text and fields** with optional **PubMed / NCBI E-utilities** metadata (`--pubmed-meta`)—so **Quick Chat**, export, and the UI can blend **chunk excerpts from retrieval** with **structured abstract / citation context** when those files exist. The **📄 Export context for external LLM** button writes **`exported_prompts/prompt_context_*.txt`**: checked-paper abstracts plus matching excerpts where the paper appeared in **the current semantic search hits**—aligned with **Quick Chat**. **Manual-only** papers (**Paste PDF basenames** that are **not** in the filtered hit list) contribute **`abstract_meta` JSON–style abstract material only**, with no retrieval excerpts, for export and Quick Chat alike. Paste or upload that **`prompt_context_*.txt`** file into ChatGPT, Claude, or another model when you prefer not to use Vertex.
+**Papers RAG (v2.5)** is a **Streamlit** app for **retrieval-augmented** work over a **local PDF library** you point to with **`.env`**. It builds and stores a **ChromaDB** vector index (**`fastembed`** embeddings, **`indexer.py`**), indexes PDFs from the sidebar, and serves a **semantic search** and **hybrid keyword** workbench on **Tab 1**, plus **Deep Chat** on **Tab 2** using **Google Vertex AI** (**Gemini**) and **Google Cloud Storage** when you send selected papers for full-document chat.
 
-Conversational workloads use **Google Vertex AI** and **Gemini**, from **matched excerpts** and annotated metadata through **Deep Chat on full PDFs** staged via **Google Cloud Storage** (`gs://`). Development was done with **[Cursor](https://cursor.com)** (including **Claude Sonnet**–assisted coding) and **GitHub MCP** tooling alongside **manual review** of docs and merges.
+## Section 1: What the app does (v2.5)
+
+**Corpus and index.** PDFs live under a configured corpus root (**`PAPERS_DIR`**). The app discovers them, chunks text, embeds passages, and persists the index under **`CHROMA_DB_PATH`**. You rebuild or update the index from the sidebar when your library changes.
+
+**Search (Tab 1).** You can run **multi-clause boolean search**: each **Clause** row is either **semantic** (similarity to embeddings) or **keyword** (case-insensitive substring in chunks). Clauses combine at the **paper** level with **AND**, **OR**, and **NOT** (left-to-right within **groups**). You can set a **minimum similarity** cutoff for semantic material; **keyword** hits are still shown when they match. You do **not** need to search first—you can **paste PDF basenames** (one per line); the app resolves them **case-insensitively** against the indexed set and adds them to a **manual-add** list beside any current search hits.
+
+**Evidence and abstracts.** For papers that appear in the **current filtered hit list**, the UI shows **excerpts** from the chunks that matched retrieval. Separately, each paper can have a per-file **`abstract_meta` JSON** mirror under **`ABSTRACT_META_ROOT`**, produced by PDF text heuristics and optionally enriched with **PubMed / NCBI** via **`extract_abstracts.py`** or the sidebar **📄 Extract / refresh abstract_meta** (same logic as the CLI: scope **only missing** vs **full refresh**, optional PubMed). The running app **reads** those JSON files for titles, abstracts, and export—it does not call NCBI during normal browsing.
+
+**Selection, export, and Quick Chat.** Checked rows (from search hits and/or pasted names) drive **📄 Export context for external LLM** (writes **`exported_prompts/prompt_context_*.txt`** under **`EXPORTED_PROMPTS_DIR`**) and **Quick Chat (Vertex)** on Tab 1. For papers that came from **search hits**, export and Quick Chat use **`abstract_meta`** when present **plus** retrieval excerpts. For **manual-only** / paste-only rows (not in the current hit list), export and Quick Chat use **`abstract_meta`-style material only**—no automatic extra chunk retrieval for those paths.
+
+**Deep Chat (Tab 2).** **Send selected papers to Deep Chat** stages **all checked** PDFs under **`SELECTED_PDFS_DIR/<YYYYMMDD_HHMMSS>/`** (symlink when possible, copy otherwise), then uploads to **`gs://`** for **Gemini** so large PDFs are not limited by inline context size. Chat uses **Application Default Credentials** and the project/bucket set in **`.env`**—not AI Studio API keys.
+
+**Local PDF links.** **`pdf_server.py`** serves files at **`http://localhost:<port>/...`** (default **8502** while Streamlit is typically **8501**) so titles and filenames open in the browser.
 
 ## Interface preview
 
-**[Open Streamlit UI screenshot (PNG)](./papers_rag_screenshot.png)** — the main search tab has evolved with **multi-clause boolean search**: several **Clause** rows (each **semantic** or **keyword**), **AND / OR / NOT** between rows, an optional **Min similarity** cutoff, and **grouping** so you can parenthesize results (start a new group after a chosen clause). The screenshot may not show every control; the live app is the reference. The same tab provides **Paste PDF basenames** (indexed PDFs resolved case-insensitively; works without running a search), hit selection, **Quick Chat**, **📄 Export context for external LLM** (plaintext under **`exported_prompts/`**; **manual-only** paste rows are abstract-only vs search hits which include excerpts), and related controls.
+**[Open Streamlit UI screenshot (PNG)](./papers_rag_screenshot.png)** — Tab 1 shows the clause rows, operators, grouping, paste area, selection, **Quick Chat**, and export; Tab 2 is Deep Chat. The screenshot may lag the live app; run **`streamlit run app.py`** for the current UI.
 
 ## How this repository was created
 
 - The application was designed and built using **[Cursor](https://cursor.com)** (AI-assisted coding, refactors, and debugging).
 - The **GitHub repository** uses the **GitHub MCP** inside Cursor when helpful (creating or updating content on GitHub programmatically).
-- Releases, documentation, installation guides (**`Papers_RAG_*_v*_gcloud_snapshot*.txt`**), README, and merges are reviewed and refined **manually** before pushes.
+- Releases, documentation, the **v2.5** installation guide ([`Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md`](./Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md)), the NotebookLM infographic at the top of this README, and merges are reviewed and refined **manually** before pushes.
 
 ## Installation and operations
 
-Step-by-step setup, Google Cloud concepts, troubleshooting, a **captured `gcloud` snapshot**, and **`abstract_meta` / PubMed refresh** commands are in:
+### Configure `.env` (one checklist: cloud **and** local paths)
 
-**[`Papers_RAG_installation_guide_v2.4_gcloud_snapshot.txt`](./Papers_RAG_installation_guide_v2.4_gcloud_snapshot.txt)**
+Copy [`.env.example`](./.env.example) to **`.env`** and set **all** placeholders that apply to your machine. This app treats configuration as **one place**: you are not done after only “account” or “AI” settings — **`papers_rag_config`** expects **both** (1) **Google Cloud / GCS** identifiers used by Vertex and storage, and (2) **five local directory roots** for your PDF corpus, vector index, `abstract_meta` JSON, export output, and Deep Chat staging. Missing or empty required entries typically surface as **errors at import or when you open the app**, not as gentle warnings.
 
-After cloning, copy **`.env.example`** to **`.env`** and set **`GCP_PROJECT`** and **`GCS_BUCKET`** (optional **`GCP_LOCATION`**, **`GEMINI_MODEL`**). For PubMed lookups from **`extract_abstracts.py --pubmed-meta`**, add **NCBI credentials** in **`.env`**: **`NCBI_EMAIL`** is the **contact address** you associate with your NCBI account — often your normal inbox (including Gmail); **`NCBI_API_KEY`** is **optional** and improves Entrez rate limits — see `.env.example` and **Section 10** of the installation guide. Point **`PAPERS_DIR`** in `indexer.py` at your PDF folder. Use **Application Default Credentials** (`gcloud auth application-default login`) — not AI Studio API keys — for Vertex + GCS as described in the guide.
+| What to set | Variables | Purpose |
+|-------------|-----------|---------|
+| **Vertex / GCS** | `GCP_PROJECT`, `GCS_BUCKET` | Which project and bucket the SDK uses. Optional overrides: `GCP_LOCATION`, `GEMINI_MODEL` (defaults exist — see `.env.example`). |
+| **Auth (not pasted into `.env`)** | — | **Application Default Credentials** for Vertex + GCS: `gcloud auth application-default login`. This is separate from filling `.env`, but you need **both** a filled `.env` **and** ADC for chat / Deep Chat. |
+| **Local directories (required, v2.5+)** | `PAPERS_DIR` | Root of your PDF library (**must already exist**). |
+| | `CHROMA_DB_PATH` | ChromaDB persistence (created if missing). |
+| | `ABSTRACT_META_ROOT` | Per-PDF `abstract_meta` JSON mirrors (created if missing). |
+| | `EXPORTED_PROMPTS_DIR` | Where **Export context for external LLM** writes `prompt_context_*.txt` (created if missing). |
+| | `SELECTED_PDFS_DIR` | Base folder for Deep Chat staging — each run uses a **`YYYYMMDD_HHMMSS`** subfolder. |
+| **PubMed (optional)** | `NCBI_EMAIL`, `NCBI_API_KEY` | Only if you use PubMed enrichment (sidebar **📄 Extract / refresh abstract_meta** with PubMed, or **`extract_abstracts.py --pubmed-meta`**). |
 
-**Refresh `abstract_meta/` (mirrored JSON files per PDF; optional PubMed):** from `papers-rag_app`,  
-`conda activate papers_rag` then e.g.
+Step-by-step setup, a **captured `gcloud` snapshot**, troubleshooting, and the same **`.env`** story in prose are in [`Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md`](./Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md) (**Section 3 — Configuration**).
+
+**Refresh `abstract_meta/`** (mirrored JSON per PDF): you can do this **from inside the app** with the sidebar **📄 Extract / refresh abstract_meta**—same backfill logic as the CLI (scope: only missing vs full refresh, optional PubMed), so you often **do not need a terminal**. You can also run **`extract_abstracts.py` manually** (batch jobs, scripting, or extra flags). From `papers-rag_app` after `conda activate papers_rag`, examples:
 
 ```bash
 python extract_abstracts.py --pubmed-meta --only-missing
 python extract_abstracts.py --pubmed-meta 2>&1 | tee extract_abstracts_run.log
 ```
 
-Use **`extract_abstracts.py -h`** for **`--force`**, **`--limit`**, **`--papers-dir`**, **`--refresh-if-newer-pdf`**.
+Use **`extract_abstracts.py -h`** for **`--force`**, **`--limit`**, **`--papers-dir`**, **`--abstract-meta-root`**, **`--refresh-if-newer-pdf`**.
 
-## Run (after environment and GCP are configured)
+## Run (after Conda env, a complete `.env`, and ADC are configured)
 
 ```bash
 conda activate papers_rag
@@ -44,7 +70,7 @@ streamlit run app.py
 
 ## Repository layout
 
-All eight top-level Python modules are **in use** — none are obsolete. **`extract_abstracts.py`** is the **command-line entry point** that walks the corpus via **`papers_paths`** and **`ncbi_pubmed`** and **`abstract_extraction`**. **`app.py`** does **not** import **`extract_abstracts`** or **`ncbi_pubmed`** directly; it uses **`indexer`** (which also uses **`papers_paths`**), **`abstract_extraction`** (reads `abstract_meta` JSON), **`rag_engine`**, and **`pdf_server`**.
+**Primary Python modules** are documented below — none marked obsolete here. Paths for the corpus, Chroma, `abstract_meta`, exports, and Deep Chat staging are read from **`.env`** via **`papers_rag_config`** (imported indirectly through **`papers_paths`** and **`abstract_extraction`**). **`extract_abstracts.py`** is the **command-line entry point** that walks the corpus via **`papers_paths`** and **`ncbi_pubmed`** and **`abstract_extraction`**. **`app.py`** uses **`extract_abstracts.run_abstract_extractions`** for the sidebar **abstract_meta** button, **`indexer`** (which also uses **`papers_paths`**), **`abstract_extraction`** (reads `abstract_meta` JSON), **`rag_engine`**, and **`pdf_server`**.
 
 | Path | Role |
 |------|------|
@@ -52,17 +78,24 @@ All eight top-level Python modules are **in use** — none are obsolete. **`extr
 | `indexer.py` | PDF ingest, ChromaDB, hybrid / boolean clause search, keyword regex |
 | `rag_engine.py` | Vertex Gemini client, context building (excerpts + abstract-only), GCS, streaming chat |
 | `pdf_server.py` | Static HTTP server for clickable local PDF URLs |
-| `papers_paths.py` | Shared helpers for corpus paths and PDF discovery |
+| `papers_rag_config.py` | Loads **`.env`**: validates required directory roots (**`PAPERS_DIR`**, **`CHROMA_DB_PATH`**, etc.) |
+| `papers_paths.py` | Re-exports corpus root (**`PAPERS_DIR`** from config) + PDF discovery |
 | `extract_abstracts.py` | **CLI**: batch-write `abstract_meta/*.json` per PDF (`abstract_text`; with `--pubmed-meta`, merges PubMed fields) |
 | `abstract_extraction.py` | **Library**: title/abstract/DOI heuristics, JSON schema, **`load`/`save`** for sidescars (used by `extract_abstracts.py` and `app.py`) |
 | `ncbi_pubmed.py` | **Library**: NCBI Entrez (`esearch` / `esummary` / `efetch`); enrichment schema **3** — NCBI abstract only at **`abstract_pubmed`**, not duplicated inside enrichment |
-| `.env.example` | Template for `.env` (GCP/Vertex + optional NCBI credentials for `--pubmed-meta`) |
+| `.env.example` | Template for `.env` (GCP/Vertex + local paths + optional NCBI credentials) |
 | `environment.yml` | Primary Conda environment definition |
 | `environment_from_history.yml` | Alternate frozen-ish env export (reference / reproducibility) |
 | `requirements.txt` | Pip dependencies |
-| `Papers_RAG_installation_guide_v2.4_gcloud_snapshot.txt` | Setup, GCP, troubleshooting, `abstract_meta`/PubMed, `gcloud` snapshot |
+| `Papers_RAG_installation_guide_v2.5_gcloud_snapshot.md` | Setup / ops guide (GitHub-rendered Markdown; paths in `.env`, sidebar `abstract_meta`, Deep Chat timestamps) |
+| `notebooklm_infographic.png` | NotebookLM infographic (README hero) |
 | `papers_rag_screenshot.png` | UI screenshot for this README |
+| `rag-papers_technical_description.md` | Technical exposition (architecture, retrieval, metadata, modules, Streamlit workflows, interoperability, optional cloud) — [**Papers-rag Technical Description**](#papers-rag-technical-description) |
 | `README.md` | Project overview and quick start |
-| `.gitignore` | Excludes `.env`, `chroma_db/`, `selected_pdfs/`, `abstract_meta/`, `*_v2.3_*` install-guide snapshots, extraction logs, vector caches, etc. |
+| `.gitignore` | Excludes `.env`, `chroma_db/`, `selected_pdfs/`, `abstract_meta/`, older install-guide snapshot patterns (`*_v2.3_*`, `*_v2.4_*`, …), `*private*`, extraction logs, vector caches, etc. |
 
 PDFs, extracted abstract metadata folders, and the ChromaDB index are **not** committed (rebuild locally).
+
+## Papers-rag Technical Description
+
+The technical architecture and modular design are described in [**`rag-papers_technical_description.md`**](rag-papers_technical_description.md): vector search, hybrid retrieval, metadata pipeline, script roles, Streamlit workflows, export/interoperability, local PDF serving, and optional cloud integration.

@@ -34,6 +34,8 @@ from abstract_extraction import (
     ensure_export_dir,
     load_abstract_record,
 )
+from extract_abstracts import run_abstract_extractions
+from papers_rag_config import EXPORTED_PROMPTS_DIR, SELECTED_PDFS_BASE
 from rag_engine import (
     build_external_llm_context_text,
     get_gemini_client,
@@ -60,7 +62,7 @@ def _streamlit_supports_fragment() -> bool:
 # ── Page config ───────────────────────────────────────────────────────────────
 
 st.set_page_config(
-    page_title="Papers RAG V2.4",
+    page_title="Papers RAG V2.5",
     page_icon="📚",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -110,6 +112,7 @@ def _init_state():
         "quick_chat_history": [],   # [{role, content}] for Quick Chat (excerpt-based)
         "deep_chat_papers": [],     # file_paths loaded into Deep Chat
         "deep_chat_history": [],    # [{role, content}] for Deep Chat
+        "deep_chat_stage_dir": "",  # latest SELECTED_PDFS_BASE/<timestamp>/ path
         "gemini_uploads": {},       # {file_path: gs://URI or None} from GCS
         "indexing_done": False,
         "_index_stats_cache_gen": 0,
@@ -171,17 +174,17 @@ def _compute_filtered_papers(
     return sorted_papers, papers_map
 
 
-def _stage_deep_chat_pdfs(source_pdf_paths: list[str]) -> None:
-    """Stage PDFs under ``selected_pdfs/`` via symlinks (fast); copy if symlinks fail."""
-    base = Path(__file__).resolve().parent / "selected_pdfs"
-    base.mkdir(parents=True, exist_ok=True)
-    for p in base.iterdir():
-        try:
-            p.unlink()
-        except OSError:
-            pass
+def _stage_deep_chat_pdfs(source_pdf_paths: list[str]) -> Path:
+    """
+    Stage PDFs under ``SELECTED_PDFS_DIR/<YYYYMMDD_HHMMSS>/`` via symlinks when possible;
+
+    Copies if symlinks fail. Returns the staging directory path (absolute).
+    """
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    staging = (SELECTED_PDFS_BASE / ts).resolve()
+    staging.mkdir(parents=True, exist_ok=True)
     for fp in source_pdf_paths:
-        dest = base / Path(fp).name
+        dest = staging / Path(fp).name
         src = Path(fp).expanduser().resolve()
         try:
             if dest.exists() or dest.is_symlink():
@@ -189,6 +192,7 @@ def _stage_deep_chat_pdfs(source_pdf_paths: list[str]) -> None:
             dest.symlink_to(src)
         except OSError:
             shutil.copy2(src, dest)
+    return staging
 
 
 @st.cache_data(ttl=120)
@@ -295,11 +299,14 @@ def _flush_deep_chat_staged_banner() -> None:
     lines = "\n".join(f"- `{x}`" for x in names[:cap])
     if len(names) > cap:
         lines += f"\n\n_(…and {len(names) - cap} more)_"
+    folder = (payload.get("folder") or "").strip()
+    loc = f"\nStaging folder:\n```\n{folder}\n```" if folder else ""
     st.success(
-        f"✅ **{n}** paper(s) staged for Deep Chat in `selected_pdfs/` "
-        "(symlinks when supported — otherwise copied). "
+        f"✅ **{n}** paper(s) staged for Deep Chat timestamp subfolder "
+        "(symlinks when supported — otherwise copied).\n\n"
         "Open **💬 Deep Chat with Gemini** to upload to Gemini.\n\n"
         + (lines if lines else "_(no filenames recorded)_")
+        + loc
     )
 
 
@@ -407,7 +414,7 @@ def _render_paper_selection_widgets(
         else "Select at least one paper above first."
     )
     deep_help = (
-        "Stage PDF paths for Deep Chat (symlinks under selected_pdfs/)."
+        "Symlinks/copies each PDF under SELECTED_PDFS_DIR/<YYYYMMDD_HHMMSS>/."
         if has_selection
         else "Select at least one paper above first."
     )
@@ -447,11 +454,14 @@ def _render_paper_selection_widgets(
         st.session_state["deep_chat_history"] = []
         st.session_state["gemini_uploads"] = {}
 
-        _stage_deep_chat_pdfs(ordered_checked)
+        staged_dir = _stage_deep_chat_pdfs(ordered_checked)
+        folder_s = str(staged_dir)
+        st.session_state["deep_chat_stage_dir"] = folder_s
 
         st.session_state["_deep_chat_staged_banner"] = {
             "count": len(ordered_checked),
             "names": [Path(fp).name for fp in ordered_checked],
+            "folder": folder_s,
         }
         st.rerun()  # fragment-only runs skip ``tab_chat``; full rerun refreshes Tab 2.
 
@@ -536,10 +546,17 @@ def _render_paper_selection_widgets(
             )
 
 
+def _abs_scope_on_change() -> None:
+    """Clear the PDF-vs-JSON refresh flag when switching to full refresh."""
+    scope = str(st.session_state.get("sidebar_abs_scope", "")).strip()
+    if scope == "All papers (full refresh)":
+        st.session_state["sidebar_abs_refresh_newer_pdf"] = False
+
+
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 
 with st.sidebar:
-    st.title("📚 Papers RAG V2.4")
+    st.title("📚 Papers RAG V2.5")
     st.caption("Semantic Search & Deep Chat over your PDF library")
     st.divider()
 
@@ -590,16 +607,76 @@ with st.sidebar:
         st.rerun()
 
     st.divider()
+    st.subheader("abstract_meta · JSON mirrors")
+    st.caption(
+        "Sidescar JSON mirrors live under **ABSTRACT_META_ROOT** "
+        "(**papers_rag_config** · **.env**). Toggle PubMed below for NCBI enrichment."
+    )
+    _abs_mode = st.radio(
+        "Scope",
+        ("Only papers without JSON", "All papers (full refresh)"),
+        key="sidebar_abs_scope",
+        help="Full refresh rebuilds sidescar JSON even when files already exist.",
+        on_change=_abs_scope_on_change,
+    )
+    _abs_pubmed = st.checkbox("Query PubMed (NCBI)", key="sidebar_abs_pubmed")
+    _abs_refresh_pdf = st.checkbox(
+        "Also refresh when PDF is newer than JSON",
+        key="sidebar_abs_refresh_newer_pdf",
+        help=(
+            "Only with \"Only papers without JSON\". "
+            "Unchecks automatically when switching to full refresh."
+        ),
+        disabled=(_abs_mode != "Only papers without JSON"),
+    )
+
+    if st.button("📄 Extract / refresh abstract_meta", use_container_width=True):
+        prog_abs = st.progress(0.0)
+        caption_abs = st.empty()
+
+        def _abs_progress(frac, msg):
+            prog_abs.progress(frac)
+            caption_abs.caption(msg)
+
+        only_missing_abs = _abs_mode == "Only papers without JSON"
+        force_abs = _abs_mode == "All papers (full refresh)"
+
+        try:
+            with st.spinner("Writing abstract_meta …"):
+                stats_abs = run_abstract_extractions(
+                    papers_dir=PAPERS_DIR,
+                    pubmed_meta=_abs_pubmed,
+                    force=force_abs,
+                    only_missing=only_missing_abs,
+                    refresh_if_newer_pdf=_abs_refresh_pdf and only_missing_abs,
+                    progress_callback=_abs_progress,
+                )
+        except Exception as ex:
+            prog_abs.empty()
+            caption_abs.empty()
+            st.error(f"abstract_meta extraction failed: {ex}")
+        else:
+            prog_abs.empty()
+            caption_abs.empty()
+            st.success(
+                f"Done. Extracted **{stats_abs['extracted']:,}** · "
+                f"Skipped **{stats_abs['skipped']:,}** · "
+                f"Errors **{stats_abs['errors']:,}**"
+            )
+
+    st.divider()
     st.caption(f"Papers: `{PAPERS_DIR}`")
     st.caption(f"Index: `{DB_PATH}`")
     st.caption(f"Abstract meta: `{ABSTRACT_META_ROOT}`")
+    st.caption(f"Exports: `{EXPORTED_PROMPTS_DIR}`")
+    st.caption(f"Deep Chat staging root: `{SELECTED_PDFS_BASE}`")
     st.caption(f"PDF server: `http://localhost:{PDF_SERVER_PORT}`")
 
 
 # ── Main area ─────────────────────────────────────────────────────────────────
 
 if not is_indexed():
-    st.title("📚 Papers RAG V2.4")
+    st.title("📚 Papers RAG V2.5")
     st.info(
         "👈 Click **Build Index** in the sidebar to get started.\n\n"
         "This scans all PDFs, extracts text, generates embeddings, and stores "
@@ -1069,6 +1146,10 @@ with tab_chat:
         failed_count   = sum(1 for fp in deep_papers if fp in gemini_uploads and gemini_uploads[fp] is None)
         pending_count  = len(deep_papers) - uploaded_count - failed_count
 
+        _stage_here = str(st.session_state.get("deep_chat_stage_dir") or "").strip()
+        if _stage_here:
+            st.caption(f"Latest staged folder (`SELECTED_PDFS_DIR`): `{_stage_here}`")
+
         with st.expander(
             f"📚 {len(deep_papers)} paper(s) · "
             f"{'✅ All uploaded' if uploaded_count == len(deep_papers) else f'⬆ {pending_count} pending · ✅ {uploaded_count} uploaded' + (f' · ❌ {failed_count} failed' if failed_count else '')}",
@@ -1101,10 +1182,11 @@ with tab_chat:
                     help="PDFs are uploaded to Google Cloud Storage and read by Gemini via gs:// URI. No size limits.",
                 )
             with col_rst:
-                if st.button("🗑 Clear", use_container_width=True):
+                if st.button("🗑 Clear", use_container_width=True, key="clear_deep_pending"):
                     st.session_state["deep_chat_papers"] = []
                     st.session_state["deep_chat_history"] = []
                     st.session_state["gemini_uploads"] = {}
+                    st.session_state["deep_chat_stage_dir"] = ""
                     st.rerun()
 
             if upload_btn:
@@ -1136,10 +1218,11 @@ with tab_chat:
             with col_info:
                 st.success(f"✅ All {len(deep_papers)} paper(s) uploaded — ready to chat.")
             with col_rst:
-                if st.button("🗑 Clear", use_container_width=True):
+                if st.button("🗑 Clear", use_container_width=True, key="clear_deep_done"):
                     st.session_state["deep_chat_papers"] = []
                     st.session_state["deep_chat_history"] = []
                     st.session_state["gemini_uploads"] = {}
+                    st.session_state["deep_chat_stage_dir"] = ""
                     st.rerun()
 
         # ── Conversation history & chat ───────────────────────────────────────

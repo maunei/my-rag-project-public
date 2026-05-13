@@ -25,17 +25,21 @@ _DOI_IN_TEXT = re.compile(
     r"(?i)\b(?:doi:\s*|https?://(?:dx\.)?doi\.org/)(10\.\d{4,9}/[^\s\])>;,\n]+)"
 )
 
-APP_DIR = Path(__file__).resolve().parent
-ABSTRACT_META_ROOT = APP_DIR / "abstract_meta"
-EXPORTED_PROMPTS_DIR = APP_DIR / "exported_prompts"
+from papers_rag_config import ABSTRACT_META_ROOT, EXPORTED_PROMPTS_DIR
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 
 
-def abstract_json_path(pdf_path: str, papers_dir: str) -> Path:
-    """Mirrored sidescar path: ``abstract_meta/<rel_dir>/<stem>.json`` under ``ABSTRACT_META_ROOT``."""
+def abstract_json_path(
+    pdf_path: str,
+    papers_dir: str,
+    *,
+    abstract_meta_root: Path | None = None,
+) -> Path:
+    """Mirrored sidescar JSON path under configured ``abstract_meta`` root."""
+    root = abstract_meta_root if abstract_meta_root is not None else ABSTRACT_META_ROOT
     rel = Path(pdf_path).relative_to(Path(papers_dir))
-    return ABSTRACT_META_ROOT / rel.parent / f"{rel.stem}.json"
+    return root / rel.parent / f"{rel.stem}.json"
 
 
 def ensure_export_dir() -> Path:
@@ -505,12 +509,19 @@ def _flush_mupdf_messages(pdf_path: str, abstract_json_path_str: str, warnings_o
         print(f"  … ({omitted} more distinct message(s) omitted)", file=sys.stderr, flush=True)
 
 
-def extract_record_for_pdf(pdf_path: str, papers_dir: str) -> dict:
+def extract_record_for_pdf(
+    pdf_path: str,
+    papers_dir: str,
+    *,
+    abstract_meta_root: Path | None = None,
+) -> dict:
     """Build full JSON-serializable record for one PDF."""
     warnings: list[str] = []
     pdf_p = Path(pdf_path)
     fitz.TOOLS.reset_mupdf_warnings()
-    abstract_meta_path = abstract_json_path(pdf_path, papers_dir).resolve()
+    abstract_meta_path = abstract_json_path(
+        pdf_path, papers_dir, abstract_meta_root=abstract_meta_root
+    ).resolve()
     try:
         try:
             rel_path = str(pdf_p.relative_to(Path(papers_dir)))
@@ -582,18 +593,29 @@ def extract_record_for_pdf(pdf_path: str, papers_dir: str) -> dict:
         _flush_mupdf_messages(path_for_log, str(abstract_meta_path), warnings)
 
 
-def save_abstract_record(record: dict, pdf_path: str, papers_dir: str) -> Path:
+def save_abstract_record(
+    record: dict,
+    pdf_path: str,
+    papers_dir: str,
+    *,
+    abstract_meta_root: Path | None = None,
+) -> Path:
     """Write ``record`` pretty-printed to the sidescar JSON path for ``pdf_path``; create parent dirs."""
-    path = abstract_json_path(pdf_path, papers_dir)
+    path = abstract_json_path(pdf_path, papers_dir, abstract_meta_root=abstract_meta_root)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
         json.dump(record, f, indent=2, ensure_ascii=False)
     return path
 
 
-def load_abstract_record(pdf_path: str, papers_dir: str) -> dict | None:
+def load_abstract_record(
+    pdf_path: str,
+    papers_dir: str,
+    *,
+    abstract_meta_root: Path | None = None,
+) -> dict | None:
     """Load sidescar JSON if it exists and parses; return ``None`` on missing file or decode error."""
-    path = abstract_json_path(pdf_path, papers_dir)
+    path = abstract_json_path(pdf_path, papers_dir, abstract_meta_root=abstract_meta_root)
     if not path.is_file():
         return None
     try:
@@ -603,8 +625,20 @@ def load_abstract_record(pdf_path: str, papers_dir: str) -> dict | None:
         return None
 
 
-def extract_and_save_pdf(pdf_path: str, papers_dir: str) -> dict:
+def extract_and_save_pdf(
+    pdf_path: str,
+    papers_dir: str,
+    *,
+    abstract_meta_root: Path | None = None,
+) -> dict:
     """Convenience: extract one PDF to a record and persist; returns the in-memory dict."""
-    rec = extract_record_for_pdf(pdf_path, papers_dir)
-    save_abstract_record(rec, pdf_path, papers_dir)
+    rec = extract_record_for_pdf(
+        pdf_path, papers_dir, abstract_meta_root=abstract_meta_root
+    )
+    save_abstract_record(
+        rec,
+        pdf_path,
+        papers_dir,
+        abstract_meta_root=abstract_meta_root,
+    )
     return rec

@@ -16,11 +16,11 @@ from fastembed import TextEmbedding
 from tqdm import tqdm
 
 from papers_paths import PAPERS_DIR, get_all_pdfs
+from papers_rag_config import CHROMA_DB_PATH
 
 # ── Configuration ────────────────────────────────────────────────────────────
 
-APP_DIR = Path(__file__).parent
-DB_PATH = str(APP_DIR / "chroma_db")
+DB_PATH = CHROMA_DB_PATH
 
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"   # ~130 MB, ONNX-based, fast on CPU
 COLLECTION_NAME = "papers"

@@ -1,0 +1,730 @@
+Papers dir: /home/mneira/MAURICIO/papers
+PDFs to process: 836
+PubMed E-utilities: email=set, api_key=set
+Abstracts:   0%|          | 0/836 [00:00<?, ?it/s]Abstracts:   0%|          | 1/836 [00:01<14:47,  1.06s/it]Abstracts:   0%|          | 2/836 [00:02<17:07,  1.23s/it]Abstracts:   0%|          | 3/836 [00:03<17:51,  1.29s/it]Abstracts:   0%|          | 4/836 [00:04<15:36,  1.13s/it]Abstracts:   1%|          | 5/836 [00:06<17:10,  1.24s/it]Abstracts:   1%|          | 6/836 [00:07<15:59,  1.16s/it]Abstracts:   1%|          | 7/836 [00:13<41:53,  3.03s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/08_scRNA-seq_seminal_paper_2015.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/08_scRNA-seq_seminal_paper_2015.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -181)
+  ... repeated 2 times...
+Abstracts:   1%|          | 8/836 [00:14<32:58,  2.39s/it]Abstracts:   1%|          | 9/836 [00:16<30:59,  2.25s/it]Abstracts:   1%|          | 10/836 [00:17<25:46,  1.87s/it]Abstracts:   1%|▏         | 11/836 [00:18<22:09,  1.61s/it]Abstracts:   1%|▏         | 12/836 [00:20<19:52,  1.45s/it]Abstracts:   2%|▏         | 13/836 [00:21<17:56,  1.31s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/104_multi-parameter_optimization_drug_discovery.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/104_multi-parameter_optimization_drug_discovery.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -209)
+  ... repeated 2 times...
+Abstracts:   2%|▏         | 14/836 [00:21<16:18,  1.19s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/105_extending_half_life_in_drug_design_2018.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/105_extending_half_life_in_drug_design_2018.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -252)
+  ... repeated 2 times...
+Abstracts:   2%|▏         | 15/836 [00:22<15:09,  1.11s/it]Abstracts:   2%|▏         | 16/836 [00:23<15:12,  1.11s/it]Abstracts:   2%|▏         | 17/836 [00:24<14:21,  1.05s/it]Abstracts:   2%|▏         | 18/836 [00:26<17:34,  1.29s/it]Abstracts:   2%|▏         | 19/836 [00:27<16:54,  1.24s/it]Abstracts:   2%|▏         | 20/836 [00:28<15:27,  1.14s/it]Abstracts:   3%|▎         | 21/836 [00:29<15:48,  1.16s/it]Abstracts:   3%|▎         | 22/836 [00:31<16:05,  1.19s/it]Abstracts:   3%|▎         | 23/836 [00:32<16:10,  1.19s/it]Abstracts:   3%|▎         | 24/836 [00:33<15:44,  1.16s/it]Abstracts:   3%|▎         | 25/836 [00:34<14:34,  1.08s/it]Abstracts:   3%|▎         | 26/836 [00:35<14:05,  1.04s/it]Abstracts:   3%|▎         | 27/836 [00:36<13:59,  1.04s/it]Abstracts:   3%|▎         | 28/836 [00:37<14:19,  1.06s/it]Abstracts:   3%|▎         | 29/836 [00:38<14:11,  1.06s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/119_nrwrh_drug_target_network_2012.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/119_nrwrh_drug_target_network_2012.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -2)
+  ... repeated 2 times...
+Abstracts:   4%|▎         | 30/836 [00:39<14:02,  1.05s/it]Abstracts:   4%|▎         | 31/836 [00:40<12:09,  1.10it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/120_nrwrh_drug_target_disease_network_2022.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/120_nrwrh_drug_target_disease_network_2022.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (3117 / -2464)
+  ... repeated 4 times...
+Abstracts:   4%|▍         | 32/836 [00:41<12:34,  1.07it/s]Abstracts:   4%|▍         | 33/836 [00:42<12:57,  1.03it/s]Abstracts:   4%|▍         | 34/836 [00:42<10:12,  1.31it/s]Abstracts:   4%|▍         | 35/836 [00:43<10:36,  1.26it/s]Abstracts:   4%|▍         | 36/836 [00:44<11:33,  1.15it/s]Abstracts:   4%|▍         | 37/836 [00:45<11:50,  1.12it/s]Abstracts:   5%|▍         | 38/836 [00:46<11:17,  1.18it/s]Abstracts:   5%|▍         | 39/836 [00:46<09:32,  1.39it/s]Abstracts:   5%|▍         | 40/836 [00:46<08:02,  1.65it/s]Abstracts:   5%|▍         | 41/836 [00:47<09:34,  1.38it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/156_kania_archr_package_integrative_cell_chromatin_accessibility_2021/02_41588_2021_790_MOESM2_ESM.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/156_kania_archr_package_integrative_cell_chromatin_accessibility_2021/02_41588_2021_790_MOESM2_ESM.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -183)
+  ... repeated 2 times...
+Abstracts:   5%|▌         | 42/836 [00:48<07:52,  1.68it/s]Abstracts:   5%|▌         | 43/836 [00:49<10:03,  1.31it/s]Abstracts:   5%|▌         | 44/836 [00:50<11:25,  1.16it/s]Abstracts:   5%|▌         | 45/836 [00:51<12:06,  1.09it/s]Abstracts:   6%|▌         | 46/836 [00:52<12:29,  1.05it/s]Abstracts:   6%|▌         | 47/836 [00:53<12:44,  1.03it/s]Abstracts:   6%|▌         | 48/836 [00:54<12:31,  1.05it/s]Abstracts:   6%|▌         | 49/836 [00:55<12:45,  1.03it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/21_scRNA-seq_postclustering_differential_analysis_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/21_scRNA-seq_postclustering_differential_analysis_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -249)
+  ... repeated 2 times...
+Abstracts:   6%|▌         | 50/836 [00:56<13:24,  1.02s/it]Abstracts:   6%|▌         | 51/836 [00:57<13:21,  1.02s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/23_scRNA-seq_Integration_CCA_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/23_scRNA-seq_Integration_CCA_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -181)
+  ... repeated 4 times...
+Abstracts:   6%|▌         | 52/836 [00:58<13:25,  1.03s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/24_scRNA-seq_batch_effects_correction_benchmarking_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/24_scRNA-seq_batch_effects_correction_benchmarking_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -209)
+  ... repeated 2 times...
+Abstracts:   6%|▋         | 53/836 [00:59<13:30,  1.04s/it]Abstracts:   6%|▋         | 54/836 [01:00<13:29,  1.04s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/26_scRNA-seq_popsicleR_package_QC_2022.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/26_scRNA-seq_popsicleR_package_QC_2022.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 4 times...
+Abstracts:   7%|▋         | 55/836 [01:01<13:36,  1.05s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/27_scRNA-seq_best_practices_tutorial_book_fabian_theis_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/27_scRNA-seq_best_practices_tutorial_book_fabian_theis_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -207)
+  ... repeated 4 times...
+Abstracts:   7%|▋         | 56/836 [01:03<14:22,  1.11s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/28_muscat_Rpackage_scRNA-seq_and_tutorial_GSE96583_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/28_muscat_Rpackage_scRNA-seq_and_tutorial_GSE96583_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -249)
+  ... repeated 2 times...
+Abstracts:   7%|▋         | 57/836 [01:04<14:19,  1.10s/it]Abstracts:   7%|▋         | 58/836 [01:05<14:09,  1.09s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/30_mast_RPackage_model_based_analysis_of_single_cell_transcriptomics_gottardo_2015.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/30_mast_RPackage_model_based_analysis_of_single_cell_transcriptomics_gottardo_2015.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -209)
+  ... repeated 2 times...
+Abstracts:   7%|▋         | 59/836 [01:06<13:44,  1.06s/it]Abstracts:   7%|▋         | 60/836 [01:08<16:46,  1.30s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/31_GSE96583_demuxlet_and_muscat_scRNA-seq_correction_2018.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/31_GSE96583_demuxlet_and_muscat_scRNA-seq_correction_2018.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (770 / -2958)
+  ... repeated 8 times...
+Abstracts:   7%|▋         | 61/836 [01:08<15:11,  1.18s/it]Abstracts:   7%|▋         | 62/836 [01:19<51:31,  3.99s/it]Abstracts:   8%|▊         | 63/836 [01:20<39:53,  3.10s/it]Abstracts:   8%|▊         | 64/836 [01:21<31:57,  2.48s/it]Abstracts:   8%|▊         | 65/836 [01:22<26:42,  2.08s/it]Abstracts:   8%|▊         | 66/836 [01:23<22:26,  1.75s/it]Abstracts:   8%|▊         | 67/836 [01:24<19:46,  1.54s/it]Abstracts:   8%|▊         | 68/836 [01:25<18:40,  1.46s/it]Abstracts:   8%|▊         | 69/836 [01:27<17:30,  1.37s/it]Abstracts:   8%|▊         | 70/836 [01:28<18:44,  1.47s/it]Abstracts:   8%|▊         | 71/836 [01:31<24:31,  1.92s/it]Abstracts:   9%|▊         | 72/836 [01:33<24:14,  1.90s/it]Abstracts:   9%|▊         | 73/836 [01:34<21:39,  1.70s/it]Abstracts:   9%|▉         | 74/836 [01:36<19:39,  1.55s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/45_scDist_mixed_effects_model_perturbed_cells_scRNA_irizarry_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/45_scDist_mixed_effects_model_perturbed_cells_scRNA_irizarry_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -215)
+  ... repeated 2 times...
+Abstracts:   9%|▉         | 75/836 [01:37<17:31,  1.38s/it]Abstracts:   9%|▉         | 76/836 [01:38<17:21,  1.37s/it]Abstracts:   9%|▉         | 77/836 [01:39<16:20,  1.29s/it]Abstracts:   9%|▉         | 78/836 [01:40<15:05,  1.19s/it]Abstracts:   9%|▉         | 79/836 [01:41<14:17,  1.13s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/50_cannabidiol_scRNA_inflammation_induction_of_MDSCs_cells_2022.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/50_cannabidiol_scRNA_inflammation_induction_of_MDSCs_cells_2022.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  Actualtext with no position. Text may be lost or mispositioned.
+  ... repeated 6 times...
+Abstracts:  10%|▉         | 80/836 [01:42<13:52,  1.10s/it]Abstracts:  10%|▉         | 81/836 [01:44<16:40,  1.33s/it]Abstracts:  10%|▉         | 82/836 [01:45<15:12,  1.21s/it]Abstracts:  10%|▉         | 83/836 [01:46<15:19,  1.22s/it]Abstracts:  10%|█         | 84/836 [01:47<14:28,  1.15s/it]Abstracts:  10%|█         | 85/836 [01:48<13:56,  1.11s/it]Abstracts:  10%|█         | 86/836 [01:49<14:17,  1.14s/it]Abstracts:  10%|█         | 87/836 [01:50<13:31,  1.08s/it]Abstracts:  11%|█         | 88/836 [01:51<13:39,  1.10s/it]Abstracts:  11%|█         | 89/836 [01:53<13:45,  1.10s/it]Abstracts:  11%|█         | 90/836 [01:54<14:09,  1.14s/it]Abstracts:  11%|█         | 91/836 [01:54<11:59,  1.04it/s]Abstracts:  11%|█         | 92/836 [01:55<12:27,  1.00s/it]Abstracts:  11%|█         | 93/836 [01:56<12:33,  1.01s/it]Abstracts:  11%|█         | 94/836 [01:57<12:13,  1.01it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/64_bif7100_T2T_human_genome_2022.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/64_bif7100_T2T_human_genome_2022.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -200)
+  ... repeated 2 times...
+Abstracts:  11%|█▏        | 95/836 [01:59<14:52,  1.20s/it]Abstracts:  11%|█▏        | 96/836 [02:00<14:33,  1.18s/it]Abstracts:  12%|█▏        | 97/836 [02:01<15:01,  1.22s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/67_scRNA_Treg_Th17_balance_upon_treatment_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/67_scRNA_Treg_Th17_balance_upon_treatment_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  bogus font ascent/descent values (0 / -199)
+Abstracts:  12%|█▏        | 98/836 [02:03<15:11,  1.24s/it]Abstracts:  12%|█▏        | 99/836 [02:04<14:18,  1.16s/it]Abstracts:  12%|█▏        | 100/836 [02:05<13:58,  1.14s/it]Abstracts:  12%|█▏        | 101/836 [02:06<13:39,  1.11s/it]Abstracts:  12%|█▏        | 102/836 [02:07<13:20,  1.09s/it]Abstracts:  12%|█▏        | 103/836 [02:08<12:43,  1.04s/it]Abstracts:  12%|█▏        | 104/836 [02:08<11:03,  1.10it/s]Abstracts:  13%|█▎        | 105/836 [02:10<11:55,  1.02it/s]Abstracts:  13%|█▎        | 106/836 [02:11<12:03,  1.01it/s]Abstracts:  13%|█▎        | 107/836 [02:12<12:49,  1.06s/it]Abstracts:  13%|█▎        | 108/836 [02:13<12:50,  1.06s/it]Abstracts:  13%|█▎        | 109/836 [02:14<13:22,  1.10s/it]Abstracts:  13%|█▎        | 110/836 [02:15<12:51,  1.06s/it]Abstracts:  13%|█▎        | 111/836 [02:16<12:29,  1.03s/it]Abstracts:  13%|█▎        | 112/836 [02:19<19:35,  1.62s/it]Abstracts:  14%|█▎        | 113/836 [02:20<17:39,  1.47s/it]Abstracts:  14%|█▎        | 114/836 [02:21<16:35,  1.38s/it]Abstracts:  14%|█▍        | 115/836 [02:22<15:37,  1.30s/it]Abstracts:  14%|█▍        | 116/836 [02:24<14:56,  1.25s/it]Abstracts:  14%|█▍        | 117/836 [02:25<14:29,  1.21s/it]Abstracts:  14%|█▍        | 118/836 [02:26<13:45,  1.15s/it]Abstracts:  14%|█▍        | 119/836 [02:27<13:15,  1.11s/it]Abstracts:  14%|█▍        | 120/836 [02:28<12:56,  1.08s/it]Abstracts:  14%|█▍        | 121/836 [02:29<12:42,  1.07s/it]Abstracts:  15%|█▍        | 122/836 [02:30<12:23,  1.04s/it]Abstracts:  15%|█▍        | 123/836 [02:31<12:27,  1.05s/it]Abstracts:  15%|█▍        | 124/836 [02:32<12:51,  1.08s/it]Abstracts:  15%|█▍        | 125/836 [02:33<12:04,  1.02s/it]Abstracts:  15%|█▌        | 126/836 [02:34<12:20,  1.04s/it]Abstracts:  15%|█▌        | 127/836 [02:35<11:42,  1.01it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/00_papers/96_caannabinol_skin_permeation_2004.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/00_papers/96_caannabinol_skin_permeation_2004.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (772 / -2960)
+  ... repeated 2 times...
+Abstracts:  15%|█▌        | 128/836 [02:36<13:55,  1.18s/it]Abstracts:  15%|█▌        | 129/836 [02:38<14:30,  1.23s/it]Abstracts:  16%|█▌        | 130/836 [02:39<14:05,  1.20s/it]Abstracts:  16%|█▌        | 131/836 [02:40<13:47,  1.17s/it]Abstracts:  16%|█▌        | 132/836 [02:40<10:43,  1.09it/s]Abstracts:  16%|█▌        | 133/836 [02:41<11:05,  1.06it/s]Abstracts:  16%|█▌        | 134/836 [02:42<09:11,  1.27it/s]Abstracts:  16%|█▌        | 135/836 [02:42<08:12,  1.42it/s]Abstracts:  16%|█▋        | 136/836 [02:43<06:57,  1.68it/s]Abstracts:  16%|█▋        | 137/836 [02:44<09:27,  1.23it/s]Abstracts:  17%|█▋        | 138/836 [02:44<07:35,  1.53it/s]Abstracts:  17%|█▋        | 139/836 [02:45<07:30,  1.55it/s]Abstracts:  17%|█▋        | 140/836 [02:46<08:56,  1.30it/s]Abstracts:  17%|█▋        | 141/836 [02:47<10:19,  1.12it/s]Abstracts:  17%|█▋        | 142/836 [02:48<10:49,  1.07it/s]Abstracts:  17%|█▋        | 143/836 [02:49<11:48,  1.02s/it]Abstracts:  17%|█▋        | 144/836 [02:50<11:57,  1.04s/it]Abstracts:  17%|█▋        | 145/836 [02:51<09:56,  1.16it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/133_kania_Nagy_enhancers_motor_neurons_pnas_2024/133_kania_Nagy_enhancers_motor_neurons_pnas_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/133_kania_Nagy_enhancers_motor_neurons_pnas_2024/133_kania_Nagy_enhancers_motor_neurons_pnas_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  premature end of data in flate filter
+  ... repeated 10 times...
+Abstracts:  17%|█▋        | 146/836 [02:52<11:34,  1.01s/it]Abstracts:  18%|█▊        | 147/836 [02:53<09:28,  1.21it/s]Abstracts:  18%|█▊        | 148/836 [02:54<09:55,  1.15it/s]Abstracts:  18%|█▊        | 149/836 [02:55<10:42,  1.07it/s]Abstracts:  18%|█▊        | 150/836 [02:56<11:03,  1.03it/s]Abstracts:  18%|█▊        | 151/836 [02:56<08:58,  1.27it/s]Abstracts:  18%|█▊        | 152/836 [02:57<09:41,  1.18it/s]Abstracts:  18%|█▊        | 153/836 [02:58<10:37,  1.07it/s]Abstracts:  18%|█▊        | 154/836 [02:59<10:43,  1.06it/s]Abstracts:  19%|█▊        | 155/836 [03:00<11:01,  1.03it/s]Abstracts:  19%|█▊        | 156/836 [03:02<15:27,  1.36s/it]Abstracts:  19%|█▉        | 157/836 [03:03<14:04,  1.24s/it]Abstracts:  19%|█▉        | 158/836 [03:04<11:51,  1.05s/it]Abstracts:  19%|█▉        | 159/836 [03:05<11:54,  1.06s/it]Abstracts:  19%|█▉        | 160/836 [03:06<12:25,  1.10s/it]Abstracts:  19%|█▉        | 161/836 [03:08<13:11,  1.17s/it]Abstracts:  19%|█▉        | 162/836 [03:09<14:19,  1.28s/it]Abstracts:  19%|█▉        | 163/836 [03:10<13:24,  1.20s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/143_kania_SCENT_enhancers_genes_nature_genetics_2024/143_kania_SCENT_enhancers_genes_nature_genetics_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/143_kania_SCENT_enhancers_genes_nature_genetics_2024/143_kania_SCENT_enhancers_genes_nature_genetics_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  Actualtext with no position. Text may be lost or mispositioned.
+  ... repeated 10 times...
+Abstracts:  20%|█▉        | 164/836 [03:11<12:49,  1.14s/it]Abstracts:  20%|█▉        | 165/836 [03:12<13:08,  1.18s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/144_pySCENIC_2017/144_02_report_41592_2017_BFnmeth4463_MOESM2_ESM.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/144_pySCENIC_2017/144_02_report_41592_2017_BFnmeth4463_MOESM2_ESM.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -183)
+  ... repeated 2 times...
+Abstracts:  20%|█▉        | 166/836 [03:14<13:14,  1.19s/it]Abstracts:  20%|█▉        | 167/836 [03:17<20:42,  1.86s/it]Abstracts:  20%|██        | 168/836 [03:18<17:33,  1.58s/it]Abstracts:  20%|██        | 169/836 [03:19<16:40,  1.50s/it]Abstracts:  20%|██        | 170/836 [03:20<15:19,  1.38s/it]Abstracts:  20%|██        | 171/836 [03:22<14:32,  1.31s/it]Abstracts:  21%|██        | 172/836 [03:23<15:04,  1.36s/it]Abstracts:  21%|██        | 173/836 [03:25<15:58,  1.45s/it]Abstracts:  21%|██        | 174/836 [03:26<15:09,  1.37s/it]Abstracts:  21%|██        | 175/836 [03:28<16:00,  1.45s/it]Abstracts:  21%|██        | 176/836 [03:28<13:36,  1.24s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/153_kania_gene_regulatory_network_reconstruction_review_2023/153_kania_gene_regulatory_network_reconstruction_review_2023.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/153_kania_gene_regulatory_network_reconstruction_review_2023/153_kania_gene_regulatory_network_reconstruction_review_2023.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -200)
+  ... repeated 2 times...
+Abstracts:  21%|██        | 177/836 [03:29<13:32,  1.23s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/154_kania_phox2a_als_neurons_pain_molecular_pain_2023/154_kania_phox2a_als_neurons_pain_molecular_pain_2023.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/154_kania_phox2a_als_neurons_pain_molecular_pain_2023/154_kania_phox2a_als_neurons_pain_molecular_pain_2023.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 4 times...
+Abstracts:  21%|██▏       | 178/836 [03:31<13:03,  1.19s/it]Abstracts:  21%|██▏       | 179/836 [03:32<13:08,  1.20s/it]Abstracts:  22%|██▏       | 180/836 [03:33<12:38,  1.16s/it]Abstracts:  22%|██▏       | 181/836 [03:34<12:27,  1.14s/it]Abstracts:  22%|██▏       | 182/836 [03:35<12:05,  1.11s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/156_kania_archr_package_integrative_cell_chromatin_accessibility_2021/156_SUPP/156_archr_reporting_summary.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/156_kania_archr_package_integrative_cell_chromatin_accessibility_2021/156_SUPP/156_archr_reporting_summary.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -183)
+  ... repeated 2 times...
+Abstracts:  22%|██▏       | 183/836 [03:35<09:12,  1.18it/s]Abstracts:  22%|██▏       | 184/836 [03:36<10:09,  1.07it/s]Abstracts:  22%|██▏       | 185/836 [03:38<10:58,  1.01s/it]Abstracts:  22%|██▏       | 186/836 [03:39<11:36,  1.07s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/157_kania_hitchhiker_guide_to_scATAC_genome_biology_2022/157_kania_hitchhiker_guide_to_scATAC_genome_biology_2022.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/157_kania_hitchhiker_guide_to_scATAC_genome_biology_2022/157_kania_hitchhiker_guide_to_scATAC_genome_biology_2022.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -209)
+  ... repeated 2 times...
+Abstracts:  22%|██▏       | 187/836 [03:40<11:57,  1.11s/it]Abstracts:  22%|██▏       | 188/836 [03:41<11:51,  1.10s/it]Abstracts:  23%|██▎       | 189/836 [03:42<12:58,  1.20s/it]Abstracts:  23%|██▎       | 190/836 [03:43<12:13,  1.14s/it]Abstracts:  23%|██▎       | 191/836 [03:45<11:53,  1.11s/it]Abstracts:  23%|██▎       | 192/836 [03:46<12:02,  1.12s/it]Abstracts:  23%|██▎       | 193/836 [03:47<11:49,  1.10s/it]Abstracts:  23%|██▎       | 194/836 [03:48<11:31,  1.08s/it]Abstracts:  23%|██▎       | 195/836 [03:49<12:15,  1.15s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/162_kania_Delile_scRNA_temporal_developing_mouse_spinal_cord_E-MTAB-7320_and_code_Development_2019/162_Delile_Single_cell_transcriptomics_reveals_spatial_and_temporal_dynamics_of_gene_expression_in_the_developing_mouse_spinal_cord_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/162_kania_Delile_scRNA_temporal_developing_mouse_spinal_cord_E-MTAB-7320_and_code_Development_2019/162_Delile_Single_cell_transcriptomics_reveals_spatial_and_temporal_dynamics_of_gene_expression_in_the_developing_mouse_spinal_cord_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  first object in xref is not free
+  ... repeated 3 times...
+Abstracts:  23%|██▎       | 196/836 [03:50<12:07,  1.14s/it]Abstracts:  24%|██▎       | 197/836 [03:51<12:07,  1.14s/it]Abstracts:  24%|██▎       | 198/836 [03:53<12:42,  1.19s/it]Abstracts:  24%|██▍       | 199/836 [03:55<15:40,  1.48s/it]Abstracts:  24%|██▍       | 200/836 [03:55<12:05,  1.14s/it]Abstracts:  24%|██▍       | 201/836 [03:57<13:09,  1.24s/it]Abstracts:  24%|██▍       | 202/836 [03:58<12:50,  1.22s/it]Abstracts:  24%|██▍       | 203/836 [03:59<12:34,  1.19s/it]Abstracts:  24%|██▍       | 204/836 [03:59<09:41,  1.09it/s]Abstracts:  25%|██▍       | 205/836 [04:00<07:58,  1.32it/s]Abstracts:  25%|██▍       | 206/836 [04:01<09:06,  1.15it/s]Abstracts:  25%|██▍       | 207/836 [04:02<10:36,  1.01s/it]Abstracts:  25%|██▍       | 208/836 [04:03<11:42,  1.12s/it]Abstracts:  25%|██▌       | 209/836 [04:05<12:17,  1.18s/it]Abstracts:  25%|██▌       | 210/836 [04:07<14:16,  1.37s/it]Abstracts:  25%|██▌       | 211/836 [04:08<14:27,  1.39s/it]Abstracts:  25%|██▌       | 212/836 [04:10<15:27,  1.49s/it]Abstracts:  25%|██▌       | 213/836 [04:11<14:17,  1.38s/it]Abstracts:  26%|██▌       | 214/836 [04:12<13:37,  1.31s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/175_kania_enhancer_spatial_transcriptomics_epigenomics_carmen_bravo_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/175_kania_enhancer_spatial_transcriptomics_epigenomics_carmen_bravo_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -207)
+  ... repeated 2 times...
+  bogus font ascent/descent values (0 / -210)
+Abstracts:  26%|██▌       | 215/836 [04:13<13:36,  1.32s/it]Abstracts:  26%|██▌       | 216/836 [04:15<13:24,  1.30s/it]Abstracts:  26%|██▌       | 217/836 [04:15<12:19,  1.19s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/178_kania_cicero_CRE_Gene_interactions_Trapnell_2018/178_kania_cicero_CRE_Gene_interactions_2018.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/178_kania_cicero_CRE_Gene_interactions_Trapnell_2018/178_kania_cicero_CRE_Gene_interactions_2018.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -216)
+  ... repeated 2 times...
+Abstracts:  26%|██▌       | 218/836 [04:17<12:30,  1.21s/it]Abstracts:  26%|██▌       | 219/836 [04:18<12:17,  1.20s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/178_kania_cicero_CRE_Gene_interactions_Trapnell_2018/178_supp2_kania_cicero_CRE_Gene_interactions_2018.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/178_kania_cicero_CRE_Gene_interactions_Trapnell_2018/178_supp2_kania_cicero_CRE_Gene_interactions_2018.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -216)
+  ... repeated 2 times...
+Abstracts:  26%|██▋       | 220/836 [04:19<12:05,  1.18s/it]Abstracts:  26%|██▋       | 221/836 [04:20<12:48,  1.25s/it]Abstracts:  27%|██▋       | 222/836 [04:21<11:47,  1.15s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/180_kania_integration_of_single_cell_data_satija_2019/180_kania_integration_of_single_cell_data_satija_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/180_kania_integration_of_single_cell_data_satija_2019/180_kania_integration_of_single_cell_data_satija_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -181)
+  ... repeated 4 times...
+Abstracts:  27%|██▋       | 223/836 [04:22<10:59,  1.08s/it]Abstracts:  27%|██▋       | 224/836 [04:23<10:36,  1.04s/it]Abstracts:  27%|██▋       | 225/836 [04:24<11:10,  1.10s/it]Abstracts:  27%|██▋       | 226/836 [04:26<11:29,  1.13s/it]Abstracts:  27%|██▋       | 227/836 [04:27<11:19,  1.12s/it]Abstracts:  27%|██▋       | 228/836 [04:28<12:23,  1.22s/it]Abstracts:  27%|██▋       | 229/836 [04:30<12:54,  1.28s/it]Abstracts:  28%|██▊       | 230/836 [04:30<11:00,  1.09s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/187_parse_biosciences_covid_GSE183716_2021/187_parse_biosciences_covid_GSE183716_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/187_parse_biosciences_covid_GSE183716_2021/187_parse_biosciences_covid_GSE183716_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  bogus font ascent/descent values (0 / -189)
+Abstracts:  28%|██▊       | 231/836 [04:32<12:50,  1.27s/it]Abstracts:  28%|██▊       | 232/836 [04:33<12:34,  1.25s/it]Abstracts:  28%|██▊       | 233/836 [04:34<12:08,  1.21s/it]Abstracts:  28%|██▊       | 234/836 [04:35<12:03,  1.20s/it]Abstracts:  28%|██▊       | 235/836 [04:37<12:01,  1.20s/it]Abstracts:  28%|██▊       | 236/836 [04:38<11:35,  1.16s/it]Abstracts:  28%|██▊       | 237/836 [04:39<11:20,  1.14s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/190_scRNA_human_developing_spinal_cord_2021/190_scRNA_human_developing_spinal_cord_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/190_scRNA_human_developing_spinal_cord_2021/190_scRNA_human_developing_spinal_cord_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -216)
+  ... repeated 2 times...
+Abstracts:  28%|██▊       | 238/836 [04:40<10:55,  1.10s/it]Abstracts:  29%|██▊       | 239/836 [04:41<10:55,  1.10s/it]Abstracts:  29%|██▊       | 240/836 [04:42<11:04,  1.11s/it]Abstracts:  29%|██▉       | 241/836 [04:43<10:45,  1.08s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/194_deepImpute_scRNA_2019/194_deepImpute_scRNA_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/194_deepImpute_scRNA_2019/194_deepImpute_scRNA_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -209)
+  ... repeated 2 times...
+Abstracts:  29%|██▉       | 242/836 [04:45<11:44,  1.19s/it]Abstracts:  29%|██▉       | 243/836 [04:46<11:26,  1.16s/it]Abstracts:  29%|██▉       | 244/836 [04:47<11:32,  1.17s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/197_scATAC_matching_scRNA_gene_regulation_buenrostro_FigR_workflow_buenrostro_2022/197_SUPP/197_mmc1.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/197_scATAC_matching_scRNA_gene_regulation_buenrostro_FigR_workflow_buenrostro_2022/197_SUPP/197_mmc1.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -210)
+  ... repeated 2 times...
+Abstracts:  29%|██▉       | 245/836 [04:48<12:29,  1.27s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/197_scATAC_matching_scRNA_gene_regulation_buenrostro_FigR_workflow_buenrostro_2022/197_SUPP/197_mmc7.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/197_scATAC_matching_scRNA_gene_regulation_buenrostro_FigR_workflow_buenrostro_2022/197_SUPP/197_mmc7.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -181)
+  ... repeated 4 times...
+Abstracts:  29%|██▉       | 246/836 [04:49<12:12,  1.24s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/197_scATAC_matching_scRNA_gene_regulation_buenrostro_FigR_workflow_buenrostro_2022/197_scMultiOmics_gene_regulation_buenrostro_FigR_workflow_2022.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/197_scATAC_matching_scRNA_gene_regulation_buenrostro_FigR_workflow_buenrostro_2022/197_scMultiOmics_gene_regulation_buenrostro_FigR_workflow_2022.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -181)
+  ... repeated 4 times...
+Abstracts:  30%|██▉       | 247/836 [04:50<11:21,  1.16s/it]Abstracts:  30%|██▉       | 248/836 [04:52<11:19,  1.15s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/199_human_cell_atlas_spinal_cord_2021/199_human_cell_atlas_spinal_cord_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/199_human_cell_atlas_spinal_cord_2021/199_human_cell_atlas_spinal_cord_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -216)
+  ... repeated 2 times...
+Abstracts:  30%|██▉       | 249/836 [04:53<11:19,  1.16s/it]Abstracts:  30%|██▉       | 250/836 [04:54<12:00,  1.23s/it]Abstracts:  30%|███       | 251/836 [04:55<11:33,  1.18s/it]Abstracts:  30%|███       | 252/836 [04:57<12:01,  1.24s/it]Abstracts:  30%|███       | 253/836 [04:58<11:49,  1.22s/it]Abstracts:  30%|███       | 254/836 [04:59<11:52,  1.22s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/203_review_scATAC_hypothesis_generation_2020/203_review_scATAC_hypothesis_generation_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/203_review_scATAC_hypothesis_generation_2020/203_review_scATAC_hypothesis_generation_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  bogus font ascent/descent values (0 / -199)
+Abstracts:  31%|███       | 255/836 [05:00<11:12,  1.16s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/204_review_chromatin_accessibility_2021/204_review_chromatin_accessibility_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/204_review_chromatin_accessibility_2021/204_review_chromatin_accessibility_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 2 times...
+Abstracts:  31%|███       | 256/836 [05:01<10:57,  1.13s/it]Abstracts:  31%|███       | 257/836 [05:02<11:20,  1.18s/it]Abstracts:  31%|███       | 258/836 [05:03<11:01,  1.14s/it]Abstracts:  31%|███       | 259/836 [05:04<10:41,  1.11s/it]Abstracts:  31%|███       | 260/836 [05:05<10:25,  1.09s/it]Abstracts:  31%|███       | 261/836 [05:07<11:57,  1.25s/it]Abstracts:  31%|███▏      | 262/836 [05:07<09:09,  1.04it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/210_maestro_integration_scRNA_scATAC_2020/210_maestro_integration_scRNA_scATAC_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/210_maestro_integration_scRNA_scATAC_2020/210_maestro_integration_scRNA_scATAC_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -209)
+  ... repeated 2 times...
+Abstracts:  31%|███▏      | 263/836 [05:10<13:53,  1.46s/it]Abstracts:  32%|███▏      | 264/836 [05:11<12:41,  1.33s/it]Abstracts:  32%|███▏      | 265/836 [05:12<12:01,  1.26s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/213_kidneys_share-seq_split_pool_scATAC_scRNA_analysis_2024/213_kidneys_share-seq_split_pool_scATAC_scRNA_analysis_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/213_kidneys_share-seq_split_pool_scATAC_scRNA_analysis_2024/213_kidneys_share-seq_split_pool_scATAC_scRNA_analysis_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 2 times...
+Abstracts:  32%|███▏      | 266/836 [05:13<11:32,  1.21s/it]Abstracts:  32%|███▏      | 267/836 [05:14<11:21,  1.20s/it]Abstracts:  32%|███▏      | 268/836 [05:15<10:51,  1.15s/it]Abstracts:  32%|███▏      | 269/836 [05:16<08:42,  1.09it/s]Abstracts:  32%|███▏      | 270/836 [05:17<08:53,  1.06it/s]Abstracts:  32%|███▏      | 271/836 [05:18<09:08,  1.03it/s]Abstracts:  33%|███▎      | 272/836 [05:19<09:26,  1.01s/it]Abstracts:  33%|███▎      | 273/836 [05:20<09:49,  1.05s/it]Abstracts:  33%|███▎      | 274/836 [05:21<09:58,  1.06s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/220_eRNA_enhnacerRNAs_review_2023/220_eRNA_enhnacerRNAs_review_2023.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/220_eRNA_enhnacerRNAs_review_2023/220_eRNA_enhnacerRNAs_review_2023.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -210)
+  ... repeated 3 times...
+Abstracts:  33%|███▎      | 275/836 [05:22<09:56,  1.06s/it]Abstracts:  33%|███▎      | 276/836 [05:23<10:03,  1.08s/it]Abstracts:  33%|███▎      | 277/836 [05:24<10:03,  1.08s/it]Abstracts:  33%|███▎      | 278/836 [05:25<09:40,  1.04s/it]Abstracts:  33%|███▎      | 279/836 [05:26<08:03,  1.15it/s]Abstracts:  33%|███▎      | 280/836 [05:27<08:47,  1.05it/s]Abstracts:  34%|███▎      | 281/836 [05:28<09:16,  1.00s/it]Abstracts:  34%|███▎      | 282/836 [05:29<09:20,  1.01s/it]Abstracts:  34%|███▍      | 283/836 [05:30<09:50,  1.07s/it]Abstracts:  34%|███▍      | 284/836 [05:32<10:10,  1.11s/it]Abstracts:  34%|███▍      | 285/836 [05:33<09:57,  1.08s/it]Abstracts:  34%|███▍      | 286/836 [05:34<11:02,  1.20s/it]Abstracts:  34%|███▍      | 287/836 [05:35<11:21,  1.24s/it]Abstracts:  34%|███▍      | 288/836 [05:37<11:31,  1.26s/it]Abstracts:  35%|███▍      | 289/836 [05:38<10:36,  1.16s/it]Abstracts:  35%|███▍      | 290/836 [05:39<11:28,  1.26s/it]Abstracts:  35%|███▍      | 291/836 [05:40<11:25,  1.26s/it]Abstracts:  35%|███▍      | 292/836 [05:41<10:51,  1.20s/it]Abstracts:  35%|███▌      | 293/836 [05:43<11:14,  1.24s/it]Abstracts:  35%|███▌      | 294/836 [05:44<11:13,  1.24s/it]Abstracts:  35%|███▌      | 295/836 [05:45<10:49,  1.20s/it]Abstracts:  35%|███▌      | 296/836 [05:46<10:02,  1.12s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/238_scRNA-seq_tutorial_methods_2021/238_scRNA-seq_tutorial_methods_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/238_scRNA-seq_tutorial_methods_2021/238_scRNA-seq_tutorial_methods_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -183)
+  ... repeated 2 times...
+Abstracts:  36%|███▌      | 297/836 [05:47<09:36,  1.07s/it]Abstracts:  36%|███▌      | 298/836 [05:48<09:11,  1.03s/it]Abstracts:  36%|███▌      | 299/836 [05:49<09:25,  1.05s/it]Abstracts:  36%|███▌      | 300/836 [05:50<09:04,  1.02s/it]Abstracts:  36%|███▌      | 301/836 [05:51<09:06,  1.02s/it]Abstracts:  36%|███▌      | 302/836 [05:52<09:12,  1.04s/it]Abstracts:  36%|███▌      | 303/836 [05:53<09:27,  1.06s/it]Abstracts:  36%|███▋      | 304/836 [05:54<09:35,  1.08s/it]Abstracts:  36%|███▋      | 305/836 [05:55<09:26,  1.07s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/246_single_cell_atlas_human_cCREs_scATAC_2021/246_single_cell_atlas_human_cCREs_scATAC_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/246_single_cell_atlas_human_cCREs_scATAC_2021/246_single_cell_atlas_human_cCREs_scATAC_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -181)
+  ... repeated 4 times...
+Abstracts:  37%|███▋      | 306/836 [05:57<10:37,  1.20s/it]Abstracts:  37%|███▋      | 307/836 [05:58<11:16,  1.28s/it]Abstracts:  37%|███▋      | 308/836 [05:59<08:53,  1.01s/it]Abstracts:  37%|███▋      | 309/836 [05:59<07:10,  1.22it/s]Abstracts:  37%|███▋      | 310/836 [06:00<08:28,  1.03it/s]Abstracts:  37%|███▋      | 311/836 [06:02<08:53,  1.02s/it]Abstracts:  37%|███▋      | 312/836 [06:03<09:44,  1.12s/it]Abstracts:  37%|███▋      | 313/836 [06:04<09:06,  1.05s/it]Abstracts:  38%|███▊      | 314/836 [06:05<10:15,  1.18s/it]Abstracts:  38%|███▊      | 315/836 [06:07<11:46,  1.36s/it]Abstracts:  38%|███▊      | 316/836 [06:09<12:33,  1.45s/it]Abstracts:  38%|███▊      | 317/836 [06:10<11:38,  1.35s/it]Abstracts:  38%|███▊      | 318/836 [06:12<13:58,  1.62s/it]Abstracts:  38%|███▊      | 319/836 [06:13<13:11,  1.53s/it]Abstracts:  38%|███▊      | 320/836 [06:15<12:08,  1.41s/it]Abstracts:  38%|███▊      | 321/836 [06:16<11:10,  1.30s/it]Abstracts:  39%|███▊      | 322/836 [06:17<11:03,  1.29s/it]Abstracts:  39%|███▊      | 323/836 [06:18<10:41,  1.25s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/IRCM/Artur_Kania/from_mcgill-my-sharepoint/Spinal_enhancers/5_Books and documents/2017 Haenraets Zeilhoefer Wildner.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/264_sharepoint_nociceptive_circuit_analysis_with_AAVs_2017/2017 Haenraets Zeilhoefer Wildner.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 2 times...
+Abstracts:  39%|███▉      | 324/836 [06:20<11:29,  1.35s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/264_sharepoint_nociceptive_circuit_analysis_with_AAVs_2017/264_sharepoint_nociceptive_circuit_analysis_with_AAVs_2017.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/264_sharepoint_nociceptive_circuit_analysis_with_AAVs_2017/264_sharepoint_nociceptive_circuit_analysis_with_AAVs_2017.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 2 times...
+Abstracts:  39%|███▉      | 325/836 [06:21<11:53,  1.40s/it]Abstracts:  39%|███▉      | 326/836 [06:22<11:00,  1.30s/it]Abstracts:  39%|███▉      | 327/836 [06:23<10:10,  1.20s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/IRCM/Artur_Kania/from_mcgill-my-sharepoint/Spinal_enhancers/5_Books and documents/2019 Challis Gradinaru Nat Methods.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/266_sharepoint_systemic_AAV_vectors_rodents_2019/2019 Challis Gradinaru Nat Methods.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -180)
+  ... repeated 2 times...
+Abstracts:  39%|███▉      | 328/836 [06:24<09:59,  1.18s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/266_sharepoint_systemic_AAV_vectors_rodents_2019/266_sharepoint_systemic_AAV_vectors_rodents_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/266_sharepoint_systemic_AAV_vectors_rodents_2019/266_sharepoint_systemic_AAV_vectors_rodents_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -180)
+  ... repeated 2 times...
+Abstracts:  39%|███▉      | 329/836 [06:25<09:51,  1.17s/it]Abstracts:  39%|███▉      | 330/836 [06:26<09:11,  1.09s/it]Abstracts:  40%|███▉      | 331/836 [06:27<09:15,  1.10s/it]Abstracts:  40%|███▉      | 332/836 [06:29<09:31,  1.13s/it]Abstracts:  40%|███▉      | 333/836 [06:30<09:20,  1.11s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/IRCM/Artur_Kania/from_mcgill-my-sharepoint/Spinal_enhancers/5_Books and documents/2022 Tadokoro Marsala Mol Therapy.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/269_sharepoint_gene_delivery_nociceptive_neurons_reverses_neuropathic_pain_2022/2022 Tadokoro Marsala Mol Therapy.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 2 times...
+Abstracts:  40%|███▉      | 334/836 [06:31<09:36,  1.15s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/269_sharepoint_gene_delivery_nociceptive_neurons_reverses_neuropathic_pain_2022/269_sharepoint_gene_delivery_nociceptive_neurons_reverses_neuropathic_pain_2022.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/269_sharepoint_gene_delivery_nociceptive_neurons_reverses_neuropathic_pain_2022/269_sharepoint_gene_delivery_nociceptive_neurons_reverses_neuropathic_pain_2022.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 2 times...
+Abstracts:  40%|████      | 335/836 [06:32<10:33,  1.26s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/IRCM/Artur_Kania/from_mcgill-my-sharepoint/Spinal_enhancers/5_Books and documents/2024 Nagy Greenberg Hrvatin PNAS.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/270_sharepoint_ref_133/2024 Nagy Greenberg Hrvatin PNAS.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  premature end of data in flate filter
+  ... repeated 10 times...
+Abstracts:  40%|████      | 336/836 [06:34<10:02,  1.20s/it]Abstracts:  40%|████      | 337/836 [06:35<09:35,  1.15s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/272_sharepoint_AAV_handbook_big_2019/272_sharepoint_AAV_handbook_big_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/272_sharepoint_AAV_handbook_big_2019/272_sharepoint_AAV_handbook_big_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -183)
+  bogus font ascent/descent values (0 / -200)
+Abstracts:  40%|████      | 338/836 [06:36<09:07,  1.10s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/IRCM/Artur_Kania/from_mcgill-my-sharepoint/Spinal_enhancers/5_Books and documents/AAV handbook 2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/272_sharepoint_AAV_handbook_big_2019/AAV handbook 2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -183)
+  bogus font ascent/descent values (0 / -200)
+Abstracts:  41%|████      | 339/836 [06:36<08:34,  1.04s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/273_to_reanalyze_spinal_super_enhancer_neuropathic_pain_zhiqiang_2023/273_to_reanalyze_spinal_super_enhancer_neuropathic_pain_zhiqiang_2023.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/273_to_reanalyze_spinal_super_enhancer_neuropathic_pain_zhiqiang_2023/273_to_reanalyze_spinal_super_enhancer_neuropathic_pain_zhiqiang_2023.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -200)
+  bogus font ascent/descent values (0 / -205)
+  ... repeated 2 times...
+Abstracts:  41%|████      | 340/836 [06:38<09:19,  1.13s/it]Abstracts:  41%|████      | 341/836 [06:39<09:11,  1.11s/it]Abstracts:  41%|████      | 342/836 [06:40<09:18,  1.13s/it]Abstracts:  41%|████      | 343/836 [06:41<09:31,  1.16s/it]Abstracts:  41%|████      | 344/836 [06:42<09:37,  1.17s/it]Abstracts:  41%|████▏     | 345/836 [06:43<07:53,  1.04it/s]Abstracts:  41%|████▏     | 346/836 [06:44<07:08,  1.14it/s]Abstracts:  42%|████▏     | 347/836 [06:44<06:13,  1.31it/s]Abstracts:  42%|████▏     | 348/836 [06:45<05:20,  1.52it/s]Abstracts:  42%|████▏     | 349/836 [06:45<04:49,  1.68it/s]Abstracts:  42%|████▏     | 350/836 [06:46<06:20,  1.28it/s]Abstracts:  42%|████▏     | 351/836 [06:47<06:54,  1.17it/s]Abstracts:  42%|████▏     | 352/836 [06:48<07:14,  1.11it/s]Abstracts:  42%|████▏     | 353/836 [06:49<07:18,  1.10it/s]Abstracts:  42%|████▏     | 354/836 [06:50<07:49,  1.03it/s]Abstracts:  42%|████▏     | 355/836 [06:51<08:07,  1.01s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/283_atlas_neropathic_pain_mouse_spinal_cord_2025/283_atlas_neropathic_pain_mouse_spinal_cord_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/283_atlas_neropathic_pain_mouse_spinal_cord_2025/283_atlas_neropathic_pain_mouse_spinal_cord_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -191)
+  ... repeated 2 times...
+Abstracts:  43%|████▎     | 356/836 [06:53<08:28,  1.06s/it]Abstracts:  43%|████▎     | 357/836 [06:54<08:17,  1.04s/it]Abstracts:  43%|████▎     | 358/836 [06:55<08:20,  1.05s/it]Abstracts:  43%|████▎     | 359/836 [06:56<08:02,  1.01s/it]Abstracts:  43%|████▎     | 360/836 [06:57<08:05,  1.02s/it]Abstracts:  43%|████▎     | 361/836 [06:58<08:02,  1.02s/it]Abstracts:  43%|████▎     | 362/836 [06:59<08:12,  1.04s/it]Abstracts:  43%|████▎     | 363/836 [07:00<07:57,  1.01s/it]Abstracts:  44%|████▎     | 364/836 [07:01<08:10,  1.04s/it]Abstracts:  44%|████▎     | 365/836 [07:02<07:55,  1.01s/it]Abstracts:  44%|████▍     | 366/836 [07:03<07:51,  1.00s/it]Abstracts:  44%|████▍     | 367/836 [07:03<06:29,  1.20it/s]Abstracts:  44%|████▍     | 368/836 [07:03<05:14,  1.49it/s]Abstracts:  44%|████▍     | 369/836 [07:04<06:01,  1.29it/s]Abstracts:  44%|████▍     | 370/836 [07:05<06:11,  1.25it/s]Abstracts:  44%|████▍     | 371/836 [07:06<06:43,  1.15it/s]Abstracts:  44%|████▍     | 372/836 [07:07<05:26,  1.42it/s]Abstracts:  45%|████▍     | 373/836 [07:07<05:22,  1.44it/s]Abstracts:  45%|████▍     | 374/836 [07:08<06:05,  1.26it/s]Abstracts:  45%|████▍     | 375/836 [07:09<06:56,  1.11it/s]Abstracts:  45%|████▍     | 376/836 [07:11<07:23,  1.04it/s]Abstracts:  45%|████▌     | 377/836 [07:11<06:03,  1.26it/s]Abstracts:  45%|████▌     | 378/836 [07:11<05:12,  1.47it/s]Abstracts:  45%|████▌     | 379/836 [07:13<06:24,  1.19it/s]Abstracts:  45%|████▌     | 380/836 [07:14<06:48,  1.12it/s]Abstracts:  46%|████▌     | 381/836 [07:16<10:04,  1.33s/it]Abstracts:  46%|████▌     | 382/836 [07:17<09:19,  1.23s/it]Abstracts:  46%|████▌     | 383/836 [07:18<09:08,  1.21s/it]Abstracts:  46%|████▌     | 384/836 [07:20<09:32,  1.27s/it]Abstracts:  46%|████▌     | 385/836 [07:21<09:08,  1.22s/it]Abstracts:  46%|████▌     | 386/836 [07:22<08:40,  1.16s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/302_robust_decomposition_of_cell_type_mixtures_in_spatial_transcriptomics_RPackage_Rafael_Irizarry_2021/302_robust_decomposition_of_cell_type_mixtures_in_spatial_transcriptomics_RPackage_Rafael_Irizarry_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/302_robust_decomposition_of_cell_type_mixtures_in_spatial_transcriptomics_RPackage_Rafael_Irizarry_2021/302_robust_decomposition_of_cell_type_mixtures_in_spatial_transcriptomics_RPackage_Rafael_Irizarry_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  Actualtext with no position. Text may be lost or mispositioned.
+  ... repeated 16 times...
+Abstracts:  46%|████▋     | 387/836 [07:23<08:50,  1.18s/it]Abstracts:  46%|████▋     | 388/836 [07:24<09:50,  1.32s/it]Abstracts:  47%|████▋     | 389/836 [07:26<09:22,  1.26s/it]Abstracts:  47%|████▋     | 390/836 [07:27<09:38,  1.30s/it]Abstracts:  47%|████▋     | 391/836 [07:29<10:13,  1.38s/it]Abstracts:  47%|████▋     | 392/836 [07:29<07:59,  1.08s/it]Abstracts:  47%|████▋     | 393/836 [07:30<08:08,  1.10s/it]Abstracts:  47%|████▋     | 394/836 [07:31<08:34,  1.16s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/309_spatiotemporal_regulation_of_transcription_factors_human_spinal_cord_development_2024/309_spatiotemporal_regulation_of_transcription_factors_human_spinal_cord_development_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/309_spatiotemporal_regulation_of_transcription_factors_human_spinal_cord_development_2024/309_spatiotemporal_regulation_of_transcription_factors_human_spinal_cord_development_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -200)
+  ... repeated 2 times...
+Abstracts:  47%|████▋     | 395/836 [07:32<08:21,  1.14s/it]Abstracts:  47%|████▋     | 396/836 [07:34<09:03,  1.23s/it]Abstracts:  47%|████▋     | 397/836 [07:34<07:04,  1.03it/s]Abstracts:  48%|████▊     | 398/836 [07:35<05:50,  1.25it/s]Abstracts:  48%|████▊     | 399/836 [07:35<04:56,  1.48it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/311_scATAC-pro_workbench_downstream_analysis_2020/311_scATAC-pro_workbench_downstream_analysis_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/311_scATAC-pro_workbench_downstream_analysis_2020/311_scATAC-pro_workbench_downstream_analysis_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -209)
+  ... repeated 2 times...
+Abstracts:  48%|████▊     | 400/836 [07:36<05:50,  1.24it/s]Abstracts:  48%|████▊     | 401/836 [07:37<06:54,  1.05it/s]Abstracts:  48%|████▊     | 402/836 [07:39<07:28,  1.03s/it]Abstracts:  48%|████▊     | 403/836 [07:40<07:33,  1.05s/it]Abstracts:  48%|████▊     | 404/836 [07:41<07:59,  1.11s/it]Abstracts:  48%|████▊     | 405/836 [07:42<08:19,  1.16s/it]Abstracts:  49%|████▊     | 406/836 [07:43<07:01,  1.02it/s]Abstracts:  49%|████▊     | 407/836 [07:44<07:17,  1.02s/it]Abstracts:  49%|████▉     | 408/836 [07:45<07:40,  1.08s/it]Abstracts:  49%|████▉     | 409/836 [07:46<06:42,  1.06it/s]Abstracts:  49%|████▉     | 410/836 [07:46<05:36,  1.26it/s]Abstracts:  49%|████▉     | 411/836 [07:47<04:43,  1.50it/s]Abstracts:  49%|████▉     | 412/836 [07:47<03:46,  1.87it/s]Abstracts:  49%|████▉     | 413/836 [07:48<05:43,  1.23it/s]Abstracts:  50%|████▉     | 414/836 [07:50<06:49,  1.03it/s]Abstracts:  50%|████▉     | 415/836 [07:52<08:50,  1.26s/it]Abstracts:  50%|████▉     | 416/836 [07:53<08:40,  1.24s/it]Abstracts:  50%|████▉     | 417/836 [07:54<08:16,  1.18s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/325_CS-CORE_cell_type_specific_co_expression_TF_Target_scRNA_2023/325_CS-CORE_cell_type_specific_co_expression_TF_Target_scRNA_2023.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/325_CS-CORE_cell_type_specific_co_expression_TF_Target_scRNA_2023/325_CS-CORE_cell_type_specific_co_expression_TF_Target_scRNA_2023.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -215)
+  bogus font ascent/descent values (0 / -180)
+Abstracts:  50%|█████     | 418/836 [07:56<11:07,  1.60s/it]Abstracts:  50%|█████     | 419/836 [07:57<09:56,  1.43s/it]Abstracts:  50%|█████     | 420/836 [07:59<09:27,  1.36s/it]Abstracts:  50%|█████     | 421/836 [08:00<09:11,  1.33s/it]Abstracts:  50%|█████     | 422/836 [08:01<08:54,  1.29s/it]Abstracts:  51%|█████     | 423/836 [08:02<08:55,  1.30s/it]Abstracts:  51%|█████     | 424/836 [08:04<08:48,  1.28s/it]Abstracts:  51%|█████     | 425/836 [08:05<07:59,  1.17s/it]Abstracts:  51%|█████     | 426/836 [08:06<08:29,  1.24s/it]Abstracts:  51%|█████     | 427/836 [08:07<07:28,  1.10s/it]Abstracts:  51%|█████     | 428/836 [08:08<07:58,  1.17s/it]Abstracts:  51%|█████▏    | 429/836 [08:09<08:04,  1.19s/it]Abstracts:  51%|█████▏    | 430/836 [08:10<07:54,  1.17s/it]Abstracts:  52%|█████▏    | 431/836 [08:12<08:23,  1.24s/it]Abstracts:  52%|█████▏    | 432/836 [08:13<08:21,  1.24s/it]Abstracts:  52%|█████▏    | 433/836 [08:14<08:05,  1.21s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/339_characterisation_of_deep_dorsal_horn_projection_neurons_in_the_spinal_cord_of_the_phox2a_cre_mouse_line_andrew_todd_2022/339_characterisation_of_deep_dorsal_horn_projection_neurons_in_the_spinal_cord_of_the_phox2a_cre_mouse_line_andrew_todd_2022.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/339_characterisation_of_deep_dorsal_horn_projection_neurons_in_the_spinal_cord_of_the_phox2a_cre_mouse_line_andrew_todd_2022/339_characterisation_of_deep_dorsal_horn_projection_neurons_in_the_spinal_cord_of_the_phox2a_cre_mouse_line_andrew_todd_2022.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 2 times...
+Abstracts:  52%|█████▏    | 434/836 [08:15<07:52,  1.17s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/340_genetic_evidence_of_the_function_of_phox2a_expressing_anterolateral_system_neurons_in_transmission_of_chronic_pain_Xinying_2023/340_genetic_evidence_of_the_function_of_phox2a_expressing_anterolateral_system_neurons_in_transmission_of_chronic_pain_Xinying_2023.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/340_genetic_evidence_of_the_function_of_phox2a_expressing_anterolateral_system_neurons_in_transmission_of_chronic_pain_Xinying_2023/340_genetic_evidence_of_the_function_of_phox2a_expressing_anterolateral_system_neurons_in_transmission_of_chronic_pain_Xinying_2023.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  freetype could not find any cmaps
+  ... repeated 4 times...
+Abstracts:  52%|█████▏    | 435/836 [08:16<07:34,  1.13s/it]Abstracts:  52%|█████▏    | 436/836 [08:18<08:02,  1.21s/it]Abstracts:  52%|█████▏    | 437/836 [08:19<08:05,  1.22s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/342_Enhancer_AAVs_for_targeting_spinal_motor_neurons_and_descending_motor_pathways_in_rodents_and_macaque_Tanya_Daigle_BICCN_2025/342_PROTOCOLS/CG000338_ChromiumNextGEM_Multiome_ATAC_GEX_User_Guide_RevE.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/342_Enhancer_AAVs_for_targeting_spinal_motor_neurons_and_descending_motor_pathways_in_rodents_and_macaque_Tanya_Daigle_BICCN_2025/342_PROTOCOLS/CG000338_ChromiumNextGEM_Multiome_ATAC_GEX_User_Guide_RevE.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  Actualtext with no position. Text may be lost or mispositioned.
+  ... repeated 65 times...
+Abstracts:  52%|█████▏    | 438/836 [08:19<06:33,  1.01it/s]Abstracts:  53%|█████▎    | 439/836 [08:20<05:09,  1.28it/s]Abstracts:  53%|█████▎    | 440/836 [08:20<04:06,  1.61it/s]Abstracts:  53%|█████▎    | 441/836 [08:20<03:22,  1.95it/s]Abstracts:  53%|█████▎    | 442/836 [08:21<04:35,  1.43it/s]Abstracts:  53%|█████▎    | 443/836 [08:22<05:07,  1.28it/s]Abstracts:  53%|█████▎    | 444/836 [08:24<05:49,  1.12it/s]Abstracts:  53%|█████▎    | 445/836 [08:25<06:34,  1.01s/it]Abstracts:  53%|█████▎    | 446/836 [08:26<06:44,  1.04s/it]Abstracts:  53%|█████▎    | 447/836 [08:27<06:33,  1.01s/it]Abstracts:  54%|█████▎    | 448/836 [08:28<06:30,  1.01s/it]Abstracts:  54%|█████▎    | 449/836 [08:29<07:22,  1.14s/it]Abstracts:  54%|█████▍    | 450/836 [08:30<05:35,  1.15it/s]Abstracts:  54%|█████▍    | 451/836 [08:31<05:46,  1.11it/s]Abstracts:  54%|█████▍    | 452/836 [08:32<06:32,  1.02s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/347_Divergent_combinations_of_enhancers_encode_spatial_gene_expression_2025/347_Divergent_combinations_of_enhancers_encode_spatial_gene_expression_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/347_Divergent_combinations_of_enhancers_encode_spatial_gene_expression_2025/347_Divergent_combinations_of_enhancers_encode_spatial_gene_expression_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -215)
+  ... repeated 2 times...
+Abstracts:  54%|█████▍    | 453/836 [08:33<07:01,  1.10s/it]Abstracts:  54%|█████▍    | 454/836 [08:34<06:53,  1.08s/it]Abstracts:  54%|█████▍    | 455/836 [08:35<06:56,  1.09s/it]Abstracts:  55%|█████▍    | 456/836 [08:36<07:08,  1.13s/it]Abstracts:  55%|█████▍    | 457/836 [08:37<05:29,  1.15it/s]Abstracts:  55%|█████▍    | 458/836 [08:37<04:28,  1.41it/s]Abstracts:  55%|█████▍    | 459/836 [08:37<03:41,  1.70it/s]Abstracts:  55%|█████▌    | 460/836 [08:38<04:30,  1.39it/s]Abstracts:  55%|█████▌    | 461/836 [08:40<06:16,  1.01s/it]Abstracts:  55%|█████▌    | 462/836 [08:40<05:04,  1.23it/s]Abstracts:  55%|█████▌    | 463/836 [08:41<05:19,  1.17it/s]Abstracts:  56%|█████▌    | 464/836 [08:42<04:44,  1.31it/s]Abstracts:  56%|█████▌    | 465/836 [08:43<05:10,  1.19it/s]Abstracts:  56%|█████▌    | 466/836 [08:44<05:12,  1.18it/s]Abstracts:  56%|█████▌    | 467/836 [08:44<04:24,  1.39it/s]Abstracts:  56%|█████▌    | 468/836 [08:45<05:00,  1.22it/s]Abstracts:  56%|█████▌    | 469/836 [08:47<06:01,  1.02it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/359_Deep_Generative_Modeling_for_Single_Cell_Transcriptomics_scVI_2019/359_SUPP/02_359_supp_reporting_summary.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/359_Deep_Generative_Modeling_for_Single_Cell_Transcriptomics_scVI_2019/359_SUPP/02_359_supp_reporting_summary.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -183)
+  ... repeated 2 times...
+Abstracts:  56%|█████▌    | 470/836 [08:48<06:30,  1.07s/it]Abstracts:  56%|█████▋    | 471/836 [08:49<06:47,  1.12s/it]Abstracts:  56%|█████▋    | 472/836 [08:51<07:21,  1.21s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/360_A_single_cell_atlas_of_chromatin_accessibility_in_the_human_genome_2021/360_A_single_cell_atlas_of_chromatin_accessibility_in_the_human_genome_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/360_A_single_cell_atlas_of_chromatin_accessibility_in_the_human_genome_2021/360_A_single_cell_atlas_of_chromatin_accessibility_in_the_human_genome_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -181)
+  ... repeated 4 times...
+Abstracts:  57%|█████▋    | 473/836 [08:52<07:07,  1.18s/it]Abstracts:  57%|█████▋    | 474/836 [08:53<06:57,  1.15s/it]Abstracts:  57%|█████▋    | 475/836 [08:54<06:37,  1.10s/it]Abstracts:  57%|█████▋    | 476/836 [08:55<06:40,  1.11s/it]Abstracts:  57%|█████▋    | 477/836 [08:55<05:27,  1.10it/s]Abstracts:  57%|█████▋    | 478/836 [08:57<06:01,  1.01s/it]Abstracts:  57%|█████▋    | 479/836 [08:58<06:18,  1.06s/it]Abstracts:  57%|█████▋    | 480/836 [08:59<06:15,  1.05s/it]Abstracts:  58%|█████▊    | 481/836 [09:00<05:50,  1.01it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/368_conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_2021/368_conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/368_conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_2021/368_conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -207)
+  ... repeated 2 times...
+Abstracts:  58%|█████▊    | 482/836 [09:01<06:52,  1.17s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/368_conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_2021/368_copy.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/368_conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_2021/368_copy.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -207)
+  ... repeated 2 times...
+Abstracts:  58%|█████▊    | 483/836 [09:03<07:39,  1.30s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/369_spinal_interneurons_diversity_and_connectivity_in_motor_control_review_2023/369_spinal_interneurons_diversity_and_connectivity_in_motor_control_review_2023.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/369_spinal_interneurons_diversity_and_connectivity_in_motor_control_review_2023/369_spinal_interneurons_diversity_and_connectivity_in_motor_control_review_2023.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -207)
+  ... repeated 2 times...
+Abstracts:  58%|█████▊    | 484/836 [09:04<06:40,  1.14s/it]Abstracts:  58%|█████▊    | 485/836 [09:04<06:14,  1.07s/it]Abstracts:  58%|█████▊    | 486/836 [09:05<06:00,  1.03s/it]Abstracts:  58%|█████▊    | 487/836 [09:06<05:09,  1.13it/s]Abstracts:  58%|█████▊    | 488/836 [09:06<04:01,  1.44it/s]Abstracts:  58%|█████▊    | 489/836 [09:07<03:23,  1.70it/s]Abstracts:  59%|█████▊    | 490/836 [09:07<02:48,  2.05it/s]Abstracts:  59%|█████▊    | 491/836 [09:07<02:33,  2.24it/s]Abstracts:  59%|█████▉    | 492/836 [09:08<03:23,  1.69it/s]Abstracts:  59%|█████▉    | 493/836 [09:09<03:34,  1.60it/s]Abstracts:  59%|█████▉    | 494/836 [09:10<04:31,  1.26it/s]Abstracts:  59%|█████▉    | 495/836 [09:11<04:58,  1.14it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/373_Neuronal_atlas_of_dorsal_horn_defines_its_architecture_and_links_sensory_input_to_transcriptional_cell_types_2018/373_SUPP/02_373_reporting_summary.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/373_Neuronal_atlas_of_dorsal_horn_defines_its_architecture_and_links_sensory_input_to_transcriptional_cell_types_2018/373_SUPP/02_373_reporting_summary.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -183)
+  ... repeated 2 times...
+Abstracts:  59%|█████▉    | 496/836 [09:11<03:59,  1.42it/s]Abstracts:  59%|█████▉    | 497/836 [09:12<04:06,  1.37it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/375_Hotspot_identifies_informative_gene_modules_across_modalities_of_single_cell_genomics_USED_IN_CELLRANGER_2021/375_Hotspot_identifies_informative_gene_modules_across_modalities_of_single_cell_genomics_USED_IN_CELLRANGER_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/375_Hotspot_identifies_informative_gene_modules_across_modalities_of_single_cell_genomics_USED_IN_CELLRANGER_2021/375_Hotspot_identifies_informative_gene_modules_across_modalities_of_single_cell_genomics_USED_IN_CELLRANGER_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -249)
+  ... repeated 2 times...
+Abstracts:  60%|█████▉    | 498/836 [09:13<04:53,  1.15it/s]Abstracts:  60%|█████▉    | 499/836 [09:15<05:32,  1.01it/s]Abstracts:  60%|█████▉    | 500/836 [09:15<04:47,  1.17it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/375_Hotspot_identifies_informative_gene_modules_across_modalities_of_single_cell_genomics_USED_IN_CELLRANGER_2021/375_SUPP/03_375_article_plus_supp.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/375_Hotspot_identifies_informative_gene_modules_across_modalities_of_single_cell_genomics_USED_IN_CELLRANGER_2021/375_SUPP/03_375_article_plus_supp.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -249)
+  ... repeated 2 times...
+Abstracts:  60%|█████▉    | 501/836 [09:17<05:37,  1.01s/it]Abstracts:  60%|██████    | 502/836 [09:18<05:37,  1.01s/it]Abstracts:  60%|██████    | 503/836 [09:20<07:49,  1.41s/it]Abstracts:  60%|██████    | 504/836 [09:21<07:40,  1.39s/it]Abstracts:  60%|██████    | 505/836 [09:22<07:19,  1.33s/it]Abstracts:  61%|██████    | 506/836 [09:23<06:41,  1.22s/it]Abstracts:  61%|██████    | 507/836 [09:25<06:41,  1.22s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/382_jointly_defining_cell_types_from_multile_single_cell_datasets_using_LIGER_2020/382_jointly_defining_cell_types_from_multile_single_cell_datasets_using_LIGER_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/382_jointly_defining_cell_types_from_multile_single_cell_datasets_using_LIGER_2020/382_jointly_defining_cell_types_from_multile_single_cell_datasets_using_LIGER_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -180)
+  ... repeated 2 times...
+Abstracts:  61%|██████    | 508/836 [09:26<06:20,  1.16s/it]Abstracts:  61%|██████    | 509/836 [09:27<06:17,  1.16s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/384_viral_circuit_tracing_in_biomedical_pain_research_methods_protocols_and_applications_2025/384_viral_circuit_tracing_in_biomedical_pain_research_methods_protocols_and_applications_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/384_viral_circuit_tracing_in_biomedical_pain_research_methods_protocols_and_applications_2025/384_viral_circuit_tracing_in_biomedical_pain_research_methods_protocols_and_applications_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -245)
+  ... repeated 2 times...
+Abstracts:  61%|██████    | 510/836 [09:28<05:53,  1.08s/it]Abstracts:  61%|██████    | 511/836 [09:30<07:05,  1.31s/it]Abstracts:  61%|██████    | 512/836 [09:31<06:34,  1.22s/it]Abstracts:  61%|██████▏   | 513/836 [09:31<06:04,  1.13s/it]Abstracts:  61%|██████▏   | 514/836 [09:32<05:55,  1.10s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/389_Decoding_the_spatio_temporal_regulation_of_transcription_factors_during_human_spinal_cord_development_2024/389_Decoding_the_spatio_temporal_regulation_of_transcription_factors_during_human_spinal_cord_development_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/389_Decoding_the_spatio_temporal_regulation_of_transcription_factors_during_human_spinal_cord_development_2024/389_Decoding_the_spatio_temporal_regulation_of_transcription_factors_during_human_spinal_cord_development_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -200)
+  ... repeated 2 times...
+Abstracts:  62%|██████▏   | 515/836 [09:34<06:04,  1.14s/it]Abstracts:  62%|██████▏   | 516/836 [09:35<05:55,  1.11s/it]Abstracts:  62%|██████▏   | 517/836 [09:35<05:05,  1.04it/s]Abstracts:  62%|██████▏   | 518/836 [09:37<05:34,  1.05s/it]Abstracts:  62%|██████▏   | 519/836 [09:38<05:38,  1.07s/it]Abstracts:  62%|██████▏   | 520/836 [09:39<05:39,  1.07s/it]Abstracts:  62%|██████▏   | 521/836 [09:40<05:50,  1.11s/it]Abstracts:  62%|██████▏   | 522/836 [09:41<05:37,  1.08s/it]Abstracts:  63%|██████▎   | 523/836 [09:44<08:30,  1.63s/it]Abstracts:  63%|██████▎   | 524/836 [09:46<08:50,  1.70s/it]Abstracts:  63%|██████▎   | 525/836 [09:47<07:55,  1.53s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/399_Conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_PROJECTION_NEURONS_SIGNATURES_MARKERS_2021/399_Conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_PROJECTION_NEURONS_SIGNATURES_MARKERS_2021.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/399_Conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_PROJECTION_NEURONS_SIGNATURES_MARKERS_2021/399_Conserved_genetic_signatures_parcellate_cardinal_spinal_neuron_classes_into_local_and_projection_subsets_PROJECTION_NEURONS_SIGNATURES_MARKERS_2021.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -207)
+  ... repeated 2 times...
+Abstracts:  63%|██████▎   | 526/836 [09:48<07:55,  1.53s/it]Abstracts:  63%|██████▎   | 527/836 [09:50<07:13,  1.40s/it]Abstracts:  63%|██████▎   | 528/836 [09:50<05:59,  1.17s/it]Abstracts:  63%|██████▎   | 529/836 [09:51<05:37,  1.10s/it]Abstracts:  63%|██████▎   | 530/836 [09:52<05:40,  1.11s/it]Abstracts:  64%|██████▎   | 531/836 [09:53<05:09,  1.01s/it]Abstracts:  64%|██████▎   | 532/836 [09:54<05:46,  1.14s/it]Abstracts:  64%|██████▍   | 533/836 [09:56<05:37,  1.12s/it]Abstracts:  64%|██████▍   | 534/836 [09:56<05:23,  1.07s/it]Abstracts:  64%|██████▍   | 535/836 [09:58<05:29,  1.09s/it]Abstracts:  64%|██████▍   | 536/836 [09:59<05:25,  1.08s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/407_R_package_LIBRA_Best_practices_for_differential_accessibility_analysis_in_single-cell_epigenomics_2024/407_R_package_LIBRA_Best_practices_for_differential_accessibility_analysis_in_single-cell_epigenomics_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/407_R_package_LIBRA_Best_practices_for_differential_accessibility_analysis_in_single-cell_epigenomics_2024/407_R_package_LIBRA_Best_practices_for_differential_accessibility_analysis_in_single-cell_epigenomics_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -194)
+  ... repeated 2 times...
+Abstracts:  64%|██████▍   | 537/836 [10:00<05:27,  1.10s/it]Abstracts:  64%|██████▍   | 538/836 [10:01<05:19,  1.07s/it]Abstracts:  64%|██████▍   | 539/836 [10:02<05:14,  1.06s/it]Abstracts:  65%|██████▍   | 540/836 [10:03<05:29,  1.11s/it]Abstracts:  65%|██████▍   | 541/836 [10:04<05:16,  1.07s/it]MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+MuPDF error: format error: cannot find object in xref (2430 0 R)
+
+
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/411_AAV_vectors_an_emerging_strategy_for_chronic_pain_management_2025/411_AAV_vectors_an_emerging_strategy_for_chronic_pain_management_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/411_AAV_vectors_an_emerging_strategy_for_chronic_pain_management_2025/411_AAV_vectors_an_emerging_strategy_for_chronic_pain_management_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  format error: cannot find object in xref (2430 0 R)
+  cannot load object (2430 0 R) into cache
+  bogus font ascent/descent values (0 / -203)
+Abstracts:  65%|██████▍   | 542/836 [10:05<05:09,  1.05s/it]Abstracts:  65%|██████▍   | 543/836 [10:07<05:45,  1.18s/it]Abstracts:  65%|██████▌   | 544/836 [10:07<04:26,  1.10it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/412_SOON_Molecular_architecture_of_the_developing_mouse_brain_LaManno_2021/412_SUPP/412_supp_reporting_summary.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/412_SOON_Molecular_architecture_of_the_developing_mouse_brain_LaManno_2021/412_SUPP/412_supp_reporting_summary.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -183)
+  ... repeated 2 times...
+Abstracts:  65%|██████▌   | 545/836 [10:07<03:30,  1.38it/s]Abstracts:  65%|██████▌   | 546/836 [10:09<04:33,  1.06it/s]Abstracts:  65%|██████▌   | 547/836 [10:09<04:26,  1.08it/s]Abstracts:  66%|██████▌   | 548/836 [10:12<06:33,  1.37s/it]Abstracts:  66%|██████▌   | 549/836 [10:16<09:46,  2.04s/it]Abstracts:  66%|██████▌   | 550/836 [10:19<12:19,  2.59s/it]Abstracts:  66%|██████▌   | 551/836 [10:22<12:24,  2.61s/it]Abstracts:  66%|██████▌   | 552/836 [10:26<14:27,  3.05s/it]Abstracts:  66%|██████▌   | 553/836 [10:28<12:52,  2.73s/it]Abstracts:  66%|██████▋   | 554/836 [10:30<11:46,  2.51s/it]Abstracts:  66%|██████▋   | 555/836 [10:31<08:50,  1.89s/it]Abstracts:  67%|██████▋   | 556/836 [10:32<07:37,  1.63s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/413_SOON_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_Telley_2019/413_SOON_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_Telley_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/413_SOON_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_Telley_2019/413_SOON_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_Telley_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -200)
+  ... repeated 2 times...
+Abstracts:  67%|██████▋   | 557/836 [10:33<07:00,  1.51s/it]Abstracts:  67%|██████▋   | 558/836 [10:34<07:01,  1.52s/it]Abstracts:  67%|██████▋   | 559/836 [10:35<06:19,  1.37s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/416_MOCHAs_advanced_statistical_modeling_of_scATAC-seq_data_enables_functional_genomic_inference_in_large_human_cohorts_2024/416_MOCHAs_advanced_statistical_modeling_of_scATAC-seq_data_enables_functional_genomic_inference_in_large_human_cohorts_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/416_MOCHAs_advanced_statistical_modeling_of_scATAC-seq_data_enables_functional_genomic_inference_in_large_human_cohorts_2024/416_MOCHAs_advanced_statistical_modeling_of_scATAC-seq_data_enables_functional_genomic_inference_in_large_human_cohorts_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -180)
+  ... repeated 2 times...
+Abstracts:  67%|██████▋   | 560/836 [10:36<05:59,  1.30s/it]Abstracts:  67%|██████▋   | 561/836 [10:37<05:33,  1.21s/it]Abstracts:  67%|██████▋   | 562/836 [10:39<05:18,  1.16s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/419_scBC_Single-cell_biclustering_for_cell-specific_transcriptomic_perturbation_detection_in_AD_progression_2024/419_SUPP/419_supp_mm6_article_plus_supplement.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/419_scBC_Single-cell_biclustering_for_cell-specific_transcriptomic_perturbation_detection_in_AD_progression_2024/419_SUPP/419_supp_mm6_article_plus_supplement.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -249)
+  ... repeated 2 times...
+Abstracts:  67%|██████▋   | 563/836 [10:40<05:05,  1.12s/it]Abstracts:  67%|██████▋   | 564/836 [10:41<05:05,  1.12s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/419_scBC_Single-cell_biclustering_for_cell-specific_transcriptomic_perturbation_detection_in_AD_progression_2024/419_scBC_Single-cell_biclustering_for_cell-specific_transcriptomic_perturbation_detection_in_AD_progression_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/419_scBC_Single-cell_biclustering_for_cell-specific_transcriptomic_perturbation_detection_in_AD_progression_2024/419_scBC_Single-cell_biclustering_for_cell-specific_transcriptomic_perturbation_detection_in_AD_progression_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -249)
+  ... repeated 2 times...
+Abstracts:  68%|██████▊   | 565/836 [10:42<04:58,  1.10s/it]Abstracts:  68%|██████▊   | 566/836 [10:43<05:09,  1.15s/it]Abstracts:  68%|██████▊   | 567/836 [10:46<08:02,  1.79s/it]Abstracts:  68%|██████▊   | 568/836 [10:47<06:53,  1.54s/it]Abstracts:  68%|██████▊   | 569/836 [10:48<05:21,  1.20s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/423_HALO_hierarchical_causal_modeling_for_single_cell_multi-omics_data_2025/423_HALO_hierarchical_causal_modeling_for_single_cell_multi-omics_data_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/423_HALO_hierarchical_causal_modeling_for_single_cell_multi-omics_data_2025/423_HALO_hierarchical_causal_modeling_for_single_cell_multi-omics_data_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -180)
+  ... repeated 2 times...
+Abstracts:  68%|██████▊   | 570/836 [10:49<05:03,  1.14s/it]Abstracts:  68%|██████▊   | 571/836 [10:49<03:55,  1.13it/s]Abstracts:  68%|██████▊   | 572/836 [10:49<03:16,  1.34it/s]Abstracts:  69%|██████▊   | 573/836 [10:51<03:49,  1.15it/s]Abstracts:  69%|██████▊   | 574/836 [10:52<03:58,  1.10it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/426_CSI-GEP_A_GPU-based_unsupervised_machine_learning_approach_for_recovering_gene_expression_programs_in_atlas-scale_single-cell_RNA-seq_data_2025/426_CSI-GEP_A_GPU-based_unsupervised_machine_learning_approach_for_recovering_gene_expression_programs_in_atlas-scale_single-cell_RNA-seq_data_with_supp_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/426_CSI-GEP_A_GPU-based_unsupervised_machine_learning_approach_for_recovering_gene_expression_programs_in_atlas-scale_single-cell_RNA-seq_data_2025/426_CSI-GEP_A_GPU-based_unsupervised_machine_learning_approach_for_recovering_gene_expression_programs_in_atlas-scale_single-cell_RNA-seq_data_with_supp_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -249)
+  ... repeated 2 times...
+Abstracts:  69%|██████▉   | 575/836 [10:53<04:11,  1.04it/s]Abstracts:  69%|██████▉   | 576/836 [10:54<04:35,  1.06s/it]Abstracts:  69%|██████▉   | 577/836 [10:55<04:29,  1.04s/it]Abstracts:  69%|██████▉   | 578/836 [10:55<03:50,  1.12it/s]Abstracts:  69%|██████▉   | 579/836 [10:57<04:08,  1.03it/s]Abstracts:  69%|██████▉   | 580/836 [10:57<03:17,  1.29it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/431_SOON_Transcriptional_Control_of_Axon_Guidance_at_Midline_Structures_Review_2022/431_SOON_Transcriptional_Control_of_Axon_Guidance_at_Midline_Structures_Review_2022.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/431_SOON_Transcriptional_Control_of_Axon_Guidance_at_Midline_Structures_Review_2022/431_SOON_Transcriptional_Control_of_Axon_Guidance_at_Midline_Structures_Review_2022.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -244)
+  ... repeated 2 times...
+Abstracts:  69%|██████▉   | 581/836 [10:58<03:35,  1.18it/s]Abstracts:  70%|██████▉   | 582/836 [10:59<03:57,  1.07it/s]Abstracts:  70%|██████▉   | 583/836 [11:00<03:52,  1.09it/s]Abstracts:  70%|██████▉   | 584/836 [11:01<03:56,  1.06it/s]Abstracts:  70%|██████▉   | 585/836 [11:01<03:15,  1.28it/s]Abstracts:  70%|███████   | 586/836 [11:02<03:24,  1.22it/s]Abstracts:  70%|███████   | 587/836 [11:03<03:37,  1.15it/s]Abstracts:  70%|███████   | 588/836 [11:04<03:44,  1.11it/s]Abstracts:  70%|███████   | 589/836 [11:05<03:01,  1.36it/s]Abstracts:  71%|███████   | 590/836 [11:05<03:13,  1.27it/s]Abstracts:  71%|███████   | 591/836 [11:07<03:36,  1.13it/s]Abstracts:  71%|███████   | 592/836 [11:08<03:46,  1.08it/s]Abstracts:  71%|███████   | 593/836 [11:09<03:58,  1.02it/s]Abstracts:  71%|███████   | 594/836 [11:10<03:54,  1.03it/s]Abstracts:  71%|███████   | 595/836 [11:11<04:25,  1.10s/it]Abstracts:  71%|███████▏  | 596/836 [11:12<04:33,  1.14s/it]Abstracts:  71%|███████▏  | 597/836 [11:13<04:14,  1.06s/it]Abstracts:  72%|███████▏  | 598/836 [11:14<04:16,  1.08s/it]Abstracts:  72%|███████▏  | 599/836 [11:16<04:44,  1.20s/it]Abstracts:  72%|███████▏  | 600/836 [11:17<04:33,  1.16s/it]Abstracts:  72%|███████▏  | 601/836 [11:17<03:43,  1.05it/s]Abstracts:  72%|███████▏  | 602/836 [11:18<02:57,  1.32it/s]Abstracts:  72%|███████▏  | 603/836 [11:18<02:24,  1.62it/s]Abstracts:  72%|███████▏  | 604/836 [11:18<02:18,  1.67it/s]Abstracts:  72%|███████▏  | 605/836 [11:19<02:01,  1.89it/s]Abstracts:  72%|███████▏  | 606/836 [11:20<02:58,  1.29it/s]Abstracts:  73%|███████▎  | 607/836 [11:21<02:37,  1.45it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/447_sara_scLink_Inferring_Sparse_Gene_Co-expression_Networks_from_Single-cell_Expression_Data_2021/447_SUPP/mmc1_File_S1.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/447_sara_scLink_Inferring_Sparse_Gene_Co-expression_Networks_from_Single-cell_Expression_Data_2021/447_SUPP/mmc1_File_S1.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (772 / -2960)
+  ... repeated 2 times...
+Abstracts:  73%|███████▎  | 608/836 [11:21<02:21,  1.61it/s]Abstracts:  73%|███████▎  | 609/836 [11:22<02:07,  1.78it/s]Abstracts:  73%|███████▎  | 610/836 [11:22<02:06,  1.79it/s]Abstracts:  73%|███████▎  | 611/836 [11:23<01:57,  1.92it/s]Abstracts:  73%|███████▎  | 612/836 [11:25<04:06,  1.10s/it]Abstracts:  73%|███████▎  | 613/836 [11:25<03:18,  1.12it/s]Abstracts:  73%|███████▎  | 614/836 [11:26<02:44,  1.35it/s]Abstracts:  74%|███████▎  | 615/836 [11:27<03:11,  1.16it/s]Abstracts:  74%|███████▎  | 616/836 [11:27<02:33,  1.44it/s]Abstracts:  74%|███████▍  | 617/836 [11:28<02:06,  1.73it/s]Abstracts:  74%|███████▍  | 618/836 [11:29<02:31,  1.44it/s]Abstracts:  74%|███████▍  | 619/836 [11:29<02:44,  1.32it/s]Abstracts:  74%|███████▍  | 620/836 [11:30<02:45,  1.30it/s]Abstracts:  74%|███████▍  | 621/836 [11:31<03:15,  1.10it/s]Abstracts:  74%|███████▍  | 622/836 [11:32<03:15,  1.09it/s]Abstracts:  75%|███████▍  | 623/836 [11:34<03:28,  1.02it/s]Abstracts:  75%|███████▍  | 624/836 [11:35<03:29,  1.01it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/449_sara_Shrinkage_estimation_of_gene_interaction_networks_in_single-cell_RNA_sequencing_data_2024/449_sara_Shrinkage_estimation_of_gene_interaction_networks_in_single-cell_RNA_sequencing_data_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/449_sara_Shrinkage_estimation_of_gene_interaction_networks_in_single-cell_RNA_sequencing_data_2024/449_sara_Shrinkage_estimation_of_gene_interaction_networks_in_single-cell_RNA_sequencing_data_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (40 / -2959)
+  ... repeated 6 times...
+Abstracts:  75%|███████▍  | 625/836 [11:35<03:24,  1.03it/s]Abstracts:  75%|███████▍  | 626/836 [11:43<10:26,  2.98s/it]Abstracts:  75%|███████▌  | 627/836 [11:44<08:28,  2.43s/it]Abstracts:  75%|███████▌  | 628/836 [11:52<13:49,  3.99s/it]Abstracts:  75%|███████▌  | 629/836 [12:00<17:30,  5.08s/it]Abstracts:  75%|███████▌  | 630/836 [12:01<13:22,  3.90s/it]Abstracts:  75%|███████▌  | 631/836 [12:02<10:22,  3.03s/it]Abstracts:  76%|███████▌  | 632/836 [12:04<09:17,  2.73s/it]Abstracts:  76%|███████▌  | 633/836 [12:05<07:28,  2.21s/it]Abstracts:  76%|███████▌  | 634/836 [12:06<06:27,  1.92s/it]Abstracts:  76%|███████▌  | 635/836 [12:07<05:28,  1.64s/it]Abstracts:  76%|███████▌  | 636/836 [12:09<05:25,  1.63s/it]Abstracts:  76%|███████▌  | 637/836 [12:09<04:43,  1.42s/it]Abstracts:  76%|███████▋  | 638/836 [12:11<04:25,  1.34s/it]Abstracts:  76%|███████▋  | 639/836 [12:12<04:01,  1.23s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/461_mcRigor_a_statistical_method_to_enhance_the_rigor_of_metacell_partitioning_in_single-cell_data_analysis_2025/461_mcRigor_a_statistical_method_to_enhance_the_rigor_of_metacell_partitioning_in_single-cell_data_analysis_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/461_mcRigor_a_statistical_method_to_enhance_the_rigor_of_metacell_partitioning_in_single-cell_data_analysis_2025/461_mcRigor_a_statistical_method_to_enhance_the_rigor_of_metacell_partitioning_in_single-cell_data_analysis_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -180)
+  bogus font ascent/descent values (0 / -215)
+Abstracts:  77%|███████▋  | 640/836 [12:13<03:56,  1.20s/it]Abstracts:  77%|███████▋  | 641/836 [12:14<04:10,  1.28s/it]Abstracts:  77%|███████▋  | 642/836 [12:16<04:14,  1.31s/it]Abstracts:  77%|███████▋  | 643/836 [12:16<03:31,  1.10s/it]Abstracts:  77%|███████▋  | 644/836 [12:17<03:28,  1.08s/it]Abstracts:  77%|███████▋  | 645/836 [12:18<03:18,  1.04s/it]Abstracts:  77%|███████▋  | 646/836 [12:19<03:15,  1.03s/it]Abstracts:  77%|███████▋  | 647/836 [12:20<03:08,  1.00it/s]Abstracts:  78%|███████▊  | 648/836 [12:21<03:03,  1.03it/s]Abstracts:  78%|███████▊  | 649/836 [12:22<02:56,  1.06it/s]Abstracts:  78%|███████▊  | 650/836 [12:23<02:57,  1.05it/s]Abstracts:  78%|███████▊  | 651/836 [12:24<03:00,  1.02it/s]Abstracts:  78%|███████▊  | 652/836 [12:25<03:19,  1.08s/it]Abstracts:  78%|███████▊  | 653/836 [12:26<03:19,  1.09s/it]Abstracts:  78%|███████▊  | 654/836 [12:27<02:53,  1.05it/s]Abstracts:  78%|███████▊  | 655/836 [12:28<02:47,  1.08it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/475_Transcriptomic_diversity_of_cell_types_across_the_adult_human_brain_CYTOGRAPH_2023/475_Transcriptomic_diversity_of_cell_types_across_the_adult_human_brain_CYTOGRAPH_2023.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/475_Transcriptomic_diversity_of_cell_types_across_the_adult_human_brain_CYTOGRAPH_2023/475_Transcriptomic_diversity_of_cell_types_across_the_adult_human_brain_CYTOGRAPH_2023.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -207)
+  ... repeated 2 times...
+Abstracts:  78%|███████▊  | 656/836 [12:29<03:07,  1.04s/it]Abstracts:  79%|███████▊  | 657/836 [12:30<03:20,  1.12s/it]Abstracts:  79%|███████▊  | 658/836 [12:31<03:08,  1.06s/it]Abstracts:  79%|███████▉  | 659/836 [12:33<03:29,  1.18s/it]Abstracts:  79%|███████▉  | 660/836 [12:34<03:19,  1.13s/it]Abstracts:  79%|███████▉  | 661/836 [12:35<03:19,  1.14s/it]Abstracts:  79%|███████▉  | 662/836 [12:36<03:16,  1.13s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/483_Eph_receptor_signaling_complexes_in_the_plasma_membrane_REVIEW_2024/483_Eph_receptor_signaling_complexes_in_the_plasma_membrane_REVIEW_2024.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/483_Eph_receptor_signaling_complexes_in_the_plasma_membrane_REVIEW_2024/483_Eph_receptor_signaling_complexes_in_the_plasma_membrane_REVIEW_2024.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -203)
+  ... repeated 2 times...
+Abstracts:  79%|███████▉  | 663/836 [12:37<03:20,  1.16s/it]Abstracts:  79%|███████▉  | 664/836 [12:38<03:04,  1.07s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/485_Fused_Gromov-Wasserstein_distance_for_structured_objects_theoretical_foundations_and_mathematical_properties_2018/485_Fused_Gromov-Wasserstein_distance_for_structured_objects_theoretical_foundations_and_mathematical_properties_2018.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/485_Fused_Gromov-Wasserstein_distance_for_structured_objects_theoretical_foundations_and_mathematical_properties_2018/485_Fused_Gromov-Wasserstein_distance_for_structured_objects_theoretical_foundations_and_mathematical_properties_2018.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (772 / -2960)
+  ... repeated 2 times...
+Abstracts:  80%|███████▉  | 665/836 [12:39<02:45,  1.03it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/486_Fused_Gromov-Wasserstein_Distance_for_Structured_Objects_2020/486_Fused_Gromov-Wasserstein_Distance_for_Structured_Objects_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/486_Fused_Gromov-Wasserstein_Distance_for_Structured_Objects_2020/486_Fused_Gromov-Wasserstein_Distance_for_Structured_Objects_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (772 / -2960)
+  ... repeated 2 times...
+Abstracts:  80%|███████▉  | 666/836 [12:40<02:26,  1.16it/s]Abstracts:  80%|███████▉  | 667/836 [12:40<02:02,  1.38it/s]Abstracts:  80%|███████▉  | 668/836 [12:41<02:29,  1.12it/s]Abstracts:  80%|████████  | 669/836 [12:42<02:40,  1.04it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/490_Soft-DTW_a_Differentiable_Loss_Function_for_Time-Series_2017/490_Soft-DTW_a_Differentiable_Loss_Function_for_Time-Series_2017.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/490_Soft-DTW_a_Differentiable_Loss_Function_for_Time-Series_2017/490_Soft-DTW_a_Differentiable_Loss_Function_for_Time-Series_2017.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (334 / -2959)
+  ... repeated 2 times...
+Abstracts:  80%|████████  | 670/836 [12:43<02:15,  1.23it/s]Abstracts:  80%|████████  | 671/836 [12:44<02:26,  1.13it/s]Abstracts:  80%|████████  | 672/836 [12:44<02:10,  1.26it/s]Abstracts:  81%|████████  | 673/836 [12:45<02:10,  1.25it/s]Abstracts:  81%|████████  | 674/836 [12:46<01:51,  1.46it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/494_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_2019/494_SUPP/494_supp.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/494_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_2019/494_SUPP/494_supp.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  repaired broken tree structure in outline
+  invalid link destination
+Abstracts:  81%|████████  | 675/836 [12:47<02:06,  1.27it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/494_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_2019/494_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/494_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_2019/494_Temporal_patterning_of_apical_progenitors_and_their_daughter_neurons_in_the_developing_neocortex_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -200)
+  ... repeated 2 times...
+Abstracts:  81%|████████  | 676/836 [12:48<02:17,  1.16it/s]Abstracts:  81%|████████  | 677/836 [12:49<02:22,  1.12it/s]Abstracts:  81%|████████  | 678/836 [12:49<02:09,  1.22it/s]Abstracts:  81%|████████  | 679/836 [12:50<01:47,  1.47it/s]Abstracts:  81%|████████▏ | 680/836 [12:50<01:31,  1.70it/s]Abstracts:  81%|████████▏ | 681/836 [12:50<01:21,  1.90it/s]Abstracts:  82%|████████▏ | 682/836 [12:51<01:11,  2.14it/s]Abstracts:  82%|████████▏ | 683/836 [12:51<01:08,  2.22it/s]Abstracts:  82%|████████▏ | 684/836 [12:53<01:55,  1.31it/s]Abstracts:  82%|████████▏ | 685/836 [12:53<01:41,  1.49it/s]Abstracts:  82%|████████▏ | 686/836 [12:54<01:51,  1.34it/s]Abstracts:  82%|████████▏ | 687/836 [12:55<02:01,  1.23it/s]Abstracts:  82%|████████▏ | 688/836 [12:56<02:08,  1.15it/s]Abstracts:  82%|████████▏ | 689/836 [12:57<02:11,  1.11it/s]Abstracts:  83%|████████▎ | 690/836 [12:58<02:17,  1.06it/s]Abstracts:  83%|████████▎ | 691/836 [12:58<01:51,  1.30it/s]Abstracts:  83%|████████▎ | 692/836 [12:59<01:50,  1.31it/s]Abstracts:  83%|████████▎ | 693/836 [13:00<02:01,  1.18it/s]Abstracts:  83%|████████▎ | 694/836 [13:01<02:12,  1.07it/s]Abstracts:  83%|████████▎ | 695/836 [13:02<01:44,  1.35it/s]Abstracts:  83%|████████▎ | 696/836 [13:03<01:56,  1.20it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/503_The_synaptic_ectokinase_VLK_triggers_the_EphB2–NMDAR_interaction_to_drive_injury-induced_pain_2025/503_The_synaptic_ectokinase_VLK_triggers_the_EphB2–NMDAR_interaction_to_drive_injury-induced_pain_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/503_The_synaptic_ectokinase_VLK_triggers_the_EphB2–NMDAR_interaction_to_drive_injury-induced_pain_2025/503_The_synaptic_ectokinase_VLK_triggers_the_EphB2–NMDAR_interaction_to_drive_injury-induced_pain_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  Actualtext with no position. Text may be lost or mispositioned.
+  ... repeated 6 times...
+Abstracts:  83%|████████▎ | 697/836 [13:04<02:03,  1.12it/s]Abstracts:  83%|████████▎ | 698/836 [13:05<02:07,  1.08it/s]Abstracts:  84%|████████▎ | 699/836 [13:06<02:11,  1.04it/s]Abstracts:  84%|████████▎ | 700/836 [13:07<02:24,  1.06s/it]Abstracts:  84%|████████▍ | 701/836 [13:09<02:44,  1.22s/it]Abstracts:  84%|████████▍ | 702/836 [13:09<02:24,  1.08s/it]Abstracts:  84%|████████▍ | 703/836 [13:10<01:56,  1.14it/s]Abstracts:  84%|████████▍ | 704/836 [13:10<01:32,  1.43it/s]Abstracts:  84%|████████▍ | 705/836 [13:10<01:17,  1.68it/s]Abstracts:  84%|████████▍ | 706/836 [13:11<01:34,  1.38it/s]Abstracts:  85%|████████▍ | 707/836 [13:12<01:40,  1.28it/s]Abstracts:  85%|████████▍ | 708/836 [13:13<01:41,  1.26it/s]Abstracts:  85%|████████▍ | 709/836 [13:14<01:22,  1.54it/s]Abstracts:  85%|████████▍ | 710/836 [13:14<01:08,  1.83it/s]Abstracts:  85%|████████▌ | 711/836 [13:14<01:03,  1.98it/s]Abstracts:  85%|████████▌ | 712/836 [13:15<01:27,  1.42it/s]Abstracts:  85%|████████▌ | 713/836 [13:16<01:39,  1.24it/s]Abstracts:  85%|████████▌ | 714/836 [13:18<02:11,  1.08s/it]Abstracts:  86%|████████▌ | 715/836 [13:19<02:08,  1.06s/it]Abstracts:  86%|████████▌ | 716/836 [13:20<01:41,  1.19it/s]Abstracts:  86%|████████▌ | 717/836 [13:21<01:46,  1.11it/s]Abstracts:  86%|████████▌ | 718/836 [13:22<01:55,  1.02it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/514_Functional_Single-Cell_Proteomics_Technology_and_Biological_Applications_2025/514_Functional_Single-Cell_Proteomics_Technology_and_Biological_Applications_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/514_Functional_Single-Cell_Proteomics_Technology_and_Biological_Applications_2025/514_Functional_Single-Cell_Proteomics_Technology_and_Biological_Applications_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -245)
+  ... repeated 2 times...
+Abstracts:  86%|████████▌ | 719/836 [13:23<01:54,  1.02it/s]Abstracts:  86%|████████▌ | 720/836 [13:27<03:36,  1.87s/it]Abstracts:  86%|████████▌ | 721/836 [13:27<02:44,  1.43s/it]Abstracts:  86%|████████▋ | 722/836 [13:28<02:33,  1.35s/it]Abstracts:  86%|████████▋ | 723/836 [13:29<02:24,  1.28s/it]Abstracts:  87%|████████▋ | 724/836 [13:30<01:53,  1.01s/it]Abstracts:  87%|████████▋ | 725/836 [13:31<01:56,  1.05s/it]Abstracts:  87%|████████▋ | 726/836 [13:32<01:54,  1.04s/it]Abstracts:  87%|████████▋ | 727/836 [13:33<01:54,  1.05s/it]Abstracts:  87%|████████▋ | 728/836 [13:34<01:57,  1.09s/it]Abstracts:  87%|████████▋ | 729/836 [13:34<01:31,  1.17it/s]Abstracts:  87%|████████▋ | 730/836 [13:36<01:52,  1.06s/it]Abstracts:  87%|████████▋ | 731/836 [13:37<01:51,  1.06s/it]Abstracts:  88%|████████▊ | 732/836 [13:37<01:24,  1.23it/s]Abstracts:  88%|████████▊ | 733/836 [13:39<01:41,  1.02it/s]Abstracts:  88%|████████▊ | 734/836 [13:40<01:40,  1.02it/s]Abstracts:  88%|████████▊ | 735/836 [13:41<01:38,  1.03it/s]Abstracts:  88%|████████▊ | 736/836 [13:42<01:39,  1.01it/s]Abstracts:  88%|████████▊ | 737/836 [13:43<01:44,  1.06s/it]Abstracts:  88%|████████▊ | 738/836 [13:44<01:55,  1.18s/it]Abstracts:  88%|████████▊ | 739/836 [13:45<01:48,  1.11s/it]Abstracts:  89%|████████▊ | 740/836 [13:47<01:54,  1.19s/it]Abstracts:  89%|████████▊ | 741/836 [13:48<02:03,  1.30s/it]Abstracts:  89%|████████▉ | 742/836 [13:49<01:53,  1.21s/it]Abstracts:  89%|████████▉ | 743/836 [13:51<01:56,  1.25s/it]Abstracts:  89%|████████▉ | 744/836 [13:52<01:57,  1.28s/it]Abstracts:  89%|████████▉ | 745/836 [13:52<01:29,  1.02it/s]Abstracts:  89%|████████▉ | 746/836 [13:53<01:14,  1.21it/s]Abstracts:  89%|████████▉ | 747/836 [13:53<01:03,  1.41it/s]Abstracts:  89%|████████▉ | 748/836 [13:54<01:18,  1.12it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/535_CellUntangler_Separating_distinct_biological_signals_in_single-cell_data_with_deep_generative_models_2025/535_CellUntangler_Separating_distinct_biological_signals_in_single-cell_data_with_deep_generative_models_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/535_CellUntangler_Separating_distinct_biological_signals_in_single-cell_data_with_deep_generative_models_2025/535_CellUntangler_Separating_distinct_biological_signals_in_single-cell_data_with_deep_generative_models_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (3117 / -2464)
+  ... repeated 6 times...
+Abstracts:  90%|████████▉ | 749/836 [13:55<01:20,  1.09it/s]Abstracts:  90%|████████▉ | 750/836 [13:56<01:22,  1.04it/s]Abstracts:  90%|████████▉ | 751/836 [13:58<01:26,  1.02s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/535_CellUntangler_Separating_distinct_biological_signals_in_single-cell_data_with_deep_generative_models_2025/535_SUPP/535_mmc4_article_and_supp.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/535_CellUntangler_Separating_distinct_biological_signals_in_single-cell_data_with_deep_generative_models_2025/535_SUPP/535_mmc4_article_and_supp.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (3117 / -2464)
+  ... repeated 6 times...
+Abstracts:  90%|████████▉ | 752/836 [13:59<01:25,  1.01s/it]Abstracts:  90%|█████████ | 753/836 [13:59<01:20,  1.03it/s]Abstracts:  90%|█████████ | 754/836 [14:01<01:22,  1.01s/it]Abstracts:  90%|█████████ | 755/836 [14:02<01:21,  1.00s/it]Abstracts:  90%|█████████ | 756/836 [14:03<01:21,  1.02s/it]Abstracts:  91%|█████████ | 757/836 [14:03<01:03,  1.24it/s]Abstracts:  91%|█████████ | 758/836 [14:04<01:08,  1.14it/s]Abstracts:  91%|█████████ | 759/836 [14:05<01:09,  1.11it/s]Abstracts:  91%|█████████ | 760/836 [14:06<01:13,  1.04it/s]Abstracts:  91%|█████████ | 761/836 [14:07<01:12,  1.03it/s]Abstracts:  91%|█████████ | 762/836 [14:08<01:12,  1.02it/s]Abstracts:  91%|█████████▏| 763/836 [14:09<01:13,  1.00s/it]Abstracts:  91%|█████████▏| 764/836 [14:10<01:16,  1.06s/it]Abstracts:  92%|█████████▏| 765/836 [14:11<01:15,  1.06s/it]Abstracts:  92%|█████████▏| 766/836 [14:12<01:11,  1.02s/it]Abstracts:  92%|█████████▏| 767/836 [14:13<01:12,  1.05s/it]Abstracts:  92%|█████████▏| 768/836 [14:14<01:11,  1.05s/it]Abstracts:  92%|█████████▏| 769/836 [14:15<01:07,  1.00s/it]Abstracts:  92%|█████████▏| 770/836 [14:16<01:05,  1.00it/s]Abstracts:  92%|█████████▏| 771/836 [14:18<01:10,  1.08s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/553_A_Tutorial_on_Canonical_Correlation_Methods_2017/553_A_Tutorial_on_Canonical_Correlation_Methods_2017.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/553_A_Tutorial_on_Canonical_Correlation_Methods_2017/553_A_Tutorial_on_Canonical_Correlation_Methods_2017.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (334 / -2959)
+  ... repeated 2 times...
+Abstracts:  92%|█████████▏| 772/836 [14:18<00:59,  1.07it/s]Abstracts:  92%|█████████▏| 773/836 [14:19<00:48,  1.29it/s]Abstracts:  93%|█████████▎| 774/836 [14:20<01:04,  1.05s/it]Abstracts:  93%|█████████▎| 775/836 [14:21<00:53,  1.14it/s]Abstracts:  93%|█████████▎| 776/836 [14:21<00:47,  1.26it/s]Abstracts:  93%|█████████▎| 777/836 [14:22<00:53,  1.11it/s]Abstracts:  93%|█████████▎| 778/836 [14:24<00:55,  1.05it/s]Abstracts:  93%|█████████▎| 779/836 [14:25<00:58,  1.02s/it]Abstracts:  93%|█████████▎| 780/836 [14:26<00:56,  1.01s/it]Abstracts:  93%|█████████▎| 781/836 [14:26<00:43,  1.28it/s]Abstracts:  94%|█████████▎| 782/836 [14:27<00:44,  1.20it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/561_From_Transcripts_to_Cells_Dissecting_Sensitivity,_Signal_Contamination,_and_Specificity_in_Xenium_Spatial_Transcriptomics_Gottardo_2025/561_From_Transcripts_to_Cells_Dissecting_Sensitivity,_Signal_Contamination,_and_Specificity_in_Xenium_Spatial_Transcriptomics_Gottardo_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/561_From_Transcripts_to_Cells_Dissecting_Sensitivity,_Signal_Contamination,_and_Specificity_in_Xenium_Spatial_Transcriptomics_Gottardo_2025/561_From_Transcripts_to_Cells_Dissecting_Sensitivity,_Signal_Contamination,_and_Specificity_in_Xenium_Spatial_Transcriptomics_Gottardo_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  repaired broken tree structure in outline
+  ... repeated 3 times...
+Abstracts:  94%|█████████▎| 783/836 [14:28<00:41,  1.28it/s]Abstracts:  94%|█████████▍| 784/836 [14:29<00:44,  1.17it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/563_STRkit_precise,_read-level_genotyping_of_short_tandem_repeats_using_long_reads_and_single-nucleotide_variation_C3G_2025/563_STRkit_precise,_read-level_genotyping_of_short_tandem_repeats_using_long_reads_and_single-nucleotide_variation_C3G_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/563_STRkit_precise,_read-level_genotyping_of_short_tandem_repeats_using_long_reads_and_single-nucleotide_variation_C3G_2025/563_STRkit_precise,_read-level_genotyping_of_short_tandem_repeats_using_long_reads_and_single-nucleotide_variation_C3G_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  repaired broken tree structure in outline
+  ... repeated 3 times...
+Abstracts:  94%|█████████▍| 785/836 [14:29<00:41,  1.24it/s]Abstracts:  94%|█████████▍| 786/836 [14:31<00:50,  1.00s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/565_Single-cell_foundation_models_bringing_artiﬁcial_intelligence_into_cell_biology_2025/565_Single-cell_foundation_models_bringing_artiﬁcial_intelligence_into_cell_biology_2025.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/565_Single-cell_foundation_models_bringing_artiﬁcial_intelligence_into_cell_biology_2025/565_Single-cell_foundation_models_bringing_artiﬁcial_intelligence_into_cell_biology_2025.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -200)
+  ... repeated 2 times...
+Abstracts:  94%|█████████▍| 787/836 [14:32<00:49,  1.02s/it]Abstracts:  94%|█████████▍| 788/836 [14:32<00:41,  1.17it/s]Abstracts:  94%|█████████▍| 789/836 [14:33<00:42,  1.10it/s]Abstracts:  94%|█████████▍| 790/836 [14:34<00:41,  1.10it/s]Abstracts:  95%|█████████▍| 791/836 [14:35<00:41,  1.08it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/570_Methods_for_comparative_ChIA-PET_and_Hi-C_data_analysis_2020/570_Methods_for_comparative_ChIA-PET_and_Hi-C_data_analysis_2020.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/570_Methods_for_comparative_ChIA-PET_and_Hi-C_data_analysis_2020/570_Methods_for_comparative_ChIA-PET_and_Hi-C_data_analysis_2020.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -201)
+  ... repeated 2 times...
+Abstracts:  95%|█████████▍| 792/836 [14:36<00:40,  1.08it/s]Abstracts:  95%|█████████▍| 793/836 [14:37<00:41,  1.05it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/572_Hi-C_analysis_from_data_generation_to_integration_2019/572_Hi-C_analysis_from_data_generation_to_integration_2019.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/572_Hi-C_analysis_from_data_generation_to_integration_2019/572_Hi-C_analysis_from_data_generation_to_integration_2019.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (0 / -216)
+  ... repeated 2 times...
+Abstracts:  95%|█████████▍| 794/836 [14:38<00:43,  1.04s/it]Abstracts:  95%|█████████▌| 795/836 [14:39<00:43,  1.05s/it]Abstracts:  95%|█████████▌| 796/836 [14:41<00:41,  1.05s/it]Abstracts:  95%|█████████▌| 797/836 [14:42<00:41,  1.06s/it]Abstracts:  95%|█████████▌| 798/836 [14:43<00:40,  1.06s/it]Abstracts:  96%|█████████▌| 799/836 [14:44<00:41,  1.12s/it]Abstracts:  96%|█████████▌| 800/836 [14:45<00:39,  1.10s/it]Abstracts:  96%|█████████▌| 801/836 [14:46<00:33,  1.04it/s]Abstracts:  96%|█████████▌| 802/836 [14:47<00:34,  1.00s/it]Abstracts:  96%|█████████▌| 803/836 [14:48<00:34,  1.06s/it]Abstracts:  96%|█████████▌| 804/836 [14:49<00:36,  1.13s/it]Abstracts:  96%|█████████▋| 805/836 [14:50<00:36,  1.17s/it]Abstracts:  96%|█████████▋| 806/836 [14:52<00:38,  1.28s/it]Abstracts:  97%|█████████▋| 807/836 [14:53<00:37,  1.30s/it]Abstracts:  97%|█████████▋| 808/836 [14:54<00:34,  1.24s/it]Abstracts:  97%|█████████▋| 809/836 [14:56<00:32,  1.22s/it]Abstracts:  97%|█████████▋| 810/836 [14:57<00:30,  1.17s/it]Abstracts:  97%|█████████▋| 811/836 [14:58<00:29,  1.20s/it]Abstracts:  97%|█████████▋| 812/836 [14:59<00:28,  1.20s/it]Abstracts:  97%|█████████▋| 813/836 [15:00<00:26,  1.15s/it]Abstracts:  97%|█████████▋| 814/836 [15:02<00:27,  1.24s/it]Abstracts:  97%|█████████▋| 815/836 [15:03<00:25,  1.23s/it]Abstracts:  98%|█████████▊| 816/836 [15:04<00:23,  1.16s/it]Abstracts:  98%|█████████▊| 817/836 [15:05<00:20,  1.06s/it]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/582_scDBic_novel_deep_learning-based_biclustering_algorithm_for_analyzing_scRNA-seq_data_2026/582_SUPP/582_SUPP.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/582_scDBic_novel_deep_learning-based_biclustering_algorithm_for_analyzing_scRNA-seq_data_2026/582_SUPP/582_SUPP.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (3116 / -2463)
+  ... repeated 3 times...
+Abstracts:  98%|█████████▊| 818/836 [15:05<00:16,  1.11it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/582_scDBic_novel_deep_learning-based_biclustering_algorithm_for_analyzing_scRNA-seq_data_2026/582_SUPP/SUPPLEMENTARY_scDBic_BIOINF-2025-1570.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/582_scDBic_novel_deep_learning-based_biclustering_algorithm_for_analyzing_scRNA-seq_data_2026/582_SUPP/SUPPLEMENTARY_scDBic_BIOINF-2025-1570.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (3116 / -2463)
+  ... repeated 3 times...
+Abstracts:  98%|█████████▊| 819/836 [15:06<00:13,  1.29it/s]Abstracts:  98%|█████████▊| 820/836 [15:07<00:13,  1.19it/s]Abstracts:  98%|█████████▊| 821/836 [15:07<00:11,  1.26it/s]Abstracts:  98%|█████████▊| 822/836 [15:08<00:12,  1.12it/s]Abstracts:  98%|█████████▊| 823/836 [15:10<00:13,  1.01s/it]Abstracts:  99%|█████████▊| 824/836 [15:11<00:12,  1.04s/it]Abstracts:  99%|█████████▊| 825/836 [15:12<00:11,  1.04s/it]Abstracts:  99%|█████████▉| 826/836 [15:13<00:11,  1.12s/it]Abstracts:  99%|█████████▉| 827/836 [15:14<00:08,  1.12it/s]Abstracts:  99%|█████████▉| 828/836 [15:14<00:06,  1.30it/s]Abstracts:  99%|█████████▉| 829/836 [15:14<00:04,  1.49it/s]Abstracts:  99%|█████████▉| 830/836 [15:15<00:03,  1.79it/s]Abstracts:  99%|█████████▉| 831/836 [15:16<00:03,  1.49it/s]Abstracts: 100%|█████████▉| 832/836 [15:17<00:03,  1.32it/s]
+ABSTRACT_MUPDF_WARN: /home/mneira/MAURICIO/papers/593_scDecorr_feature_decorrelation_based_representation_learning_enables_self-supervised_alignment_of_multiple_single-cell_experiments_2026/593_scDecorr_feature_decorrelation_based_representation_learning_enables_self-supervised_alignment_of_multiple_single-cell_experiments_2026.pdf
+ABSTRACT_MUPDF_WARN_JSON: /home/mneira/MAURICIO/01_JANUARY_2026/44_coursera_vibe_coding_essentials_specialization/Cursor_Projects/papers-rag_app/abstract_meta/593_scDecorr_feature_decorrelation_based_representation_learning_enables_self-supervised_alignment_of_multiple_single-cell_experiments_2026/593_scDecorr_feature_decorrelation_based_representation_learning_enables_self-supervised_alignment_of_multiple_single-cell_experiments_2026.json
+ABSTRACT_MUPDF_WARN_DETAIL:
+  bogus font ascent/descent values (772 / -2960)
+  ... repeated 12 times...
+Abstracts: 100%|█████████▉| 833/836 [15:18<00:02,  1.13it/s]Abstracts: 100%|█████████▉| 834/836 [15:19<00:01,  1.04it/s]Abstracts: 100%|█████████▉| 835/836 [15:21<00:01,  1.20s/it]Abstracts: 100%|██████████| 836/836 [15:22<00:00,  1.17s/it]Abstracts: 100%|██████████| 836/836 [15:22<00:00,  1.10s/it]
+Done.
