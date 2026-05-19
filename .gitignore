@@ -1,8 +1,7 @@
 # API keys - NEVER commit this
 .env
 
-# ChromaDB index (large, rebuild from PDFs)
-chroma_db/
+
 
 # Python
 __pycache__/
@@ -30,8 +29,5 @@ Thumbs.db
 
 # other directories and files
 *private*
-selected_pdfs/
-abstract_meta/
-private_notes/
-exported_prompts/
+
 

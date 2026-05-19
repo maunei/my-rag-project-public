@@ -21,6 +21,7 @@ or aliases ``ENTREZ_EMAIL`` / ``ENTREZ_API_KEY``.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import sys
 from collections.abc import Callable
@@ -34,6 +35,7 @@ from abstract_extraction import (
     abstract_json_path,
     attach_pubmed_enrichment,
     extract_record_for_pdf,
+    load_abstract_record,
     save_abstract_record,
 )
 from ncbi_pubmed import (
@@ -58,6 +60,22 @@ _DOI_ROUTE_FAILURE = frozenset(
 ProgressCb = Callable[[float, str], None] | None
 
 
+def should_pubmed_refresh_existing_json(
+    pdf_path: str,
+    papers_dir: str,
+    *,
+    refresh_if_missing_pubmed: bool,
+    abstract_meta_root: Path | None = None,
+) -> bool:
+    """Return True when an existing JSON only needs PubMed enrichment."""
+    if not refresh_if_missing_pubmed:
+        return False
+    jpath = abstract_json_path(
+        pdf_path, papers_dir, abstract_meta_root=abstract_meta_root
+    )
+    return jpath.is_file() and not has_pubmed_enrichment_attempt(jpath)
+
+
 def should_skip_abstract_json(
     pdf_path: str,
     papers_dir: str,
@@ -65,6 +83,7 @@ def should_skip_abstract_json(
     force: bool,
     only_missing: bool,
     refresh_if_newer_pdf: bool,
+    refresh_if_missing_pubmed: bool = False,
     abstract_meta_root: Path | None = None,
 ) -> bool:
     """When True, skip entire PDF (local extract + optional PubMed)."""
@@ -81,9 +100,27 @@ def should_skip_abstract_json(
                 return False
         except OSError:
             return False
+    if refresh_if_missing_pubmed and not has_pubmed_enrichment_attempt(jpath):
+        return False
     if only_missing:
         return True
     return False
+
+
+def has_pubmed_enrichment_attempt(json_path: Path) -> bool:
+    """Return True when the JSON records any prior PubMed attempt status."""
+    try:
+        with json_path.open(encoding="utf-8") as f:
+            record = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return False
+    if not isinstance(record, dict):
+        return False
+    enrichment = record.get("pubmed_enrichment")
+    if not isinstance(enrichment, dict):
+        return False
+    status = enrichment.get("status")
+    return isinstance(status, str) and bool(status.strip())
 
 
 def _apply_pubmed(
@@ -124,6 +161,7 @@ def pipeline_one_pdf(
     force: bool,
     only_missing: bool,
     refresh_if_newer_pdf: bool,
+    refresh_if_missing_pubmed: bool,
     ncbi_email: str | None,
     ncbi_key: str | None,
 ) -> str:
@@ -132,12 +170,50 @@ def pipeline_one_pdf(
     PubMed requires ``ncbi_email`` when ``pubmed_meta``.
     """
     try:
+        pubmed_refresh_existing = (
+            not force
+            and only_missing
+            and should_pubmed_refresh_existing_json(
+                pdf_path,
+                papers_dir,
+                refresh_if_missing_pubmed=refresh_if_missing_pubmed,
+                abstract_meta_root=abstract_meta_root,
+            )
+        )
+        if pubmed_refresh_existing:
+            try:
+                pdf_is_newer = (
+                    refresh_if_newer_pdf
+                    and Path(pdf_path).stat().st_mtime
+                    > abstract_json_path(
+                        pdf_path, papers_dir, abstract_meta_root=abstract_meta_root
+                    ).stat().st_mtime
+                )
+            except OSError:
+                pdf_is_newer = True
+            if not pdf_is_newer:
+                rec = load_abstract_record(
+                    pdf_path,
+                    papers_dir,
+                    abstract_meta_root=abstract_meta_root,
+                )
+                if isinstance(rec, dict):
+                    _apply_pubmed(rec, ncbi_email=ncbi_email, ncbi_key=ncbi_key)
+                    save_abstract_record(
+                        rec,
+                        pdf_path,
+                        papers_dir,
+                        abstract_meta_root=abstract_meta_root,
+                    )
+                    return "pubmed_refreshed"
+
         if should_skip_abstract_json(
             pdf_path,
             papers_dir,
             force=force,
             only_missing=only_missing,
             refresh_if_newer_pdf=refresh_if_newer_pdf,
+            refresh_if_missing_pubmed=refresh_if_missing_pubmed,
             abstract_meta_root=abstract_meta_root,
         ):
             return "skipped"
@@ -148,10 +224,6 @@ def pipeline_one_pdf(
             abstract_meta_root=abstract_meta_root,
         )
         if pubmed_meta:
-            if not ncbi_email:
-                raise RuntimeError(
-                    "PubMed requested but NCBI_EMAIL / ENTREZ_EMAIL is not set in .env"
-                )
             _apply_pubmed(rec, ncbi_email=ncbi_email, ncbi_key=ncbi_key)
         save_abstract_record(
             rec,
@@ -173,6 +245,7 @@ def run_abstract_extractions(
     force: bool = False,
     only_missing: bool = False,
     refresh_if_newer_pdf: bool = False,
+    refresh_if_missing_pubmed: bool = False,
     limit: int = 0,
     progress_callback: ProgressCb = None,
 ) -> dict[str, int]:
@@ -196,13 +269,13 @@ def run_abstract_extractions(
         os.environ.get("NCBI_API_KEY") or os.environ.get("ENTREZ_API_KEY") or ""
     ).strip() or None
 
-    if pubmed_meta and not ncbi_email:
-        raise RuntimeError(
-            "PubMed enabled but no NCBI contact email — set NCBI_EMAIL "
-            "(or ENTREZ_EMAIL) in .env"
-        )
+    pubmed_skipped_missing_credentials = bool(pubmed_meta and not ncbi_email)
+    effective_pubmed_meta = bool(pubmed_meta and ncbi_email)
+    effective_refresh_if_missing_pubmed = bool(
+        refresh_if_missing_pubmed and effective_pubmed_meta
+    )
 
-    extracted = skipped = errors = 0
+    extracted = skipped = errors = pubmed_refreshed = 0
 
     def _pct_done(i_done: int) -> float:
         if total <= 0:
@@ -220,15 +293,18 @@ def run_abstract_extractions(
             pdf_path,
             root_pdf,
             abstract_meta_root=meta_root,
-            pubmed_meta=pubmed_meta,
+            pubmed_meta=effective_pubmed_meta,
             force=force,
             only_missing=only_missing,
             refresh_if_newer_pdf=refresh_if_newer_pdf,
+            refresh_if_missing_pubmed=effective_refresh_if_missing_pubmed,
             ncbi_email=ncbi_email,
             ncbi_key=ncbi_key,
         )
         if outcome == "extracted":
             extracted += 1
+        elif outcome == "pubmed_refreshed":
+            pubmed_refreshed += 1
         elif outcome == "skipped":
             skipped += 1
         else:
@@ -237,7 +313,13 @@ def run_abstract_extractions(
     if progress_callback:
         progress_callback(1.0, "Done.")
 
-    return {"extracted": extracted, "skipped": skipped, "errors": errors}
+    return {
+        "extracted": extracted,
+        "pubmed_refreshed": pubmed_refreshed,
+        "skipped": skipped,
+        "errors": errors,
+        "pubmed_skipped_missing_credentials": int(pubmed_skipped_missing_credentials),
+    }
 
 
 def main() -> int:
@@ -265,12 +347,17 @@ def main() -> int:
     ap.add_argument(
         "--only-missing",
         action="store_true",
-        help="Skip PDFs that already have an abstract JSON (no local or PubMed updates)",
+        help="Skip PDFs that already have an abstract JSON unless a refresh rule applies",
     )
     ap.add_argument(
         "--refresh-if-newer-pdf",
         action="store_true",
         help="With --only-missing: still process when the PDF is newer than its JSON",
+    )
+    ap.add_argument(
+        "--refresh-if-missing-pubmed",
+        action="store_true",
+        help="With --only-missing --pubmed-meta: still process JSON without a PubMed attempt status",
     )
     ap.add_argument(
         "--pubmed-meta",
@@ -312,11 +399,18 @@ def main() -> int:
             f"api_key={'set' if ncbi_key else 'optional/missing'}"
         )
 
+    effective_pubmed_meta = bool(args.pubmed_meta and ncbi_email)
+    effective_refresh_if_missing_pubmed = bool(
+        (args.refresh_if_missing_pubmed or args.only_missing) and effective_pubmed_meta
+    )
     if args.pubmed_meta and not ncbi_email:
-        print("\n[ERROR] PubMed requested but NCBI_EMAIL / ENTREZ_EMAIL not set.", file=sys.stderr)
-        return 2
+        print(
+            "\n[WARN] PubMed requested but NCBI_EMAIL / ENTREZ_EMAIL is not set; "
+            "continuing with local PDF abstract extraction only.",
+            file=sys.stderr,
+        )
 
-    extracted = skipped = errors = 0
+    extracted = skipped = errors = pubmed_refreshed = 0
 
     try:
         for pdf_path in tqdm(pdfs, desc="Abstracts"):
@@ -324,15 +418,18 @@ def main() -> int:
                 pdf_path,
                 papers_dir,
                 abstract_meta_root=meta_root,
-                pubmed_meta=args.pubmed_meta,
+                pubmed_meta=effective_pubmed_meta,
                 force=args.force,
                 only_missing=args.only_missing,
                 refresh_if_newer_pdf=args.refresh_if_newer_pdf,
+                refresh_if_missing_pubmed=effective_refresh_if_missing_pubmed,
                 ncbi_email=ncbi_email,
                 ncbi_key=ncbi_key,
             )
             if outcome == "extracted":
                 extracted += 1
+            elif outcome == "pubmed_refreshed":
+                pubmed_refreshed += 1
             elif outcome == "skipped":
                 skipped += 1
             else:
@@ -343,7 +440,8 @@ def main() -> int:
 
     print(
         "Done.",
-        f"extracted={extracted} skipped={skipped} errors={errors}",
+        f"extracted={extracted} pubmed_refreshed={pubmed_refreshed} "
+        f"skipped={skipped} errors={errors}",
     )
     return 0
 

@@ -2,412 +2,267 @@
 
 ## Purpose and General Workflow of the Application
 
-Researchers often accumulate hundreds or even thousands of scientific articles in PDF format over many years of work. Eventually, a point is reached where the challenge is no longer obtaining papers, but instead being able to efficiently identify which articles are truly relevant to a particular biological question, computational problem, experimental method, or scientific hypothesis that one wishes to study in depth.
+Researchers often accumulate hundreds or even thousands of scientific articles in PDF format over many years of work. Eventually, the challenge is no longer obtaining papers, but efficiently identifying which articles are relevant to a biological question, method, or hypothesis—and then working with them in a traceable way.
 
-This application was designed to help navigate and interact with large local repositories of scientific PDFs using a combination of semantic retrieval, keyword-based searches, Boolean logic, metadata extraction, and AI-assisted contextual exploration.
+Papers RAG (v2.5) helps navigate large **local PDF libraries** using semantic retrieval, **FTS keyword** search, **Boolean logic at the paper level**, an independent **`abstract_meta` JSON** metadata layer, and several AI-assisted workflows (in-app Quick Chat, portable export, and full-document Deep Chat on Vertex AI).
 
-The system allows users to perform semantic searches across the content of their local PDF collection, meaning that papers can be retrieved not only through exact word matches, but also through conceptual similarity. This can be combined with traditional keyword searches and Boolean operators such as AND, OR, and NOT in order to progressively refine and narrow down the results.
+The searchable indexes are built **locally** from the user’s PDFs and maintained from the Streamlit sidebar (**Synchronize Databases** or individual step controls). Search results link to originals through a small local PDF HTTP server.
 
-The searchable vector database is created locally from the PDFs and can be easily updated directly within the application whenever new papers are added to the repository directories. This allows the indexed collection to remain synchronized with the user’s evolving local scientific archive without requiring complex manual reconfiguration steps.
+Users may **paste PDF basenames** to add **manual-only papers** (known references not returned by the current search) into the same selection, export, and chat workflows as search hits.
 
-The search results are directly hyperlinked to the original PDF files, allowing users to immediately open the corresponding papers in separate browser tabs for manual inspection, reading, or verification.
+Once papers are selected, the system supports:
 
-In addition to the automated retrieval process, the application also allows the user to manually provide exact PDF base filenames through a dedicated text box. The metadata associated with those papers can then be merged with the metadata and retrieved chunks coming from the current search results. In practice, this makes it possible to force the inclusion of specific known reference papers into the contextual information sent to the AI system, even if those papers were not part of the original retrieval set.
+- **Quick Chat (Tab 1)** — Vertex/Gemini grounded on `abstract_meta` plus a **single best excerpt** per search-hit paper (focused prompts).
+- **Export** — a plaintext bundle with **all** search excerpts for external LLMs (ChatGPT, Claude, etc.).
+- **Deep Chat (Tab 2)** — full PDFs staged locally, uploaded to GCS, then conversed with Gemini on complete documents.
 
-To support these workflows, the application maintains an independent metadata layer for all indexed papers. This metadata is generated locally as `.json` files by a dedicated extraction pipeline that parses the PDF documents. Optionally, this locally extracted metadata can be enriched programmatically by querying NCBI/PubMed in order to retrieve additional curated publication metadata such as official titles, abstracts, publication dates, PMIDs, author lists, and DOI validation.
-
-Once relevant papers have been identified, the user may choose between different forms of interaction with the retrieved information.
-
-One possibility is to have a direct AI-assisted conversation within the application itself using the retrieved metadata and text chunks as contextual grounding information. Another possibility is to export that same contextual information into a standalone text file that can later be used with the user’s own preferred AI system, whether free or paid.
-
-The application was intentionally designed in a way that does not force users into a single AI ecosystem. Instead, it allows the contextual information generated during retrieval to remain portable and reusable across different AI platforms.
-
-For more detailed analysis workflows, the user can send selected papers into a second interface dedicated to deeper document-level interaction. In this mode, the selected PDFs may be uploaded to Gemini models hosted on Google Cloud Vertex AI, allowing the AI system to interact with entire documents rather than only with previously retrieved text excerpts.
-
-To simplify this process, when papers are transferred into this deeper analysis workflow, the application automatically creates links to the corresponding PDF files — even when those files are deeply nested within complex directory structures. These links are organized into a dedicated folder so that the user can quickly locate, inspect, or manually upload the selected PDFs into their own preferred AI environment if desired.
-
-Overall, the application attempts to transform a large and potentially unmanageable local PDF archive into a searchable, navigable, AI-assisted scientific research environment where semantic retrieval, metadata enrichment, contextual export, and conversational analysis can all work together within a unified workflow.
+The design deliberately avoids locking users into one AI provider: export remains portable; cloud features are optional for indexing and local search.
 
 ---
 
 ## SYSTEM ARCHITECTURE AND CORE PHILOSOPHY
 
-PAPERS-RAG is a modular system designed to bridge local scientific PDF repositories with conversational AI systems and cloud-based large language models.
+PAPERS-RAG is a modular system bridging local PDF repositories, structured metadata, and conversational AI (local RAG-style context plus optional Vertex/GCS full-document chat).
 
-Unlike minimal Retrieval-Augmented Generation (RAG) prototypes, the system intentionally separates several independent but interconnected layers:
+Unlike minimal RAG prototypes, the system separates several layers:
 
 - local PDF storage
-- semantic vector retrieval
-- metadata extraction
+- **full-text** vector retrieval (Chroma)
+- **keyword** retrieval (SQLite FTS5 sidecar)
+- **metadata** vector retrieval (Chroma, from `abstract_meta`)
+- bibliographic JSON (`abstract_meta`)
 - contextual export
-- conversational AI interaction
-- and optional cloud-scale document analysis
+- in-app Quick Chat
+- optional cloud full-document analysis
 
-This architecture allows the application to remain flexible, reproducible, and largely independent from any single AI provider or indexing platform.
+### Per-library on-disk bundle
 
-At its core, the system relies on two parallel infrastructures:
+Configuration requires **`PAPERS_DIR`** in **`.env`** (the PDF corpus root must already exist). All derived data for that library lives under:
 
-1) a vector retrieval layer built from the full text extracted from PDFs
+```
+<PAPERS_DIR>/papers-rag_index/
+  chroma_db/                  # Chroma persistence (collections + keyword_index.sqlite)
+  abstract_meta/              # per-PDF JSON sidecars
+  exported_prompts/           # prompt_context_*.txt exports
+  selected_pdfs/              # Deep Chat staging (<timestamp>/ per send)
+  databases_health_reports/   # sync health TXT + HTML
+```
 
-2) an independent metadata layer containing structured bibliographic information stored as JSON files
+The sidebar **Papers root** can switch libraries at runtime; the active path is stored in **`.papers_rag_state.json`** in the app directory. **`papers_rag_config.py`** resolves paths; **`app.py`** shadows them on each rerun for the active library.
 
-These two layers work together during retrieval and AI interactions but remain logically decoupled. This separation makes it possible to:
+### Parallel infrastructures
 
-- enrich metadata independently
-- update bibliographic information without rebuilding embeddings
-- maintain lightweight vector indexes
-- preserve traceability of extracted information
-- and support modular workflows
+1. **Retrieval indexes** — full-text chunks, keyword index, and optional metadata vectors for semantic discovery over titles/abstracts.
 
----
+2. **Independent metadata** — `abstract_meta/*.json` per PDF, produced locally and optionally enriched via PubMed (Entrez), readable without re-embedding PDFs.
 
-## 1. VECTOR SEARCH INFRASTRUCTURE (CHROMADB)
-
-The semantic retrieval engine is built on top of a persistent ChromaDB database stored locally on disk.
-
-The vector index is generated directly from the textual content extracted from scientific PDF documents rather than from external APIs or manually curated corpora.
-
-The system uses the:
-
-`BAAI/bge-small-en-v1.5`
-
-embedding model through the fastembed library.
-
-This embedding model was selected because it provides:
-
-- strong semantic retrieval performance
-- efficient CPU-based inference
-- lightweight ONNX execution
-- scalability to large local repositories
-
-During indexing, the application extracts text from PDF pages and divides the content into overlapping text chunks.
-
-Chunking is necessary because:
-
-- scientific papers are often very large
-- embedding models perform better on moderate text windows
-- retrieval precision improves with localized segments
-- overlapping windows help preserve continuity of context
-
-Each chunk is associated with metadata such as:
-
-- source file path
-- inferred paper title
-- chunk identifiers
-- page ranges
-- retrieval information
-
-The resulting embeddings are stored in the ChromaDB collection and can later be queried through semantic similarity searches.
+This decoupling allows metadata refresh, keyword rebuilds, and metadata-vector rebuilds without always re-chunking the entire corpus.
 
 ---
 
-## 2. HYBRID SEMANTIC + BOOLEAN RETRIEVAL
+## 1. FULL-TEXT VECTOR SEARCH (CHROMADB)
 
-A major design objective of PAPERS-RAG was to combine semantic retrieval with explicit Boolean logic.
+The primary semantic engine is a persistent ChromaDB database under **`papers-rag_index/chroma_db/`**, collection **`papers`**.
 
-The system therefore supports:
+- **Embedding model:** `BAAI/bge-small-en-v1.5` via **fastembed** (CPU-friendly ONNX).
+- **Indexing (`indexer.index_papers`):** PyMuPDF text extraction → overlapping chunks (~1000 characters, 200 overlap) → batch embedding → Chroma storage with metadata (`file_path`, `file_name`, `paper_title`, `page_num`, `chunk_idx`).
+- **Incremental behavior:** already-indexed PDFs are skipped via a metadata scan; **stale** entries (indexed paths no longer on disk) are removed on update.
+- **Queries:** `semantic_search`, paper-aware discovery (`semantic_search_paper_aware`) for boolean clauses, and scoped `evidence_search_for_papers` after boolean combination.
 
-- semantic similarity searches
-- exact keyword searches
-- AND / OR / NOT operators
-- grouped Boolean clauses
-- hybrid retrieval strategies
-
-This hybrid approach is important in scientific literature exploration because:
-
-- some concepts are semantic
-- some identifiers require exact matching
-- gene symbols are literal
-- acronyms are sensitive to spelling
-- Boolean exclusion is often necessary
-
-Users may progressively refine retrieval results using combinations of semantic and literal constraints.
-
-For example:
-
-- semantic retrieval can identify conceptually related papers
-- keyword filters can enforce exact biological terms
-- Boolean exclusions can remove irrelevant subtopics
-
-This allows retrieval workflows that are considerably more flexible than conventional search systems.
+Chunk-level hits are **aggregated to papers** for boolean logic and UI display.
 
 ---
 
-## 3. INDEPENDENT METADATA PIPELINE
+## 2. KEYWORD SEARCH (SQLITE FTS5)
 
-Parallel to the vector database, the application maintains an independent metadata infrastructure.
+Keyword clauses use a **sidecar** SQLite database: **`chroma_db/keyword_index.sqlite`**, built from Chroma chunk text (default backend **`KEYWORD_SEARCH_BACKEND=fts`**).
 
-Each indexed PDF has a corresponding JSON file stored separately from the semantic index.
+- Supports literal and prefix-style token matching (e.g. gene symbols, accession patterns) without relying on Chroma document regex scans.
+- Rebuildable **without** re-embedding PDFs (`rebuild_keyword_index`).
+- Marked **stale** when the PDF vector index changes; **Synchronize Databases** rebuilds it in step 2.
 
-These metadata records may contain:
-
-- titles
-- inferred titles
-- DOI candidates
-- extracted abstracts
-- PubMed abstracts
-- PMIDs
-- publication dates
-- author lists
-- enrichment provenance
-- schema version information
-
-Metadata extraction is performed locally through dedicated parsing scripts operating directly on the PDFs.
-Optionally, the metadata can be enriched programmatically by querying PubMed through the E-utilities/Entrez infrastructure.
-
-This enrichment pipeline may retrieve:
-
-- official publication titles
-- curated abstracts
-- DOI validation
-- publication metadata
-- PMIDs
-- author lists
-
-This architecture allows the application to combine:
-
-- locally extracted information
-with
-- authoritative biomedical metadata
-
-while keeping the retrieval infrastructure independent from the enrichment process.
+Keyword hits receive cosine scores for display alongside semantic scores; in the UI, **keyword** matches are not filtered out by the semantic similarity cutoff.
 
 ---
 
-## 4. SCRIPT RESPONSIBILITIES AND MODULAR DESIGN
+## 3. METADATA VECTOR SEARCH (CHROMADB)
 
-The application is composed of several specialized scripts that interact in a modular way.
+A second Chroma collection, **`papers_metadata`**, stores embeddings of text derived from each paper’s **`abstract_meta` JSON** (title, abstracts, authors, etc.).
 
-**papers_paths.py**
+- Built by **`rebuild_paper_metadata_index`** (sidebar step 4 / sync step 4).
+- Powers **semantic discovery source** options: full-text only, metadata only, **union**, or **intersection** when evaluating semantic clauses.
 
-Centralizes the repository paths and provides utilities for recursively identifying PDF files throughout the local document collection.
-
-**indexer.py**
-
-Responsible for:
-
-- text extraction
-- chunking
-- embedding generation
-- ChromaDB indexing
-- semantic retrieval
-- keyword retrieval
-- Boolean aggregation
-- index statistics
-
-**extract_abstracts.py**
-
-Traverses the PDF repository and creates the JSON metadata files associated with each paper.
-
-**abstract_extraction.py**
-
-Contains the lower-level extraction logic responsible for:
-
-- title inference
-- DOI detection
-- abstract extraction
-- metadata handling
-- JSON path utilities
-- metadata integration
-
-**ncbi_pubmed.py**
-
-Handles communication with the NCBI / PubMed infrastructure through Entrez API queries.
-
-**rag_engine.py**
-
-Acts as the orchestration layer between:
-
-- retrieval
-- contextual assembly
-- AI interactions
-- cloud uploads
-- and conversational workflows
-
-**pdf_server.py**
-
-Implements a lightweight local HTTP service allowing PDFs to be opened directly through hyperlinks in the user interface.
-
-**app.py**
-
-The main Streamlit application coordinating:
-
-- the graphical interface
-- session states
-- indexing controls
-- retrieval logic
-- export workflows
-- AI interactions
-- and cloud integration
+This lets boolean search target bibliographic fields even when the full-text index would miss a match.
 
 ---
 
-## 5. USER INTERFACE AND WORKFLOW ORGANIZATION
+## 4. HYBRID SEMANTIC + BOOLEAN RETRIEVAL
 
-The graphical interface is implemented using Streamlit and organized around a sidebar and two main operational tabs.
+### Clause evaluation
 
-### SIDEBAR AND INDEX MANAGEMENT
+Each **Clause** row is either:
 
-The sidebar provides:
+- **semantic** — embedding similarity (full-text and/or metadata per discovery source), or  
+- **keyword** — FTS against **`keyword_index.sqlite`**.
 
-- indexing controls
-- index statistics
-- repository information
-- synchronization tools
-- and database status indicators
+Each clause is evaluated **independently** and yields a **set of papers** (paper-aware semantic discovery deduplicates to one representative chunk per paper for boolean combination).
 
-Users can trigger:
+### Boolean combination
 
-- creation of the vector database
-- incremental updates
-- repository synchronization
-- metadata refresh operations
+**AND**, **OR**, and **NOT** combine those **paper sets** (not raw chunks), with optional **groups** (split after Clause N). The UI shows a compact boolean label and a human-readable translation.
 
-This allows the semantic index to remain synchronized with the evolving PDF repository.
+### Evidence pass (search time only)
 
-### TAB 1: CONTEXTUAL RETRIEVAL AND QUICK CHAT
+After the final paper set is known, **`retrieve_boolean_evidence`** runs additional semantic retrieval restricted to those PDFs, keeping up to **`EVIDENCE_CHUNKS_PER_PAPER`** (default 3) chunks per paper across clause query texts. Results merge into **`search_results`** / **`papers_map`** for the hit list and for **Export**.
 
-The first tab is designed for:
+The evidence pass does **not** run again when the user opens Quick Chat or Export; it runs when the user clicks **Search**.
 
-- semantic retrieval
-- Boolean searches
-- contextual exploration
-- metadata inspection
-- and rapid AI-assisted interactions
+### Diagnostics
 
-The interface supports:
-
-- semantic search clauses
-- keyword clauses
-- grouped Boolean logic
-- similarity thresholds
-- manual paper inclusion
-- contextual exports
-
-Users may interact with an AI system grounded by:
-
-- retrieved text chunks
-- metadata
-- abstracts
-- selected contextual excerpts
-
-The application can also export the generated context into standalone text files for use with external AI systems.
-
-### TAB 2: DEEP DOCUMENT ANALYSIS
-
-The second tab is dedicated to deeper full-document analysis workflows.
-
-Selected papers from Tab 1 can be transferred into this environment for more extensive interaction.
-
-When papers are staged for deeper analysis:
-
-- symbolic links (or copies) are automatically created
-- selected files are organized into dedicated folders
-- upload workflows become simplified
-- file discovery becomes easier
-
-Users may then upload the full PDFs into Gemini models hosted through Google Cloud Vertex AI or upload the files manually to their preferred AI tool.
-
-In this mode the AI system can interact with:
-
-- entire papers
-- methods sections
-- larger scientific narratives
-- extended contextual information
-- and complete document structures
+The UI records per-clause timings, cache behavior, and discovery statistics to help tune queries (`PAPER_DISCOVERY_*` environment limits apply to semantic discovery batching).
 
 ---
 
-## 6. CONTEXT EXPORT AND AI INTEROPERABILITY
+## 5. INDEPENDENT METADATA PIPELINE (`abstract_meta`)
 
-A major design principle of PAPERS-RAG is interoperability.
+Each PDF can have a mirrored JSON file under **`papers-rag_index/abstract_meta/`**, produced by **`extract_abstracts.py`** / **`abstract_extraction.py`** and refreshable from the sidebar.
 
-The application does not force users into a single AI platform.
+Typical fields include:
 
-Instead, it allows retrieval results and contextual information to remain portable.
+- `abstract_text` (from PDF heuristics)
+- `abstract_pubmed` (from Entrez when enrichment succeeds)
+- `pubmed_enrichment` (schema version 3, status, PMID, errors such as `ncbi_esearch_error`)
+- title, DOI candidates, dates, authors, provenance
 
-Users may export:
-
-- metadata
-- abstracts
-- retrieved chunks
-- contextual summaries
-- and selected references
-
-into standalone text files that can later be used with:
-
-- ChatGPT
-- Claude
-- Gemini
-- local LLM systems
-- or any other AI environment
-
-This provides:
-
-- portability
-- reproducibility
-- model comparison
-- workflow flexibility
-- and long-term contextual archiving
+**`ncbi_pubmed.py`** implements Entrez (`esearch`, `esummary`, `efetch`). The running app **reads** JSON during browse/search/export/chat; NCBI is contacted during extraction when PubMed is enabled, not during ordinary search.
 
 ---
 
-## 7. LOCAL PDF SERVING AND VERIFICATION
+## 6. MANUAL-ONLY PAPERS (PASTE PDF BASENAMES)
 
-The application includes a lightweight local PDF server.
+Users can paste basenames (one per line) without running a search. **`Apply pasted names`** resolves them case-insensitively against the indexed corpus and auto-selects matches.
 
-This allows:
+- Papers already in the **current filtered hit list** appear under *Search hit papers*.
+- **Manual-only papers** (resolved but not in the hit list) appear in a separate manual-add list with **`abstract_meta` only** in the UI (no search excerpts).
 
-- direct PDF hyperlinks
-- browser-based rendering
-- side-by-side reading
-- evidence verification during AI conversations
-
-The local server makes it possible to rapidly inspect source material while simultaneously interacting with the AI system.
-
-This is particularly important in scientific workflows where retrieved claims often need immediate verification against the original publication.
+Manual-only papers follow the same **selection → Export / Quick Chat / Deep Chat** paths as hits, but chunk-based context is limited as described below.
 
 ---
 
-## 8. CLOUD INTEGRATION
+## 7. SCRIPT RESPONSIBILITIES AND MODULAR DESIGN
 
-The system integrates with Gemini models hosted on Google Cloud Vertex AI.
+| Module | Role |
+|--------|------|
+| **`papers_rag_config.py`** | Load `.env`; resolve `PAPERS_DIR`; derive `papers-rag_index/` paths; honor `.papers_rag_state.json` for library switch |
+| **`papers_paths.py`** | Corpus root and recursive PDF discovery |
+| **`indexer.py`** | PDF ingest; Chroma full-text + metadata collections; FTS keyword index; semantic/keyword/boolean/evidence retrieval; health/sync stats |
+| **`extract_abstracts.py`** | CLI batch writer for `abstract_meta` |
+| **`abstract_extraction.py`** | Heuristics, JSON schema, load/save helpers |
+| **`ncbi_pubmed.py`** | Entrez PubMed enrichment |
+| **`rag_engine.py`** | Vertex Gemini client; context assembly; `stream_rag_response` (Quick Chat); GCS upload; Deep Chat streaming |
+| **`pdf_server.py`** | Local HTTP PDF links (`PDF_SERVER_PORT`, default 8502) |
+| **`app.py`** | Streamlit UI: sync, search, diagnostics, selection, export, Quick Chat, Deep Chat staging/upload |
 
-The cloud integration layer supports:
+---
 
-- Google Cloud Storage uploads
-- Gemini conversational APIs
-- Vertex AI workflows
-- authenticated cloud interactions
-- and full-document AI analysis
+## 8. USER INTERFACE AND WORKFLOW ORGANIZATION
 
-Importantly, this cloud integration remains optional.
+Streamlit: **sidebar** + **Tab 1** (search workbench) + **Tab 2** (Deep Chat).
 
-The core infrastructure:
+### Sidebar
 
-- indexing
-- retrieval
-- metadata extraction
-- PDF serving
-- contextual export
-- and local exploration
+- **Papers root** — switch library (`PAPERS_DIR` / state file).
+- **Synchronize/Build/Update Databases** — ordered pipeline: PDF vectors → keyword FTS → `abstract_meta` extraction → metadata vectors → health reports.
+- Individual controls for each step and **`abstract_meta`** scope (incremental vs full refresh, optional PubMed, PDF-newer-than-JSON).
+- Status panels for vector, keyword, metadata, and JSON mirror sync.
 
-can all operate entirely on local infrastructure without requiring cloud services.
+### Tab 1: Retrieval, selection, Quick Chat, export
+
+- Multi-clause boolean search, similarity cutoff, semantic discovery source, search diagnostics.
+- Paste basenames / **manual-only papers**.
+- Hit list: scores, `abstract_meta`, multiple excerpts per paper (discovery + evidence).
+- Checked rows drive **Export**, **Send to Deep Chat**, and **Quick Chat**.
+
+### Tab 2: Deep document analysis
+
+1. **Tab 1 — Send selected papers to Deep Chat** stages PDFs under **`selected_pdfs/<YYYYMMDD_HHMMSS>/`** (symlink or copy).
+2. **Tab 2 — Upload to Google Cloud** → **`gs://<bucket>/selected/`** → Gemini chat on full documents via **`gs://`** URIs.
+
+---
+
+## 9. QUICK CHAT VS EXPORT (CONTEXT ASSEMBLY)
+
+Both use **`abstract_meta`** for every **checked** paper. They differ in **excerpts** and **destination**.
+
+### Quick Chat (Vertex, Tab 1)
+
+Each user message builds a prompt from **checked papers only**:
+
+| Paper type | Context sent to Gemini |
+|------------|-------------------------|
+| **Search-hit paper** | `abstract_meta` JSON + **one** PDF excerpt (~1,000 characters): the **highest-scoring chunk** from the **last Search** (`papers_map`; may be discovery or evidence). |
+| **Manual-only paper** | `abstract_meta` JSON **only** — no excerpts, no new retrieval. |
+
+**Not included:** other UI excerpts, a fresh search, re-run evidence pass, or full PDFs.
+
+**Rationale:** one excerpt per hit paper keeps in-app prompts bounded for speed, cost, and answer focus. Multi-chunk dumps are left to Export.
+
+Implemented in **`app.py`** (`preloaded_chunks` + `abstracts_by_file_path`) and **`rag_engine.stream_rag_response`**.
+
+### Export (`exported_prompts/prompt_context_<timestamp>.txt`)
+
+| Paper type | Context in file |
+|------------|-----------------|
+| **Search-hit paper** | `abstract_meta` + **all** matching excerpts from the last search (`papers_map`, including evidence). |
+| **Manual-only paper** | `abstract_meta` only |
+
+**Rationale:** portable **full** retrieval context for external LLMs the app does not host; user may edit, split, or archive the file.
+
+Implemented via **`rag_engine.build_external_llm_context_text`**.
+
+### Deep Chat (Tab 2)
+
+Separate path: **entire PDFs** via GCS + Gemini file URIs—not chunk RAG from Tab 1.
+
+---
+
+## 10. CONTEXT EXPORT AND AI INTEROPERABILITY
+
+Export embodies the interoperability principle: retrieval products remain usable outside Vertex.
+
+Users may combine exported abstracts and excerpts with any external chat environment, enabling model comparison, custom prompting, and long-form analysis without streaming through Streamlit.
+
+Quick Chat complements export for **interactive** refinement with a **smaller** grounded context per turn.
+
+---
+
+## 11. LOCAL PDF SERVING AND VERIFICATION
+
+**`pdf_server.py`** serves the active **`PAPERS_DIR`** over HTTP (default port **8502**; Streamlit typically **8501**). Hyperlinks in the UI open PDFs in the browser for verification alongside AI-assisted reading—important when validating claims against source documents.
+
+---
+
+## 12. CLOUD INTEGRATION (OPTIONAL)
+
+**`rag_engine.py`** uses **Vertex AI** (`genai.Client(vertexai=True, ...)`) with **Application Default Credentials** and **`.env`** settings (`GCP_PROJECT`, `GCS_BUCKET`, optional `GCP_LOCATION`, `GEMINI_MODEL`).
+
+Cloud is required for:
+
+- **Quick Chat** (Vertex streaming)
+- **Deep Chat** (GCS upload + Gemini on full PDFs)
+
+Local infrastructure—indexing, boolean search, metadata extraction, PDF serving, and **Export**—operates without cloud credentials once indexes exist.
 
 ---
 
 ## OVERALL OBJECTIVE
 
-The overall objective of PAPERS-RAG is to transform large collections of scientific PDFs into an interactive AI-assisted research environment.
+PAPERS-RAG turns large local PDF archives into a searchable, metadata-rich research environment:
 
-The system combines:
+- **three coordinated indexes** (full-text vectors, FTS keywords, metadata vectors)
+- **paper-level boolean** retrieval with an **evidence** pass at search time
+- **`abstract_meta`** sidecars with optional PubMed enrichment
+- **manual-only** paper inclusion via pasted basenames
+- **Quick Chat**, **Export**, and **Deep Chat** tuned to different depth and portability needs
 
-- semantic retrieval
-- keyword search
-- Boolean filtering
-- metadata enrichment
-- contextual export
-- conversational AI
-- and deep document analysis
-
-within a unified modular workflow specifically designed for scientific literature exploration and advanced research assistance.
+within one modular Streamlit application designed for scientific literature exploration.
